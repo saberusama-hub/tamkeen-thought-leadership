@@ -14,3 +14,6 @@ next-env.d.ts
 
 # Private working area — handoff briefs and prototype source
 Edits Folder/
+
+# Claude Code session state
+.claude/

@@ -21,7 +21,7 @@ export function ArticleHero({ article, coverage, dataset }: ArticleHeroProps) {
         <Headline
           text={article.title}
           emphasis={article.emphasis}
-          className="font-serif font-normal text-[72px] leading-[1.04] -tracking-[1px] m-0 mb-7 text-tamkeen max-w-[1100px] max-[760px]:text-[42px]"
+          className="font-serif font-normal text-[72px] leading-[1.1] -tracking-[1px] m-0 mb-7 text-tamkeen max-w-[1100px] max-[760px]:text-[42px] max-[760px]:leading-[1.12]"
         />
         <p className="anim-up anim-up-d2 font-serif text-[22px] leading-[1.55] text-ink-mid max-w-[840px] m-0 mb-8 italic max-[760px]:text-[18px]">
           {article.dek}

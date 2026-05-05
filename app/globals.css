@@ -185,12 +185,18 @@ section {
 }
 
 /* ---------- Animations ---------- */
+/*
+ * line-wipe: insets extend -15% above/below the line-box so descenders
+ * (g, y, p, q) and ascenders aren't clipped by the inline-block clip-path
+ * when the headline uses tight leading (1.02–1.1). The horizontal animation
+ * is unaffected.
+ */
 @keyframes line-wipe {
   from {
-    clip-path: inset(0 100% 0 0);
+    clip-path: inset(-15% 100% -15% 0);
   }
   to {
-    clip-path: inset(0 0 0 0);
+    clip-path: inset(-15% 0 -15% 0);
   }
 }
 @keyframes fade-up {
