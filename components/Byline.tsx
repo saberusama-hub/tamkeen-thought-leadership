@@ -5,26 +5,24 @@ interface BylineProps {
   authors: Author[];
   filedFrom?: string;
   publishedAt: string;
-  coverage?: string;
-  dataset?: string;
 }
 
-export function Byline({ authors, filedFrom, publishedAt, coverage, dataset }: BylineProps) {
-  const items = [
-    { label: 'By', value: authors.map((a) => a.name).join(', ') },
-    filedFrom ? { label: 'Filed', value: `${filedFrom} · ${formatLongDate(publishedAt)}` } : null,
-    coverage ? { label: 'Coverage', value: coverage } : null,
-    dataset ? { label: 'Dataset', value: dataset } : null,
-  ].filter((x): x is { label: string; value: string } => Boolean(x));
-
+/**
+ * Used inside MDX where a flat byline still makes sense (legacy callers).
+ * The article hero now renders its own dateline; this is no longer used at the top.
+ */
+export function Byline({ authors, filedFrom, publishedAt }: BylineProps) {
   return (
-    <div className="border-t border-rule pt-[18px] flex flex-wrap gap-[30px] font-sans text-[10.5px] uppercase tracking-[1.6px] text-ink-soft font-semibold max-[760px]:gap-4 max-[760px]:text-[10px]">
-      {items.map((it) => (
-        <div key={it.label}>
-          <strong className="text-ink font-bold mr-2">{it.label}</strong>
-          {it.value}
-        </div>
-      ))}
+    <div className="font-sans text-[11px] tracking-[1.5px] uppercase text-mute font-medium">
+      By <span className="text-ink font-semibold">{authors.map((a) => a.name).join(', ')}</span>
+      {filedFrom ? (
+        <>
+          <span className="opacity-60 mx-2.5">·</span>
+          {filedFrom}
+        </>
+      ) : null}
+      <span className="opacity-60 mx-2.5">·</span>
+      {formatLongDate(publishedAt)}
     </div>
   );
 }

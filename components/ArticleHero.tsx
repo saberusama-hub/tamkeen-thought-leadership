@@ -1,39 +1,57 @@
 import type { Article } from '@/types/article';
-import { CATEGORY_LABELS } from '@/types/article';
-import { Eyebrow } from './Eyebrow';
-import { Byline } from './Byline';
-import { Headline } from './Headline';
+import { formatLongDate } from '@/lib/format';
 
 interface ArticleHeroProps {
   article: Article;
-  coverage?: string;
-  dataset?: string;
 }
 
-export function ArticleHero({ article, coverage, dataset }: ArticleHeroProps) {
-  const catLabel = CATEGORY_LABELS[article.category].label;
-  const catNumber = `No. ${String(article.categoryNumber).padStart(2, '0')}`;
-
+/**
+ * Render the title, splitting on the emphasis word so it can be set in italic
+ * serif. No copper highlight, no colour change. The italic carries the weight.
+ */
+function renderTitle(title: string, emphasis?: string) {
+  if (!emphasis) return title;
+  const idx = title.toLowerCase().indexOf(emphasis.toLowerCase());
+  if (idx < 0) return title;
   return (
-    <header className="px-8 pt-16 pb-12 border-b-[3px] border-double border-tamkeen bg-paper max-[760px]:px-6 max-[760px]:pt-10 max-[760px]:pb-9">
-      <div className="mx-auto max-w-[1240px]">
-        <Eyebrow number={catNumber} parts={[catLabel.split(' & ')[0], 'The brief']} animate />
-        <Headline
-          text={article.title}
-          emphasis={article.emphasis}
-          className="font-serif font-normal text-[72px] leading-[1.1] -tracking-[1px] m-0 mb-7 text-tamkeen max-w-[1100px] max-[760px]:text-[42px] max-[760px]:leading-[1.12]"
-        />
-        <p className="anim-up anim-up-d2 font-serif text-[22px] leading-[1.55] text-ink-mid max-w-[840px] m-0 mb-8 italic max-[760px]:text-[18px]">
+    <>
+      {title.slice(0, idx)}
+      <em className="italic font-normal">{title.slice(idx, idx + emphasis.length)}</em>
+      {title.slice(idx + emphasis.length)}
+    </>
+  );
+}
+
+export function ArticleHero({ article }: ArticleHeroProps) {
+  return (
+    <header className="border-b border-rule">
+      <div className="mx-auto max-w-[1240px] px-8 pt-16 pb-12 max-[640px]:px-5 max-[640px]:pt-10 max-[640px]:pb-8">
+        {/* Single muted small-caps line: date, reading time. No category. */}
+        <div className="font-sans text-[11px] tracking-[1.6px] uppercase text-mute mb-8">
+          {formatLongDate(article.publishedAt)}
+          <span className="opacity-60 mx-2.5">·</span>
+          {article.readingTimeMinutes} min read
+        </div>
+
+        <h1 className="font-serif font-normal text-[60px] leading-[1.1] -tracking-[0.6px] m-0 mb-7 text-ink max-w-[18ch] max-[760px]:text-[40px] max-[760px]:leading-[1.12] max-[640px]:text-[32px]">
+          {renderTitle(article.title, article.emphasis)}
+        </h1>
+
+        <p className="font-serif text-[22px] leading-[1.5] italic text-ink max-w-[56ch] m-0 mb-8 max-[640px]:text-[18px]">
           {article.dek}
         </p>
-        <div className="anim-up anim-up-d3">
-          <Byline
-            authors={article.resolvedAuthors}
-            filedFrom={article.filedFrom}
-            publishedAt={article.publishedAt}
-            coverage={coverage}
-            dataset={dataset}
-          />
+
+        <div className="font-sans text-[11px] tracking-[1.6px] uppercase text-mute font-medium">
+          By{' '}
+          <span className="text-ink font-semibold">
+            {article.resolvedAuthors.map((a) => a.name).join(', ')}
+          </span>
+          {article.filedFrom ? (
+            <>
+              <span className="opacity-60 mx-2.5">·</span>
+              Filed from {article.filedFrom}
+            </>
+          ) : null}
         </div>
       </div>
     </header>

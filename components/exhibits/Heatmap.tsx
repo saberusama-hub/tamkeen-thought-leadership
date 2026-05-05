@@ -14,18 +14,21 @@ interface HeatmapProps {
   legend?: { min: number; max: number; label?: string };
 }
 
+/**
+ * Diverging colour ramp. Negative values use a desaturated near-black on
+ * pale, positives use the green family. We deliberately keep the green ramp
+ * since it is the data, not the chrome.
+ */
 const RAMP = [
-  { stop: -10, hex: '#A0342A', text: '#FAF6EE' },
-  { stop: -6, hex: '#D6A19A', text: '#FAF6EE' },
-  // -2 cell: dark red on pink failed WCAG AA (~3.2:1).
-  // Switch to ink-mid for legibility while keeping the negative pink fill.
-  { stop: -2, hex: '#E8C7C2', text: '#4A4A40' },
-  { stop: 0, hex: '#F2EBDC', text: '#6F6A5A' },
-  { stop: 2, hex: '#D4E4DD', text: '#003D2B' },
-  { stop: 4, hex: '#C4D8CC', text: '#003D2B' },
-  { stop: 8, hex: '#7AAB94', text: '#FAF6EE' },
-  { stop: 16, hex: '#1F5A45', text: '#FAF6EE' },
-  { stop: 30, hex: '#003D2B', text: '#FAF6EE' },
+  { stop: -10, hex: '#404040', text: '#faf6ee' },
+  { stop: -6, hex: '#7c7c7c', text: '#faf6ee' },
+  { stop: -2, hex: '#d8d3c4', text: '#111110' },
+  { stop: 0, hex: '#ece6d4', text: '#6b6862' },
+  { stop: 2, hex: '#cee0d6', text: '#003d2b' },
+  { stop: 4, hex: '#a8c2b4', text: '#003d2b' },
+  { stop: 8, hex: '#6b9f88', text: '#faf6ee' },
+  { stop: 16, hex: '#1f5a45', text: '#faf6ee' },
+  { stop: 30, hex: '#003d2b', text: '#faf6ee' },
 ];
 
 function colorFor(v: number): { bg: string; fg: string } {
@@ -38,55 +41,57 @@ function colorFor(v: number): { bg: string; fg: string } {
 
 export function Heatmap({ rows, cols, legend }: HeatmapProps) {
   return (
-    <div className="mt-2">
-      <div
-        className="grid gap-1 items-stretch font-sans text-[10.5px] uppercase tracking-[1.2px] text-ink-soft font-bold mb-2"
-        style={{ gridTemplateColumns: `160px repeat(${cols.length}, 1fr)` }}
-      >
-        <div />
-        {cols.map((c, i) => (
-          <div
-            key={i}
-            className="px-2 text-center leading-[1.3] self-end pb-1.5 border-b border-rule"
-            dangerouslySetInnerHTML={{ __html: c }}
-          />
-        ))}
-      </div>
-      {rows.map((r, ri) => (
+    <div className="my-2 overflow-x-auto">
+      <div className="min-w-[640px]">
         <div
-          key={ri}
-          className="grid gap-1 items-stretch mt-1"
+          className="grid gap-1 items-stretch font-sans text-[10px] uppercase tracking-[1.2px] text-mute font-medium mb-2"
           style={{ gridTemplateColumns: `160px repeat(${cols.length}, 1fr)` }}
         >
-          <div className="px-2.5 py-3.5 text-[13.5px] font-semibold text-ink flex items-center font-serif">
-            {r.label}
-          </div>
-          {r.cells.map((c, ci) => {
-            const { bg, fg } = colorFor(c.value);
-            return (
-              <div
-                key={ci}
-                className="px-2.5 py-3.5 text-center font-mono text-sm font-semibold flex items-center justify-center min-h-12 tabular-nums"
-                style={{ background: bg, color: fg, fontFeatureSettings: '"tnum" 1' }}
-              >
-                {c.display}
-              </div>
-            );
-          })}
+          <div />
+          {cols.map((c, i) => (
+            <div
+              key={i}
+              className="px-2 text-center leading-[1.3] self-end pb-1.5 border-b border-rule"
+              dangerouslySetInnerHTML={{ __html: c }}
+            />
+          ))}
         </div>
-      ))}
+        {rows.map((r, ri) => (
+          <div
+            key={ri}
+            className="grid gap-1 items-stretch mt-1"
+            style={{ gridTemplateColumns: `160px repeat(${cols.length}, 1fr)` }}
+          >
+            <div className="px-2 py-3 text-[14px] text-ink flex items-center font-serif">
+              {r.label}
+            </div>
+            {r.cells.map((c, ci) => {
+              const { bg, fg } = colorFor(c.value);
+              return (
+                <div
+                  key={ci}
+                  className="px-2 py-3 text-center font-sans text-[13px] font-semibold flex items-center justify-center min-h-12 tabular-nums"
+                  style={{ background: bg, color: fg, fontVariantNumeric: 'tabular-nums' }}
+                >
+                  {c.display}
+                </div>
+              );
+            })}
+          </div>
+        ))}
+      </div>
 
       {legend ? (
-        <div className="flex items-center gap-2.5 mt-[18px] text-[11px] text-ink-soft flex-wrap font-sans">
-          <span className="font-mono text-[11px] text-ink">{legend.label ?? 'Δ score'}</span>
-          <div className="flex items-center h-4 border border-rule">
+        <div className="flex items-center gap-2.5 mt-5 text-[11px] text-mute flex-wrap font-sans">
+          <span className="text-[11px] text-ink">{legend.label ?? 'Δ score'}</span>
+          <div className="flex items-center h-3.5 border border-rule">
             {RAMP.map((r, i) => (
-              <span key={i} className="block w-[30px] h-[14px]" style={{ background: r.hex }} />
+              <span key={i} className="block w-[28px] h-[12px]" style={{ background: r.hex }} />
             ))}
           </div>
-          <span className="font-mono text-[11px] text-ink">{legend.min}</span>
-          <span className="font-mono text-[11px] text-ink">0</span>
-          <span className="font-mono text-[11px] text-ink">+{legend.max}</span>
+          <span>{legend.min}</span>
+          <span>0</span>
+          <span>+{legend.max}</span>
         </div>
       ) : null}
     </div>

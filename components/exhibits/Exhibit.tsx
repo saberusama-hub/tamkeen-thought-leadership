@@ -5,54 +5,33 @@ interface ExhibitProps {
   title: string;
   sub?: string;
   source?: string;
+  /** Retained for backward compatibility, ignored visually. */
   numberTone?: 'tamkeen' | 'copper';
+  /** Retained for backward compatibility, ignored visually. */
   dark?: boolean;
   children: ReactNode;
 }
 
-export function Exhibit({
-  number,
-  title,
-  sub,
-  source,
-  numberTone = 'tamkeen',
-  dark = false,
-  children,
-}: ExhibitProps) {
+/**
+ * Exhibit wrapper. No card. No background. No top border. The chart sits
+ * in the flow, prefaced by a small tracked sans label, an italic serif
+ * caption, and concluded by a muted source note.
+ */
+export function Exhibit({ number, title, sub, source, children }: ExhibitProps) {
   return (
-    <figure
-      className={`my-11 mb-9 pt-[30px] pb-[22px] border-t-2 border-b ${
-        dark ? 'border-paper/30 border-b-paper/20' : 'border-tamkeen border-b-rule'
-      }`}
-    >
-      <div
-        className={`font-mono text-[10.5px] tracking-[2px] uppercase font-bold mb-1.5 ${
-          numberTone === 'copper' ? 'text-copper-deep' : dark ? 'text-tamkeen-mist' : 'text-tamkeen'
-        }`}
-      >
+    <figure className="my-12 max-w-none">
+      <div className="font-sans text-[11px] tracking-[1.6px] uppercase text-mute font-medium mb-2">
         {number}
       </div>
-      <h3
-        className={`font-serif text-[23px] font-semibold m-0 mb-1 leading-[1.25] -tracking-[0.3px] ${
-          dark ? 'text-paper' : 'text-tamkeen'
-        }`}
-      >
+      <h3 className="font-serif text-[22px] font-medium leading-[1.3] -tracking-[0.2px] m-0 mb-1.5 text-ink">
         {title}
       </h3>
       {sub ? (
-        <p
-          className={`text-sm m-0 mb-6 italic font-serif ${dark ? 'text-paper/70' : 'text-ink-mid'}`}
-        >
-          {sub}
-        </p>
+        <p className="font-serif italic text-[16px] text-mute m-0 mb-7 max-w-[60ch]">{sub}</p>
       ) : null}
-      <div>{children}</div>
+      <div className="my-2">{children}</div>
       {source ? (
-        <figcaption
-          className={`text-[11.5px] mt-[18px] pt-3.5 border-t leading-[1.55] font-sans not-italic ${
-            dark ? 'text-paper/75 border-paper/20' : 'text-ink-soft border-rule-soft'
-          }`}
-        >
+        <figcaption className="font-sans text-[11.5px] text-mute mt-5 leading-[1.55] max-w-[68ch]">
           {source}
         </figcaption>
       ) : null}

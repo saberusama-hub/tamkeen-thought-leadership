@@ -1,10 +1,6 @@
 import type { Metadata } from 'next';
 import { Masthead } from '@/components/Masthead';
 import { Footer } from '@/components/Footer';
-import { Eyebrow } from '@/components/Eyebrow';
-import { Headline } from '@/components/Headline';
-import { getAllArticles } from '@/lib/articles';
-import { buildSearchIndex } from '@/lib/search';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -14,50 +10,56 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const articles = getAllArticles();
-  const searchEntries = buildSearchIndex();
   return (
     <>
-      <Masthead searchEntries={searchEntries} />
+      <Masthead />
       <main
         id="main-content"
-        className="mx-auto max-w-[1240px] px-8 py-16 max-[760px]:px-6"
+        className="mx-auto max-w-[1240px] px-8 py-16 max-[640px]:px-5 max-[640px]:py-10"
       >
-        <Eyebrow parts={['About this publication']} animate />
-        <Headline
-          text="Independent analysis on the schools and universities portfolio."
-          className="font-serif text-[64px] font-normal text-tamkeen leading-[1.1] -tracking-[1.2px] m-0 mb-6 max-[760px]:text-[40px]"
-        />
-        <div className="prose-article max-w-[820px]">
-          <p className="lead">
+        <div className="max-w-[68ch]">
+          <div className="font-sans text-[11px] tracking-[1.6px] uppercase text-mute font-medium mb-6">
+            About this publication
+          </div>
+          <h1 className="font-serif text-[48px] font-normal text-ink leading-[1.1] -tracking-[0.6px] m-0 mb-8 max-w-[20ch] max-[640px]:text-[34px]">
+            Independent analysis on schools and universities.
+          </h1>
+
+          <p className="font-serif italic text-[22px] leading-[1.5] text-ink m-0 mb-10 max-w-[56ch] max-[640px]:text-[19px]">
+            Long-form, data-driven analysis on policy, capability, and strategy. Filed
+            independently from Abu Dhabi.
+          </p>
+
+          <p>
             Tamkeen Thought Leadership publishes long-form, data-driven analyses on the questions
             that shape schools and universities: research, students, teaching, rankings, policy,
             and the cross-border footprint of higher education.
           </p>
           <p>
-            Our editorial standard is independent: we cite sources, publish underlying datasets on
+            Our editorial standard is independent. We cite sources, publish underlying datasets on
             request, and treat methodology as part of the argument rather than an appendix to it.
             Each volume is filed from Abu Dhabi and edited to a newspaper&rsquo;s discipline of
             structure and brevity.
           </p>
-          <h3>Categories</h3>
+
+          <h3 className="font-serif font-semibold text-[24px] mt-12 mb-3 text-ink">Cadence</h3>
           <p>
-            The publication runs in eight parallel categories — Overall, Research, Students,
-            Teaching &amp; Learning, Rankings &amp; Strategy, Policy &amp; Funding, Global /
-            International, Industry &amp; Employability — each numbered and dated. Volumes appear
-            when the underlying analysis is ready, not on a fixed cadence. Forthcoming volumes are
-            signposted on the homepage.
+            We publish at most one piece per month. Volumes appear when the underlying analysis
+            is ready, not on a fixed schedule.
           </p>
-          <h3>Editorial principles</h3>
-          <ul>
+
+          <h3 className="font-serif font-semibold text-[24px] mt-12 mb-3 text-ink">
+            Editorial principles
+          </h3>
+          <ul className="list-disc pl-5 marker:text-mute">
             <li>Data-led, not opinion-led. Every claim references a published source.</li>
-            <li>Methodology in plain view: assumptions, breaks, and caveats up front.</li>
+            <li>Methodology in plain view. Assumptions, breaks, and caveats up front.</li>
             <li>One argument per volume. No padding.</li>
-            <li>Newspaper typography: serif body, generous columns, hairline rules. No images.</li>
+            <li>Newspaper typography. Serif body, generous margins, hairline rules. No images.</li>
           </ul>
         </div>
       </main>
-      <Footer articles={articles} />
+      <Footer />
     </>
   );
 }

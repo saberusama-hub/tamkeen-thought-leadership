@@ -1,6 +1,5 @@
 import type { MetadataRoute } from 'next';
 import { getAllArticles } from '@/lib/articles';
-import { CATEGORY_KEYS } from '@/types/article';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://tamkeen-thought-leadership.vercel.app';
 
@@ -12,15 +11,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly' as const,
     priority: 0.9,
   }));
-  const categoryEntries = CATEGORY_KEYS.map((c) => ({
-    url: `${BASE_URL}/category/${c}`,
-    changeFrequency: 'monthly' as const,
-    priority: 0.5,
-  }));
   return [
     { url: BASE_URL, changeFrequency: 'weekly', priority: 1.0 },
     { url: `${BASE_URL}/about`, changeFrequency: 'yearly', priority: 0.4 },
-    ...categoryEntries,
     ...articleEntries,
   ];
 }

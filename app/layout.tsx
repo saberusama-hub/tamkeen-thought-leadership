@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { sourceSerif, inter, jetbrainsMono } from './fonts';
+import { sourceSerif, inter } from './fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: '%s · Tamkeen Thought Leadership',
   },
   description:
-    'Tamkeen Thought Leadership — Independent analysis on policy, capability, and strategy.',
+    'Tamkeen Thought Leadership. Independent analysis on policy, capability, and strategy.',
   openGraph: {
     type: 'website',
     siteName: 'Tamkeen Thought Leadership',
@@ -20,10 +20,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${sourceSerif.variable} ${inter.variable} ${jetbrainsMono.variable}`}
-    >
+    <html lang="en" className={`${sourceSerif.variable} ${inter.variable}`}>
       <body>
         <a href="#main-content" className="skip-link">
           Skip to content

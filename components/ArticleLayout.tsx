@@ -4,30 +4,32 @@ interface ArticleLayoutProps {
   children: ReactNode;
 }
 
+/**
+ * Wraps the article body. Single neutral surface, no dark / alt variants.
+ */
 export function ArticleLayout({ children }: ArticleLayoutProps) {
-  return <article className="prose-article">{children}</article>;
+  return (
+    <article className="prose-article mx-auto max-w-[1240px] px-8 py-12 max-[640px]:px-5 max-[640px]:py-8">
+      {children}
+    </article>
+  );
 }
 
 interface SectionProps {
   id: string;
+  /** Retained as latent prop for backward compatibility, ignored visually. */
   variant?: 'default' | 'alt' | 'dark';
   children: ReactNode;
 }
 
-export function ArticleSection({ id, variant = 'default', children }: SectionProps) {
-  const bg =
-    variant === 'alt'
-      ? 'bg-paper-shade'
-      : variant === 'dark'
-        ? 'bg-tamkeen-deep text-paper'
-        : 'bg-paper';
+/**
+ * Article sections are now visually identical. The variant prop is kept so
+ * existing MDX continues to compile, but does not change appearance.
+ */
+export function ArticleSection({ id, children }: SectionProps) {
   return (
-    <section
-      id={id}
-      data-variant={variant}
-      className={`${bg} py-[72px] scroll-mt-[180px] max-[760px]:py-12 max-[760px]:scroll-mt-[150px] [&_+_section]:border-t [&_+_section]:border-rule-soft data-[variant=dark]:[&_+_section]:border-t-transparent`}
-    >
-      <div className="mx-auto max-w-[1180px] px-8 max-[760px]:px-6">{children}</div>
+    <section id={id} className="py-14 first:pt-4 max-[640px]:py-10">
+      <div className="max-w-[820px] mx-auto">{children}</div>
     </section>
   );
 }
