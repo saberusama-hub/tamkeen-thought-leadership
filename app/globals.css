@@ -166,6 +166,57 @@ button {
   font-style: normal;
 }
 
+/*
+ * Dark-section overrides for the article body.
+ *
+ * The unlayered .prose-article rules above set colors like
+ * `var(--color-ink)` and `var(--color-tamkeen)` directly. Tailwind utility
+ * classes (`text-paper`, `text-tamkeen-light` etc.) live in
+ * `@layer utilities`, which loses to anything unlayered. Without these
+ * overrides, every paragraph, lead, h2/h3/h4 and stake-card title inside
+ * a `<section data-variant="dark">` renders as dark text on the dark
+ * green background — i.e. visually green-on-green and barely readable.
+ *
+ * These selectors carry higher specificity than `.prose-article p` etc.,
+ * so they win in unlayered cascade and force paper-tinted colours
+ * everywhere inside dark sections.
+ */
+.prose-article section[data-variant='dark'] p,
+.prose-article section[data-variant='dark'] li {
+  color: rgba(250, 246, 238, 0.85);
+}
+.prose-article section[data-variant='dark'] p.lead,
+.prose-article section[data-variant='dark'] .lead {
+  color: rgba(250, 246, 238, 0.92);
+}
+.prose-article section[data-variant='dark'] strong {
+  color: var(--color-paper);
+  font-weight: 600;
+}
+.prose-article section[data-variant='dark'] em {
+  color: var(--color-copper);
+}
+.prose-article section[data-variant='dark'] h2 {
+  color: var(--color-paper);
+}
+.prose-article section[data-variant='dark'] h2 em {
+  color: var(--color-copper);
+}
+.prose-article section[data-variant='dark'] h3 {
+  color: var(--color-paper);
+}
+.prose-article section[data-variant='dark'] h4 {
+  color: var(--color-tamkeen-mist);
+}
+.prose-article section[data-variant='dark'] a {
+  color: var(--color-tamkeen-light);
+  border-bottom-color: rgba(107, 159, 136, 0.35);
+}
+.prose-article section[data-variant='dark'] hr,
+.prose-article section[data-variant='dark'] .rule-thin {
+  background: rgba(250, 246, 238, 0.18);
+}
+
 /* Generic spacers */
 .rule-thin {
   height: 1px;

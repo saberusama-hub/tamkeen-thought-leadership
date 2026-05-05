@@ -31,7 +31,7 @@ export function SectionHeader({ id, number, kicker, title, italic, dark = false,
     >
       <div
         className={`flex-none basis-[90px] font-mono text-[11px] tracking-[1.5px] font-semibold uppercase pt-3.5 border-t-2 ${
-          dark ? 'text-tamkeen-light border-tamkeen-light' : 'text-tamkeen border-tamkeen'
+          dark ? 'text-tamkeen-mist border-tamkeen-mist' : 'text-tamkeen border-tamkeen'
         } max-[760px]:pt-2.5`}
       >
         § {number}
@@ -40,7 +40,7 @@ export function SectionHeader({ id, number, kicker, title, italic, dark = false,
         {kicker ? (
           <div
             className={`font-sans text-[11px] tracking-[1.8px] uppercase font-bold mb-2.5 ${
-              dark ? 'text-tamkeen-light' : 'text-ink-soft'
+              dark ? 'text-tamkeen-mist' : 'text-ink-soft'
             }`}
           >
             {kicker}
