@@ -6,7 +6,7 @@ import { ArticleHero } from '@/components/ArticleHero';
 import { ArticleLayout } from '@/components/ArticleLayout';
 import { ProgressBar } from '@/components/ProgressBar';
 import { getAllArticles, getArticleBySlug } from '@/lib/articles';
-import { SERIES_LABELS } from '@/types/article';
+import { buildSearchIndex } from '@/lib/search';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -47,17 +47,10 @@ export default async function ArticlePage({ params }: PageProps) {
   if (!article) notFound();
 
   const allArticles = getAllArticles();
+  const searchEntries = buildSearchIndex();
 
   const mod = await import(`@/content/articles/${slug}.mdx`);
   const Body = mod.default as (props: Record<string, unknown>) => React.ReactNode;
-
-  const seriesContext = `${SERIES_LABELS[article.series].label} · Vol. ${String(article.seriesNumber).padStart(2, '0')}`;
-  const navMap: Record<string, 'education' | 'workforce' | 'innovation' | 'capability'> = {
-    education: 'education',
-    workforce: 'workforce',
-    innovation: 'innovation',
-    capability: 'capability',
-  };
 
   const ldJson = {
     '@context': 'https://schema.org',
@@ -79,14 +72,12 @@ export default async function ArticlePage({ params }: PageProps) {
     <>
       <ProgressBar />
       <Masthead
-        edition={{
-          number: article.seriesNumber,
-          readingMinutes: article.readingTimeMinutes,
-          series: seriesContext,
-        }}
         date={article.publishedAt}
+        activeTab={article.category}
         articleSections={article.sections}
-        activeNav={navMap[article.series]}
+        searchEntries={searchEntries}
+        edition={{ number: article.categoryNumber, subtitle: 'Schools & Universities' }}
+        rightMeta={{ strong: `${article.readingTimeMinutes} min`, line: 'read' }}
       />
       <main id="main-content">
         <ArticleHero article={article} coverage={coverage} dataset={dataset} />
@@ -94,11 +85,7 @@ export default async function ArticlePage({ params }: PageProps) {
           <Body />
         </ArticleLayout>
       </main>
-      <Footer
-        contextSections={article.sections.map((s) => ({ id: s.id, title: s.label ?? s.title }))}
-        contextSeries={`Thought Leadership · ${SERIES_LABELS[article.series].label}`}
-        articles={allArticles}
-      />
+      <Footer articles={allArticles} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJson) }}

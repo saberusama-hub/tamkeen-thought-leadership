@@ -29,8 +29,8 @@ Requires Node 22 LTS or newer and pnpm 9.
    dek: "Standfirst paragraph in italic serif."
    emphasis: "headline"          # optional: word in title rendered in italic copper
    slug: "your-slug"
-   series: "education"           # education | workforce | innovation | capability
-   seriesNumber: 2
+   category: "rankings"          # overall | research | students | teaching | rankings | policy | global | industry
+   categoryNumber: 2
    publishedAt: "2026-07-15"
    filedFrom: "Abu Dhabi"
    authors: ["tamkeen-research"]
@@ -48,7 +48,7 @@ Requires Node 22 LTS or newer and pnpm 9.
    `content/articles/<slug>.data.ts` and is `import`-ed at the top of the MDX.
 5. Reading time is auto-computed unless `readingTime: <minutes>` is set explicitly.
 6. **No code changes are required.** `pnpm build` picks up the new file, generates the
-   `/articles/<slug>` route, sitemap entry, and series listing automatically.
+   `/articles/<slug>` route, sitemap entry, and the relevant `/category/<key>` listing.
 
 Adding a new author: drop a JSON file into `content/authors/<id>.json` matching
 `types/article.ts > Author`.
@@ -62,18 +62,26 @@ app/
   globals.css                   Tailwind v4 @theme tokens + base styles
   fonts.ts                      next/font: Source Serif 4, Inter, JetBrains Mono
   articles/[slug]/page.tsx      Article page — dynamically imports the MDX module
-  series/[series]/page.tsx      Series index (forthcoming placeholder when empty)
+  category/[category]/page.tsx  Category section front (live / empty / Overall states)
   about/page.tsx                About page
   not-found.tsx                 404
   sitemap.ts / robots.ts        Auto-generated from published articles
 components/
-  Masthead.tsx                  Sticky top bar; second row appears on article pages
+  Folio.tsx                     Top dark-green folio strip (date + city + tagline)
+  Masthead.tsx                  Sticky 3-row masthead; mounts TabNav and (on articles) ArticleNav
+  TabNav.tsx                    Client component; sliding-underline tab navigation + search trigger
+  SearchBar.tsx                 Client component; inline search bar with two-column results
   ArticleNav.tsx                Client component; IntersectionObserver-driven section underline
-  Footer.tsx                    Dark green footer with adaptive content
+  Footer.tsx                    Dark green footer with 3-column link blocks
   ArticleHero.tsx               Eyebrow + h1 (with copper-italic emphasis word) + dek + byline
   ArticleLayout.tsx             Article container + <ArticleSection> wrapper
-  HomepageHero.tsx              Lead article block with "In this edition" sidebar
-  ArticleCard.tsx               Standfirst card for listings
+  HomepageHero.tsx              Magazine lead well + "In this edition" sidebar
+  FeaturedArticle.tsx           Same composition as HomepageHero, sized for category pages
+  FeaturedKpiStrip.tsx          4-up KPI strip used on the Rankings section front
+  ForthcomingRack.tsx           Forthcoming volumes rack (homepage)
+  EditorRow.tsx                 "From the editor / The method / Subscribe" 3-column row
+  SectionFrontHead.tsx          Section-front head used by category pages
+  Headline.tsx                  Headline with copper-italic emphasis + entry animations
   ProgressBar.tsx               2px copper bar across the top, article pages only
   Eyebrow.tsx, Byline.tsx, SectionHeader.tsx, Handoff.tsx, FullDivider.tsx
   exhibits/
@@ -95,9 +103,10 @@ content/
   articles/                     MDX content + per-article .data.ts
   authors/                      Author JSON
 lib/
-  articles.ts                   getAllArticles, getArticleBySlug, getArticlesBySeries; section extraction
+  articles.ts                   getAllArticles, getArticleBySlug, getArticlesByCategory; section extraction
   format.ts                     Date formatters
   mdx.ts                        Component map for MDXProvider
+  search.ts                     Build-time search index (live articles + forthcoming categories)
 types/
   article.ts                    Article, Author, Series types
 mdx-components.tsx              Next.js MDX provider (registers exhibit components)

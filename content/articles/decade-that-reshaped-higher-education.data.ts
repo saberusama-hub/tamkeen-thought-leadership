@@ -1,6 +1,13 @@
 // Static data for the article exhibits.
 // Extracted from REFERENCE.html to keep the MDX free of ad-hoc inline data.
 
+export const featuredKpis = [
+  { num: '+11', unit: 'pp', label: "Asia's THE Top 100 share", desc: 'From 9% in 2016 to 20% in 2026.' },
+  { num: '3×', label: 'Greater China Top 100', desc: '4 institutions in 2016, 12 in 2026.' },
+  { num: '−4 / −6', label: 'US Top 100 lost (THE / QS)', desc: 'Concentrated in mid-tier publics, not the Ivy tier.', tone: 'neg' as const },
+  { num: '18', label: 'Median rank shift, Top 500', desc: 'Top 10 moves a median of 1 place per year.' },
+];
+
 export const stackedAreaPaths = [
   // North America
   {

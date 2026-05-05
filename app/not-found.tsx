@@ -1,13 +1,15 @@
 import Link from 'next/link';
 import { Masthead } from '@/components/Masthead';
 import { Footer } from '@/components/Footer';
+import { buildSearchIndex } from '@/lib/search';
 
 export default function NotFound() {
+  const searchEntries = buildSearchIndex();
   return (
     <>
-      <Masthead />
-      <main className="mx-auto max-w-[1180px] px-8 py-24 text-center">
-        <p className="font-sans text-[11px] tracking-[2px] uppercase text-copper-deep font-bold mb-3">
+      <Masthead searchEntries={searchEntries} />
+      <main className="mx-auto max-w-[1240px] px-8 py-24 text-center max-[760px]:px-6">
+        <p className="font-sans text-[11px] tracking-[2px] uppercase text-accent-deep font-bold mb-3">
           404
         </p>
         <h1 className="font-serif text-[64px] font-normal text-tamkeen leading-[1.1] m-0 mb-6 max-[760px]:text-[40px]">
@@ -18,7 +20,7 @@ export default function NotFound() {
         </p>
         <Link
           href="/"
-          className="font-sans text-[12px] tracking-[2px] uppercase font-bold text-tamkeen border-b border-tamkeen/40"
+          className="font-sans text-[12px] tracking-[2px] uppercase font-bold text-tamkeen border-b border-tamkeen/40 pb-px"
         >
           Return to the front page →
         </Link>

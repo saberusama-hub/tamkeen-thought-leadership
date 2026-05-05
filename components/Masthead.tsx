@@ -1,77 +1,63 @@
 import Link from 'next/link';
-import { formatLongDate, formatWeekday } from '@/lib/format';
+import { Folio } from './Folio';
+import { TabNav } from './TabNav';
 import { ArticleNav } from './ArticleNav';
+import { CATEGORY_KEYS, CATEGORY_LABELS, type CategoryId } from '@/types/article';
 import type { ArticleSection } from '@/types/article';
+import type { SearchEntry } from '@/lib/search';
 
 interface MastheadProps {
-  edition?: { number: number; readingMinutes: number; series: string };
   date?: string;
+  activeTab?: CategoryId;
   articleSections?: ArticleSection[];
-  activeNav?: 'latest' | 'education' | 'workforce' | 'innovation' | 'capability' | 'about';
+  searchEntries?: SearchEntry[];
+  edition?: { number: number; subtitle?: string };
+  rightMeta?: { strong: string; line: string };
 }
 
-const NAV_ITEMS: { label: string; href: string; key: string }[] = [
-  { label: 'Latest', href: '/', key: 'latest' },
-  { label: 'Education', href: '/series/education', key: 'education' },
-  { label: 'Workforce', href: '/series/workforce', key: 'workforce' },
-  { label: 'Innovation', href: '/series/innovation', key: 'innovation' },
-  { label: 'Capability', href: '/series/capability', key: 'capability' },
-  { label: 'About', href: '/about', key: 'about' },
-];
-
-export function Masthead({ edition, date, articleSections, activeNav }: MastheadProps) {
-  const today = date ?? new Date().toISOString().slice(0, 10);
-  const dateLine = `${formatWeekday(today)}, ${formatLongDate(today)}`;
-  const series = edition?.series ?? 'The Education Series · Vol. 01';
+export function Masthead({
+  date,
+  activeTab,
+  articleSections,
+  searchEntries = [],
+  edition = { number: 1, subtitle: 'Schools & Universities' },
+  rightMeta = { strong: 'Long-form', line: 'data-driven' },
+}: MastheadProps) {
+  const tabs = CATEGORY_KEYS.map((key) => ({
+    key,
+    label: CATEGORY_LABELS[key].short,
+    href: key === 'overall' ? '/' : `/category/${key}`,
+  }));
 
   return (
-    <header className="sticky top-0 z-40 bg-paper border-b border-tamkeen">
-      <div className="bg-tamkeen text-paper">
-        <div className="mx-auto max-w-[1180px] px-8 py-2 flex items-center justify-between font-sans text-[10.5px] uppercase font-semibold tracking-[1.8px]">
-          <span>Tamkeen · Thought Leadership · {series}</span>
-          <span className="opacity-70">{dateLine}</span>
-        </div>
-      </div>
+    <header className="sticky top-0 z-50 bg-paper border-b border-tamkeen">
+      <Folio date={date} />
 
-      <div className="mx-auto max-w-[1180px] px-8 pt-[18px] pb-4 flex items-end justify-between border-b border-rule-soft max-[760px]:flex-col max-[760px]:items-start max-[760px]:gap-2.5">
+      <div className="mx-auto max-w-[1240px] px-8 pt-[22px] pb-4 grid grid-cols-[1fr_auto_1fr] items-center gap-6 border-b border-rule-soft max-[980px]:grid-cols-1 max-[980px]:gap-3">
+        <div className="font-sans text-[10px] tracking-[1.5px] uppercase text-ink-soft font-medium leading-[1.6] text-left max-[980px]:hidden">
+          Edition <strong className="text-ink font-semibold">No. {String(edition.number).padStart(2, '0')}</strong>
+          <br />
+          <span className="opacity-70">{edition.subtitle}</span>
+        </div>
+
         <Link
           href="/"
-          className="font-serif font-semibold text-tamkeen no-underline border-none hover:bg-transparent text-[30px] leading-none -tracking-[0.5px] max-[760px]:text-[24px]"
+          className="font-serif font-normal text-tamkeen text-[44px] leading-none -tracking-[1px] text-center inline-flex items-baseline gap-3.5 justify-center"
         >
           Tamkeen
-          <span className="font-sans text-[12px] font-semibold tracking-[2.5px] uppercase text-ink-soft ml-3.5 pl-3.5 border-l border-rule inline-block leading-none -translate-y-[3px] max-[760px]:block max-[760px]:ml-0 max-[760px]:pl-0 max-[760px]:border-none max-[760px]:mt-1.5 max-[760px]:translate-y-0">
+          <span className="font-sans text-[10.5px] font-semibold tracking-[2.6px] uppercase text-ink-soft pl-3.5 border-l border-rule self-center -translate-y-[2px]">
             Thought Leadership
           </span>
         </Link>
-        {edition ? (
-          <div className="font-sans text-[11px] text-ink-soft uppercase tracking-[1.5px] font-medium text-right leading-[1.5] max-[760px]:text-left">
-            Edition <strong className="text-ink font-semibold">No. {String(edition.number).padStart(2, '0')}</strong>
-            &nbsp;·&nbsp; <strong className="text-ink font-semibold">{edition.readingMinutes} min</strong> read
-            <br />
-            Independent analysis &nbsp;·&nbsp; <strong className="text-ink font-semibold">Public</strong>
-          </div>
-        ) : (
-          <div className="font-sans text-[11px] text-ink-soft uppercase tracking-[1.5px] font-medium text-right leading-[1.5] max-[760px]:text-left">
-            Independent analysis &nbsp;·&nbsp; <strong className="text-ink font-semibold">Public</strong>
-            <br />
-            Long-form, data-driven
-          </div>
-        )}
+
+        <div className="font-sans text-[10px] tracking-[1.5px] uppercase text-ink-soft font-medium leading-[1.6] text-right max-[980px]:hidden">
+          <strong className="text-ink font-semibold">{rightMeta.strong}</strong>, {rightMeta.line}
+          <br />
+          <span className="opacity-70">Filed from Abu Dhabi</span>
+        </div>
       </div>
 
-      <nav className="mx-auto max-w-[1180px] px-8 py-2.5 flex gap-8 font-sans text-[11px] uppercase tracking-[1.6px] font-semibold max-[760px]:gap-[18px] max-[760px]:overflow-x-auto max-[760px]:px-6">
-        {NAV_ITEMS.map((item) => (
-          <Link
-            key={item.key}
-            href={item.href}
-            className={`no-underline border-none py-1 hover:bg-transparent ${
-              item.key === activeNav ? 'text-tamkeen' : 'text-ink-mid hover:text-tamkeen'
-            }`}
-          >
-            {item.label}
-          </Link>
-        ))}
-      </nav>
+      <TabNav tabs={tabs} activeKey={activeTab} searchEntries={searchEntries} />
 
       {articleSections && articleSections.length > 0 ? (
         <ArticleNav sections={articleSections} />

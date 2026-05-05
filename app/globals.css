@@ -7,14 +7,15 @@
 
   --color-ink: #1a1a14;
   --color-ink-mid: #4a4a40;
-  --color-ink-soft: #6f6a5a;
+  --color-ink-soft: #75705f;
 
   --color-paper: #faf6ee;
-  --color-paper-shade: #f2ebdc;
+  --color-paper-shade: #f3ecdb;
   --color-paper-darkest: #ebe2cd;
 
   --color-rule: #c9bfa8;
   --color-rule-soft: #dcd3bb;
+  --color-rule-faint: #e8e0c9;
 
   --color-tamkeen: #003d2b;
   --color-tamkeen-deep: #002419;
@@ -23,6 +24,8 @@
   --color-tamkeen-mist: #a8c2b4;
   --color-tamkeen-pale: #d4e4dd;
 
+  --color-accent: #b5895c;
+  --color-accent-deep: #8c6840;
   --color-copper: #b5895c;
   --color-copper-deep: #8c6840;
 
@@ -44,29 +47,30 @@ body {
   background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-serif);
-  font-size: 18px;
-  line-height: 1.7;
+  font-size: 17px;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-feature-settings: 'kern' 1, 'liga' 1, 'onum' 1;
 }
 
 ::selection {
-  background: rgba(181, 137, 92, 0.35);
+  background: rgba(181, 137, 92, 0.32);
   color: var(--color-ink);
 }
 
 a {
-  color: var(--color-tamkeen);
+  color: inherit;
   text-decoration: none;
-  border-bottom: 1px solid rgba(0, 61, 43, 0.3);
-  transition:
-    border-color 0.15s,
-    background 0.15s;
 }
-a:hover {
-  border-bottom-color: var(--color-tamkeen);
-  background: rgba(0, 61, 43, 0.04);
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+  padding: 0;
 }
 
 /* Skip link */
@@ -180,8 +184,69 @@ section {
   scroll-margin-top: 140px;
 }
 
+/* ---------- Animations ---------- */
+@keyframes line-wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.anim-wipe {
+  animation: line-wipe 0.65s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+.anim-emphasis {
+  animation: fade-in 0.6s ease 0.45s both;
+}
+.anim-up {
+  animation: fade-up 0.5s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+.anim-up-d1 {
+  animation-delay: 0.1s;
+}
+.anim-up-d2 {
+  animation-delay: 0.2s;
+}
+.anim-up-d3 {
+  animation-delay: 0.3s;
+}
+.anim-up-d4 {
+  animation-delay: 0.4s;
+}
+.anim-up-d5 {
+  animation-delay: 0.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-wipe,
+  .anim-emphasis,
+  .anim-up {
+    animation: none !important;
+  }
+}
+
 @media (max-width: 760px) {
   body {
-    font-size: 17px;
+    font-size: 16px;
   }
 }

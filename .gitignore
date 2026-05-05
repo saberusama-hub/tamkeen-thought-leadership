@@ -11,3 +11,6 @@ dist
 .turbo
 next-env.d.ts
 *.tsbuildinfo
+
+# Private working area — handoff briefs and prototype source
+Edits Folder/

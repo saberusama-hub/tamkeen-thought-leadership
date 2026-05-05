@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
 import readingTime from 'reading-time';
-import type { Article, ArticleFrontmatter, ArticleSection, Author, SeriesId } from '@/types/article';
+import type { Article, ArticleFrontmatter, ArticleSection, Author, CategoryId } from '@/types/article';
 
 const ARTICLES_DIR = path.join(process.cwd(), 'content', 'articles');
 const AUTHORS_DIR = path.join(process.cwd(), 'content', 'authors');
@@ -24,14 +24,12 @@ function readArticleFile(filePath: string): { data: ArticleFrontmatter; content:
 
 function deriveNavLabel(kicker: string | undefined, fallback: string): string {
   if (!kicker) return fallback;
-  // Use first segment before " · " for shorter nav label
   const cleaned = kicker.split(' · ')[0]?.trim();
   return cleaned && cleaned.length > 0 ? cleaned : fallback;
 }
 
 function extractSections(mdx: string): ArticleSection[] {
   const sections: ArticleSection[] = [];
-  // Match each <ArticleSection id="..."> together with the first SectionHeader inside.
   const re = /<ArticleSection\s+id="([^"]+)"[\s\S]*?<SectionHeader([\s\S]*?)\/>/g;
   let match: RegExpExecArray | null;
   while ((match = re.exec(mdx)) !== null) {
@@ -89,10 +87,10 @@ export function getArticleBySlug(slug: string): Article | null {
   return getAllArticles().find((a) => a.slug === slug) ?? null;
 }
 
-export function getArticlesBySeries(series: SeriesId): Article[] {
+export function getArticlesByCategory(category: CategoryId): Article[] {
   return getAllArticles()
-    .filter((a) => a.series === series)
-    .sort((a, b) => a.seriesNumber - b.seriesNumber);
+    .filter((a) => a.category === category)
+    .sort((a, b) => a.categoryNumber - b.categoryNumber);
 }
 
 export function getLeadArticle(): Article | null {
