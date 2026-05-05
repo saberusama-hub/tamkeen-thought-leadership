@@ -57,7 +57,7 @@ export function SearchBar({ open, onClose, entries }: SearchBarProps) {
           placeholder="Search articles, sections, topics…"
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          className="flex-1 font-serif text-[28px] italic font-light bg-transparent outline-none border-none text-ink py-[22px] tracking-[-0.3px] placeholder:text-ink-soft placeholder:opacity-60"
+          className="flex-1 font-serif text-[28px] italic font-light bg-transparent outline-none border-none text-ink py-[22px] tracking-[-0.3px] placeholder:text-ink-soft placeholder:opacity-60 focus-visible:[box-shadow:inset_0_-2px_0_var(--color-tamkeen)]"
           aria-label="Search articles, sections, topics"
         />
         <button

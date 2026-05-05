@@ -17,7 +17,9 @@ interface HeatmapProps {
 const RAMP = [
   { stop: -10, hex: '#A0342A', text: '#FAF6EE' },
   { stop: -6, hex: '#D6A19A', text: '#FAF6EE' },
-  { stop: -2, hex: '#E8C7C2', text: '#A0342A' },
+  // -2 cell: dark red on pink failed WCAG AA (~3.2:1).
+  // Switch to ink-mid for legibility while keeping the negative pink fill.
+  { stop: -2, hex: '#E8C7C2', text: '#4A4A40' },
   { stop: 0, hex: '#F2EBDC', text: '#6F6A5A' },
   { stop: 2, hex: '#D4E4DD', text: '#003D2B' },
   { stop: 4, hex: '#C4D8CC', text: '#003D2B' },

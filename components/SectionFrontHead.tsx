@@ -23,7 +23,7 @@ export function SectionFrontHead({
   volLine2,
 }: SectionFrontHeadProps) {
   return (
-    <div className="border-b-[3px] border-double border-tamkeen pb-9 mb-12 grid grid-cols-[minmax(0,2fr)_minmax(0,1fr)] gap-14 items-end max-[980px]:grid-cols-1 max-[980px]:gap-8">
+    <div className="border-b-[3px] border-double border-tamkeen pb-9 mb-12 grid grid-cols-[minmax(0,2fr)_minmax(0,1fr)] gap-14 items-baseline max-[980px]:grid-cols-1 max-[980px]:gap-8">
       <div>
         <Eyebrow number={eyebrowNumber} parts={eyebrowParts} animate />
         <Headline

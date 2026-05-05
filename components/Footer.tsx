@@ -34,7 +34,7 @@ export function Footer({ articles = [] }: FooterProps) {
                   <li key={k} className="py-1.5">
                     <Link
                       href={k === 'overall' ? '/' : `/category/${k}`}
-                      className="font-serif text-[14px] text-tamkeen-mist hover:text-paper transition-colors duration-[180ms]"
+                      className="font-serif text-[14px] text-paper/85 hover:text-paper hover:underline underline-offset-[3px] decoration-tamkeen-mist transition-colors duration-[180ms]"
                     >
                       {CATEGORY_LABELS[k].label}
                     </Link>
@@ -54,7 +54,7 @@ export function Footer({ articles = [] }: FooterProps) {
                   <li key={k} className="py-1.5">
                     <Link
                       href={`/category/${k}`}
-                      className="font-serif text-[14px] text-tamkeen-mist hover:text-paper transition-colors duration-[180ms]"
+                      className="font-serif text-[14px] text-paper/85 hover:text-paper hover:underline underline-offset-[3px] decoration-tamkeen-mist transition-colors duration-[180ms]"
                     >
                       {CATEGORY_LABELS[k].label}
                     </Link>
@@ -70,7 +70,7 @@ export function Footer({ articles = [] }: FooterProps) {
                 <li className="py-1.5">
                   <Link
                     href="/about"
-                    className="font-serif text-[14px] text-tamkeen-mist hover:text-paper transition-colors duration-[180ms]"
+                    className="font-serif text-[14px] text-paper/85 hover:text-paper hover:underline underline-offset-[3px] decoration-tamkeen-mist transition-colors duration-[180ms]"
                   >
                     About
                   </Link>
@@ -78,7 +78,7 @@ export function Footer({ articles = [] }: FooterProps) {
                 <li className="py-1.5">
                   <Link
                     href="/about"
-                    className="font-serif text-[14px] text-tamkeen-mist hover:text-paper transition-colors duration-[180ms]"
+                    className="font-serif text-[14px] text-paper/85 hover:text-paper hover:underline underline-offset-[3px] decoration-tamkeen-mist transition-colors duration-[180ms]"
                   >
                     Methodology
                   </Link>
@@ -86,7 +86,7 @@ export function Footer({ articles = [] }: FooterProps) {
                 <li className="py-1.5">
                   <Link
                     href="/about"
-                    className="font-serif text-[14px] text-tamkeen-mist hover:text-paper transition-colors duration-[180ms]"
+                    className="font-serif text-[14px] text-paper/85 hover:text-paper hover:underline underline-offset-[3px] decoration-tamkeen-mist transition-colors duration-[180ms]"
                   >
                     Subscribe
                   </Link>
@@ -94,7 +94,7 @@ export function Footer({ articles = [] }: FooterProps) {
                 <li className="py-1.5">
                   <Link
                     href="/about"
-                    className="font-serif text-[14px] text-tamkeen-mist hover:text-paper transition-colors duration-[180ms]"
+                    className="font-serif text-[14px] text-paper/85 hover:text-paper hover:underline underline-offset-[3px] decoration-tamkeen-mist transition-colors duration-[180ms]"
                   >
                     Contact the editor
                   </Link>
