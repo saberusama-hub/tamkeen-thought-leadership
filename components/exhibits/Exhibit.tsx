@@ -22,12 +22,12 @@ export function Exhibit({
   return (
     <figure
       className={`my-11 mb-9 pt-[30px] pb-[22px] border-t-2 border-b ${
-        dark ? 'border-tamkeen-light border-b-paper/20' : 'border-tamkeen border-b-rule'
+        dark ? 'border-paper/30 border-b-paper/20' : 'border-tamkeen border-b-rule'
       }`}
     >
       <div
         className={`font-mono text-[10.5px] tracking-[2px] uppercase font-bold mb-1.5 ${
-          numberTone === 'copper' ? 'text-copper-deep' : dark ? 'text-tamkeen-light' : 'text-tamkeen'
+          numberTone === 'copper' ? 'text-copper-deep' : dark ? 'text-tamkeen-mist' : 'text-tamkeen'
         }`}
       >
         {number}
@@ -50,7 +50,7 @@ export function Exhibit({
       {source ? (
         <figcaption
           className={`text-[11.5px] mt-[18px] pt-3.5 border-t leading-[1.55] font-sans not-italic ${
-            dark ? 'text-paper/55 border-paper/20' : 'text-ink-soft border-rule-soft'
+            dark ? 'text-paper/75 border-paper/20' : 'text-ink-soft border-rule-soft'
           }`}
         >
           {source}

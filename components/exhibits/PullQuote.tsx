@@ -10,7 +10,7 @@ export function PullQuote({ children, cite, dark = false }: PullQuoteProps) {
   return (
     <figure
       className={`my-[60px] mx-auto max-w-[920px] py-[30px] text-center border-y ${
-        dark ? 'border-tamkeen-light' : 'border-tamkeen'
+        dark ? 'border-paper/30' : 'border-tamkeen'
       }`}
     >
       <blockquote

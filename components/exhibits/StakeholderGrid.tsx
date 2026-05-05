@@ -30,7 +30,7 @@ export function StakeholderGrid({ items, cols = 3, dark = false }: StakeholderGr
         <div
           key={i}
           className={`p-6 border border-rule border-t-[3px] ${
-            dark ? 'bg-paper/[.04] border-paper/20 border-t-tamkeen-light' : 'bg-paper border-t-tamkeen'
+            dark ? 'bg-paper/[.04] border-paper/20 border-t-paper/40' : 'bg-paper border-t-tamkeen'
           }`}
         >
           <h4
