@@ -179,10 +179,10 @@ function EmptyView({
             <div className="font-sans text-[11px] tracking-[2.4px] uppercase font-bold text-accent-deep mb-[18px]">
               In commission
             </div>
-            <h3 className="font-serif text-[36px] leading-[1.2] font-normal italic text-tamkeen m-0 mb-4 max-w-[22ch] mx-auto max-[640px]:text-[26px]">
+            <h3 className="font-serif text-[36px] leading-[1.2] font-normal italic text-tamkeen m-0 mb-4 max-w-[36ch] mx-auto max-[640px]:text-[26px]">
               The first volume in this section is being drafted.
             </h3>
-            <p className="font-serif text-[16px] text-ink-mid max-w-[50ch] m-auto leading-[1.6]">
+            <p className="font-serif text-[16px] text-ink-mid max-w-[60ch] m-auto leading-[1.6]">
               We are working on the inaugural piece for {meta.label}. It will land in the
               publication schedule once it has cleared review.
             </p>

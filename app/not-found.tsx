@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Masthead } from '@/components/Masthead';
 import { Footer } from '@/components/Footer';
+import { Headline } from '@/components/Headline';
 import { buildSearchIndex } from '@/lib/search';
 
 export default function NotFound() {
@@ -12,9 +13,10 @@ export default function NotFound() {
         <p className="font-sans text-[11px] tracking-[2px] uppercase text-accent-deep font-bold mb-3">
           404
         </p>
-        <h1 className="font-serif text-[64px] font-normal text-tamkeen leading-[1.1] m-0 mb-6 max-[760px]:text-[40px]">
-          Page not filed.
-        </h1>
+        <Headline
+          text="Page not filed."
+          className="font-serif text-[64px] font-normal text-tamkeen leading-[1.1] m-0 mb-6 max-[760px]:text-[40px]"
+        />
         <p className="font-serif text-[20px] italic text-ink-mid mb-9">
           That URL has not been published in this edition.
         </p>

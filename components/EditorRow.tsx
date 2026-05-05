@@ -34,7 +34,7 @@ export function EditorRow() {
         </p>
         <Link
           href="/about"
-          className="font-serif italic text-tamkeen text-[15px] inline-flex items-center gap-1.5 mt-2 border-b border-[rgba(0,61,43,0.25)] pb-px transition-[border-color,gap] duration-[180ms] hover:border-tamkeen hover:gap-3"
+          className="font-serif italic text-tamkeen text-[15px] inline-flex items-center gap-1.5 mt-2 border-b border-tamkeen/40 pb-px transition-[border-color,gap] duration-[180ms] hover:border-tamkeen hover:gap-3"
         >
           Read the methodology charter <span aria-hidden className="not-italic">→</span>
         </Link>
@@ -49,7 +49,7 @@ export function EditorRow() {
         </p>
         <Link
           href="/about"
-          className="font-serif italic text-tamkeen text-[15px] inline-flex items-center gap-1.5 mt-2 border-b border-[rgba(0,61,43,0.25)] pb-px transition-[border-color,gap] duration-[180ms] hover:border-tamkeen hover:gap-3"
+          className="font-serif italic text-tamkeen text-[15px] inline-flex items-center gap-1.5 mt-2 border-b border-tamkeen/40 pb-px transition-[border-color,gap] duration-[180ms] hover:border-tamkeen hover:gap-3"
         >
           Receive new briefs <span aria-hidden className="not-italic">→</span>
         </Link>

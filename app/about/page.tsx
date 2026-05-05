@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Masthead } from '@/components/Masthead';
 import { Footer } from '@/components/Footer';
 import { Eyebrow } from '@/components/Eyebrow';
+import { Headline } from '@/components/Headline';
 import { getAllArticles } from '@/lib/articles';
 import { buildSearchIndex } from '@/lib/search';
 
@@ -22,10 +23,11 @@ export default function AboutPage() {
         id="main-content"
         className="mx-auto max-w-[1240px] px-8 py-16 max-[760px]:px-6"
       >
-        <Eyebrow parts={['About this publication']} />
-        <h1 className="font-serif text-[64px] font-normal text-tamkeen leading-[1.05] -tracking-[1.2px] m-0 mb-6 max-[760px]:text-[40px]">
-          Independent analysis on the schools and universities portfolio.
-        </h1>
+        <Eyebrow parts={['About this publication']} animate />
+        <Headline
+          text="Independent analysis on the schools and universities portfolio."
+          className="font-serif text-[64px] font-normal text-tamkeen leading-[1.1] -tracking-[1.2px] m-0 mb-6 max-[760px]:text-[40px]"
+        />
         <div className="prose-article max-w-[820px]">
           <p className="lead">
             Tamkeen Thought Leadership publishes long-form, data-driven analyses on the questions

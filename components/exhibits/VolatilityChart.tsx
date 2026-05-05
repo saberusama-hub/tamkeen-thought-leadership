@@ -15,8 +15,9 @@ export function VolatilityChart({ tiers, caveat }: VolatilityChartProps) {
   return (
     <div className="mt-2">
       {tiers.map((t, i) => {
-        const qsPct = (t.qs / MAX) * 100;
-        const thePct = (t.the / MAX) * 100;
+        // Floor each bar at 3% so a value of 1 isn't visually invisible.
+        const qsPct = Math.max(3, (t.qs / MAX) * 100);
+        const thePct = Math.max(3, (t.the / MAX) * 100);
         return (
           <div
             key={i}

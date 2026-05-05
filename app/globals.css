@@ -181,7 +181,14 @@ button {
 }
 
 section {
-  scroll-margin-top: 140px;
+  /* Clears the sticky masthead (Folio + wordmark row + TabNav + ArticleNav)
+     so anchor jumps don't land behind the sticky header. */
+  scroll-margin-top: 180px;
+}
+@media (max-width: 760px) {
+  section {
+    scroll-margin-top: 150px;
+  }
 }
 
 /* ---------- Animations ---------- */

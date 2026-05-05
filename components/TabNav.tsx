@@ -100,9 +100,12 @@ export function TabNav({ tabs, activeKey, searchEntries }: TabNavProps) {
           style={{
             left: underline.left,
             width: underline.width,
+            // Render immediately when first measured (no opacity flash);
+            // only animate left/width when the active tab changes.
             opacity: underline.visible ? 1 : 0,
-            transition:
-              'left 0.32s cubic-bezier(0.65, 0, 0.35, 1), width 0.32s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.18s',
+            transition: underline.visible
+              ? 'left 0.32s cubic-bezier(0.65, 0, 0.35, 1), width 0.32s cubic-bezier(0.65, 0, 0.35, 1)'
+              : 'none',
           }}
         />
       </nav>

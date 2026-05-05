@@ -9,7 +9,7 @@ interface FindingsProps {
 
 export function Findings({ items }: FindingsProps) {
   return (
-    <div className="my-8 columns-2 gap-12 [column-rule:1px_solid_var(--color-rule)] max-[760px]:columns-1">
+    <div className="my-8 columns-2 gap-12 [column-rule:1px_solid_var(--color-rule)] max-[880px]:columns-1 max-[880px]:[column-rule:none]">
       {items.map((item, i) => (
         <div
           key={i}

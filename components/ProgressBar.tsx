@@ -27,7 +27,7 @@ export function ProgressBar() {
       aria-valuenow={Math.round(pct)}
       aria-valuemin={0}
       aria-valuemax={100}
-      className="fixed top-0 left-0 h-[2px] bg-copper z-50 transition-[width] duration-100"
+      className="fixed top-0 left-0 h-[2px] bg-copper z-[60] transition-[width] duration-100"
       style={{ width: `${pct}%` }}
     />
   );
