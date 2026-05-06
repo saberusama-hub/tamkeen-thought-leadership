@@ -4,6 +4,7 @@ import { Masthead } from '@/components/Masthead';
 import { Footer } from '@/components/Footer';
 import { ArticleHero } from '@/components/ArticleHero';
 import { ArticleLayout } from '@/components/ArticleLayout';
+import { ArticleClosing } from '@/components/ArticleClosing';
 import { ProgressBar } from '@/components/ProgressBar';
 import { getAllArticles, getArticleBySlug } from '@/lib/articles';
 
@@ -69,6 +70,7 @@ export default async function ArticlePage({ params }: PageProps) {
         <ArticleHero article={article} />
         <ArticleLayout>
           <Body />
+          <ArticleClosing article={article} />
         </ArticleLayout>
       </main>
       <Footer />

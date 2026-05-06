@@ -4,10 +4,26 @@ interface KPI {
   label: string;
   desc: string;
   tone?: 'pos' | 'neg' | 'default';
+  /** Optional direction indicator. Renders a small ▲/▼/− next to the number. */
+  trend?: 'up' | 'down' | 'flat';
 }
 
 interface KpiStripProps {
   kpis: KPI[];
+}
+
+function TrendArrow({ direction }: { direction: 'up' | 'down' | 'flat' }) {
+  const symbol = direction === 'up' ? '▲' : direction === 'down' ? '▼' : '–';
+  const colour =
+    direction === 'up' ? 'text-green' : direction === 'down' ? 'text-ink' : 'text-mute';
+  return (
+    <span
+      aria-hidden
+      className={`inline-block ml-2 align-middle text-[14px] -translate-y-1 ${colour}`}
+    >
+      {symbol}
+    </span>
+  );
 }
 
 /**
@@ -28,6 +44,7 @@ export function KpiStrip({ kpis }: KpiStripProps) {
           >
             {k.num}
             {k.unit ? <span className="text-[22px] tracking-normal font-normal text-mute ml-1">{k.unit}</span> : null}
+            {k.trend ? <TrendArrow direction={k.trend} /> : null}
           </div>
           <div className="ui-caps font-sans text-[11px] tracking-[1.6px] uppercase font-semibold text-ink mb-2">
             {k.label}

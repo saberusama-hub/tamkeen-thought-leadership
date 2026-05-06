@@ -120,6 +120,44 @@ export default function HomePage() {
 
             <li className="border-t border-green/25" aria-hidden />
           </ol>
+
+          {/* Publication calendar: visualises the schedule for the rest of
+              the year. Cells with a planned brief glow green; later cells
+              ("In commission") render muted. The annual review (December)
+              caps the year. */}
+          <div className="mt-16 max-[640px]:mt-10">
+            <div className="ui-caps font-sans text-[11px] tracking-[2px] uppercase font-semibold text-green mb-4">
+              Publication calendar, 2026
+            </div>
+            <div className="grid grid-cols-6 gap-2 max-[760px]:grid-cols-3 max-[420px]:grid-cols-2">
+              {(
+                [
+                  { month: 'May', label: 'Rankings', state: 'live' },
+                  { month: 'Jun', label: 'Visa pipeline', state: 'planned' },
+                  { month: 'Jul', label: 'Branch campuses', state: 'planned' },
+                  { month: 'Aug', label: 'Reading rank decline', state: 'planned' },
+                  { month: 'Sep', label: 'Programme rankings', state: 'planned' },
+                  { month: 'Oct', label: 'Patient capital', state: 'planned' },
+                ] as const
+              ).map((c) => (
+                <div
+                  key={c.month}
+                  className={`p-3 border ${
+                    c.state === 'live'
+                      ? 'border-green bg-green-pale/50'
+                      : 'border-green/20 bg-paper'
+                  }`}
+                >
+                  <div className="ui-caps font-sans text-[10px] tracking-[1.5px] uppercase font-semibold text-green">
+                    {c.month}
+                  </div>
+                  <div className="font-serif text-[13px] leading-[1.3] text-ink/85 mt-1">
+                    {c.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
       </main>
       <Footer />

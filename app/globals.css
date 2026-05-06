@@ -310,8 +310,27 @@ section {
   opacity: 1;
   transform: translateY(0);
 }
+
+/*
+ * Staggered list reveal: items inside a `.reveal-stagger` container fade
+ * in with a small delay per index. Set --i: 0, 1, 2, … on each item via
+ * the inline style attribute.
+ */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) calc(var(--i, 0) * 80ms),
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) calc(var(--i, 0) * 80ms);
+}
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .reveal,
+  .reveal-stagger > * {
     opacity: 1;
     transform: none;
     transition: none;
