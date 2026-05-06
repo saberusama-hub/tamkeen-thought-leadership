@@ -59,13 +59,27 @@ export default function HomePage() {
           </p>
 
           <ol className="list-none m-0 p-0">
-            {articles.map((a) => (
-              <li key={a.slug} className="border-t border-green/25">
+            {articles.map((a, i) => (
+              <li
+                key={a.slug}
+                className={`border-t border-green/25 ${
+                  i === 0 ? 'border-l-2 border-l-green pl-6 bg-green-pale/15 max-[640px]:pl-4' : ''
+                }`}
+              >
                 <Link
                   href={`/articles/${a.slug}`}
-                  className="block py-8 group no-underline border-none"
+                  className="block py-9 group no-underline border-none max-[640px]:py-7"
                 >
-                  <h2 className="font-serif text-[28px] font-medium text-green leading-[1.2] -tracking-[0.2px] m-0 mb-2 group-hover:text-green-mid transition-colors max-[640px]:text-[22px]">
+                  {i === 0 ? (
+                    <div className="ui-caps font-sans text-[10.5px] tracking-[2px] uppercase text-green font-semibold mb-2.5">
+                      The current brief
+                    </div>
+                  ) : null}
+                  <h2
+                    className={`font-serif font-medium text-green leading-[1.18] -tracking-[0.3px] m-0 mb-2 group-hover:text-green-mid transition-colors ${
+                      i === 0 ? 'text-[34px] max-[640px]:text-[26px]' : 'text-[28px] max-[640px]:text-[22px]'
+                    }`}
+                  >
                     {a.title}
                   </h2>
                   <p className="font-serif italic text-[17px] leading-[1.5] text-ink/85 m-0 mb-3 max-w-[60ch]">

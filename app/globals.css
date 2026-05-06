@@ -166,7 +166,7 @@ button {
 }
 
 .prose-article p {
-  margin: 0 0 28px;
+  margin: 0 0 24px;
   max-width: 68ch;
   font-size: 18px;
   line-height: 1.65;
@@ -175,6 +175,20 @@ button {
 .prose-article p.wide {
   max-width: none;
 }
+
+/*
+ * Print-style paragraph indents: every body paragraph after the first one
+ * in a section gets a 1.5em first-line indent. Leads, dropcap paragraphs,
+ * and the first paragraph of any section keep flush left (no indent), which
+ * is what print typesetters do. The :not() chain below excludes the special
+ * paragraphs and uses the adjacent-sibling combinator (p + p) to skip the
+ * first one in each block.
+ */
+.prose-article section p + p:not(.lead):not(.dropcap):not(.wide):not(.no-indent) {
+  text-indent: 1.5em;
+  margin-top: -4px;
+}
+
 /* Subtle first-line emphasis on the first plain paragraph of each section,
  * skipping leads and dropcap paragraphs which have their own opener treatment. */
 .prose-article section > p:first-of-type:not(.lead):not(.dropcap)::first-line,
