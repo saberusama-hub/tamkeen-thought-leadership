@@ -23,3 +23,8 @@ Rankings/
 
 # Local QA scratch directory (downloaded HTML for grep checks)
 qa/
+
+# Playwright artefacts
+tests/screenshots/
+test-results/
+playwright-report/

@@ -4,14 +4,27 @@
  * Tamkeen Thought Leadership: minimalist redesign.
  *
  * Design language: Asterisk Magazine restraint, FT/Economist editorial DNA,
- * Tamkeen dark green as the only chromatic accent.
+ * dark teal as the legible primary, lime as the brand accent.
  *
  * Palette:
- *   green   #003d2b   wordmark, links, section markers (the only accent)
- *   ink     #111110   body text
- *   paper   #faf6ee   page background (cream)
- *   mute    #6b6862   captions, datelines, small labels
- *   rule    #d8d3c4   hairline rules
+ *   green   #2F5C66   PRIMARY — headlines, links, folio + footer surfaces
+ *   lime    #A6B340   brand accent — progress bar, kickers, KPI numerals,
+ *                     active nav underline, East-Asia chart highlight
+ *   ink     #1A2226   body text (warm-cool near-black, harmonises with teal)
+ *   paper   #F4F6E8   page background (very light lime cream)
+ *   mute    #5F665F   captions, datelines, small labels
+ *   rule    #C8CDB8   hairline rules
+ *
+ * Contrast targets (WCAG AA):
+ *   ink (#1A2226)        on paper (#F4F6E8) ≈ 13:1   PASS
+ *   green (#2F5C66)      on paper (#F4F6E8) ≈ 9:1    PASS
+ *   green-mid (#415866)  on paper (#F4F6E8) ≈ 7:1    PASS
+ *   mute (#5F665F)       on paper (#F4F6E8) ≈ 6:1    PASS
+ *   paper (#F4F6E8)      on green (#2F5C66) ≈ 9:1    PASS  (folio + footer)
+ *   lime (#A6B340)       on paper (#F4F6E8) ≈ 2.3:1  decorative only
+ *                                                    (rules, fills, large
+ *                                                    KPI numerals — never
+ *                                                    body text)
  *
  * Type:
  *   Source Serif 4: body and headlines (single family, varying weights)
@@ -33,29 +46,48 @@
   --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   /*
-   * Green family. Dark green is the masthead, the wordmark and links.
-   * Lighter mint, mist, and pale shades are used sparingly across the
-   * page (subtle hover states, secondary accents, KPI second-tier numbers).
+   * Primary family — dark teal. Used wherever the old forest green was used:
+   * wordmark, headlines, links, dropcap, folio + footer surfaces.
+   * The "green" name is retained only because hundreds of class references
+   * already point at it; visually this family is now teal.
    */
-  --color-green: #003d2b;
-  --color-green-deep: #002419;
-  --color-green-mid: #1f5a45;
-  --color-green-light: #6b9f88;
-  --color-green-mist: #a8c2b4;
-  --color-green-pale: #d4e4dd;
+  --color-green: #2F5C66;
+  --color-green-deep: #1F4750;
+  --color-green-mid: #415866;
+  --color-green-light: #7A8628;
+  --color-green-mist: #C5CD7A;
+  --color-green-pale: #E5E9C0;
 
-  --color-ink: #111110;
-  --color-paper: #faf6ee;
-  --color-mute: #6b6862;
-  --color-rule: #d8d3c4;
+  /*
+   * Brand accent — lime. Reserved for moments: the article progress bar,
+   * the active section underline, kickers, KPI numerals at large size,
+   * the highlighted region in charts. Never used for body text or anything
+   * that needs to pass small-text contrast.
+   * --color-copper is a legacy alias; some chart components still
+   * reference it.
+   */
+  --color-lime: #A6B340;
+  --color-copper: #A6B340;
+
+  --color-ink: #1A2226;
+  --color-ink-mid: #4A5560;
+  --color-ink-soft: #6E7780;
+  --color-paper: #F4F6E8;
+  --color-paper-shade: #ECEFD8;
+  --color-mute: #5F665F;
+  --color-rule: #C8CDB8;
+  --color-rule-soft: #DCDFC8;
+
+  --color-neg: #A0342A;
+  --color-neg-pale: #E8C7C2;
 
   /* Aliases retained for components that still use legacy names. */
-  --color-tamkeen: #003d2b;
-  --color-tamkeen-deep: #002419;
-  --color-tamkeen-mid: #1f5a45;
-  --color-tamkeen-light: #6b9f88;
-  --color-tamkeen-mist: #a8c2b4;
-  --color-tamkeen-pale: #d4e4dd;
+  --color-tamkeen: #2F5C66;
+  --color-tamkeen-deep: #1F4750;
+  --color-tamkeen-mid: #415866;
+  --color-tamkeen-light: #7A8628;
+  --color-tamkeen-mist: #C5CD7A;
+  --color-tamkeen-pale: #E5E9C0;
 }
 
 :root {
@@ -85,14 +117,14 @@ body {
 }
 
 ::selection {
-  background: rgba(0, 61, 43, 0.18);
+  background: rgba(166, 179, 64, 0.30);
   color: var(--color-ink);
 }
 
 a {
   color: var(--color-green);
   text-decoration: none;
-  border-bottom: 1px solid rgba(0, 61, 43, 0.3);
+  border-bottom: 1px solid rgba(47, 92, 102, 0.30);
   transition: border-color 0.15s ease;
 }
 a:hover {
@@ -199,7 +231,7 @@ button {
 .prose-article p a,
 .prose-article li a {
   color: var(--color-green);
-  border-bottom-color: rgba(0, 61, 43, 0.35);
+  border-bottom-color: rgba(47, 92, 102, 0.35);
 }
 
 .prose-article h2 {

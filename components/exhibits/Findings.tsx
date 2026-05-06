@@ -29,6 +29,14 @@ export function Findings({ items }: FindingsProps) {
       setVisible(true);
       return;
     }
+    // Reveal immediately if already in viewport at mount (iOS Safari does
+    // not always fire the IntersectionObserver for above-the-fold elements).
+    const rect = el.getBoundingClientRect();
+    const vh = window.innerHeight || 800;
+    if (rect.top < vh && rect.bottom > 0) {
+      setVisible(true);
+      return;
+    }
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {

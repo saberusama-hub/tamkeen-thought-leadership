@@ -65,7 +65,7 @@ export default async function ArticlePage({ params }: PageProps) {
   return (
     <>
       <ProgressBar />
-      <Masthead date={article.publishedAt} articleSections={article.sections} />
+      <Masthead articleSections={article.sections} />
       <main id="main-content">
         <ArticleHero article={article} />
         <ArticleLayout>

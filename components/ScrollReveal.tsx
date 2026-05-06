@@ -23,9 +23,11 @@ interface ScrollRevealProps {
  * the user's prefers-reduced-motion preference (the .reveal class itself
  * short-circuits via the global stylesheet).
  *
- * Usage:
- *   <ScrollReveal as="h2" className="text-green text-[42px]">…</ScrollReveal>
- *   <ScrollReveal>{children}</ScrollReveal>
+ * Above-the-fold robustness: at mount we measure the element's rect. If it is
+ * already inside (or above) the viewport, we reveal it immediately rather
+ * than relying on the IntersectionObserver — iOS Safari sometimes does not
+ * fire the observer for elements that are already in view at registration
+ * time, which previously left the article hero stuck at opacity 0.
  */
 export function ScrollReveal({
   children,
@@ -49,14 +51,27 @@ export function ScrollReveal({
       setVisible(true);
       return;
     }
+
+    const reveal = () => {
+      if (delayMs > 0) {
+        const t = setTimeout(() => setVisible(true), delayMs);
+        return () => clearTimeout(t);
+      }
+      setVisible(true);
+      return undefined;
+    };
+
+    // If the element is already at-or-above the fold, skip the observer.
+    const rect = el.getBoundingClientRect();
+    const vh = window.innerHeight || 800;
+    if (rect.top < vh && rect.bottom > 0) {
+      return reveal();
+    }
+
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
-          if (delayMs > 0) {
-            const t = setTimeout(() => setVisible(true), delayMs);
-            return () => clearTimeout(t);
-          }
-          setVisible(true);
+          reveal();
           obs.disconnect();
         }
       },
