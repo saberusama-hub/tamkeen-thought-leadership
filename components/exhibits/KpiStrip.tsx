@@ -29,7 +29,7 @@ export function KpiStrip({ kpis }: KpiStripProps) {
             {k.num}
             {k.unit ? <span className="text-[22px] tracking-normal font-normal text-mute ml-1">{k.unit}</span> : null}
           </div>
-          <div className="font-sans text-[11px] tracking-[1.6px] uppercase font-semibold text-ink mb-2">
+          <div className="ui-caps font-sans text-[11px] tracking-[1.6px] uppercase font-semibold text-ink mb-2">
             {k.label}
           </div>
           <div className="font-serif text-[14px] text-mute leading-[1.5]">{k.desc}</div>

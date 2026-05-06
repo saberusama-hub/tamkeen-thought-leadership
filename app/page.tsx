@@ -71,7 +71,7 @@ export default function HomePage() {
                   <p className="font-serif italic text-[17px] leading-[1.5] text-ink/85 m-0 mb-3 max-w-[60ch]">
                     {a.dek}
                   </p>
-                  <div className="font-sans text-[11px] tracking-[1.5px] uppercase text-mute font-medium max-[400px]:flex-col max-[400px]:flex max-[400px]:gap-1">
+                  <div className="ui-caps font-sans text-[11px] tracking-[1.5px] uppercase text-mute font-medium max-[400px]:flex-col max-[400px]:flex max-[400px]:gap-1">
                     By{' '}
                     <span className="text-ink">
                       {a.resolvedAuthors.map((author) => author.name).join(', ')}
@@ -90,7 +90,7 @@ export default function HomePage() {
             {FORTHCOMING.map((p, i) => (
               <li key={i} className="border-t border-green/25">
                 <div className="block py-8">
-                  <div className="font-sans text-[11px] tracking-[1.6px] uppercase text-green/70 font-semibold mb-2 inline-flex items-center gap-2">
+                  <div className="ui-caps font-sans text-[11px] tracking-[1.6px] uppercase text-green/70 font-semibold mb-2 inline-flex items-center gap-2">
                     <span aria-hidden className="block h-px w-4 bg-green-light" />
                     {p.eta}
                   </div>

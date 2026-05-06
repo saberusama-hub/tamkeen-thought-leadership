@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { ScrollReveal } from '@/components/ScrollReveal';
 
 interface ExhibitProps {
   number: string;
@@ -19,15 +20,25 @@ interface ExhibitProps {
  */
 export function Exhibit({ number, title, sub, source, children }: ExhibitProps) {
   return (
-    <figure className="my-12 max-w-none">
-      <div className="font-sans text-[11px] tracking-[1.6px] uppercase text-mute font-medium mb-2">
+    <figure className="my-14 max-w-none">
+      <ScrollReveal className="ui-caps font-sans text-[11px] tracking-[1.6px] uppercase text-mute font-medium mb-2">
         {number}
-      </div>
-      <h3 className="font-serif text-[22px] font-medium leading-[1.3] -tracking-[0.2px] m-0 mb-1.5 text-green">
+      </ScrollReveal>
+      <ScrollReveal
+        as="h3"
+        delayMs={80}
+        className="font-serif text-[22px] font-medium leading-[1.3] -tracking-[0.2px] m-0 mb-1.5 text-green"
+      >
         {title}
-      </h3>
+      </ScrollReveal>
       {sub ? (
-        <p className="font-serif italic text-[16px] text-mute m-0 mb-7 max-w-[60ch]">{sub}</p>
+        <ScrollReveal
+          as="p"
+          delayMs={140}
+          className="font-serif italic text-[16px] text-mute m-0 mb-7 max-w-[60ch]"
+        >
+          {sub}
+        </ScrollReveal>
       ) : null}
       <div className="my-2">{children}</div>
       {source ? (

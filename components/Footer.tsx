@@ -13,7 +13,7 @@ export function Footer() {
           The Index.{' '}
           <span className="text-mute italic font-normal">A publication of Tamkeen Thought Leadership.</span>
         </div>
-        <nav className="flex flex-wrap gap-x-6 gap-y-2 font-sans text-[12px] tracking-[1.4px] uppercase text-mute">
+        <nav className="ui-caps flex flex-wrap gap-x-6 gap-y-2 font-sans text-[12px] tracking-[1.4px] uppercase text-mute">
           <Link href="/about" className="hover:text-green border-none transition-colors">
             About
           </Link>
@@ -27,7 +27,7 @@ export function Footer() {
             Contact
           </Link>
         </nav>
-        <div className="font-sans text-[11px] tracking-[1.4px] uppercase text-mute opacity-80 mt-2">
+        <div className="ui-caps font-sans text-[11px] tracking-[1.4px] uppercase text-mute opacity-80 mt-2">
           © {new Date().getFullYear()} Tamkeen
         </div>
       </div>

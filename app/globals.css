@@ -74,7 +74,14 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-feature-settings: 'kern' 1, 'liga' 1, 'onum' 1;
+  /*
+   * onum: oldstyle figures (1, 2, 3 sit below the x-height; warmer, print-feel)
+   * pnum: proportional figures (kerned for inline reading)
+   * kern + liga: standard
+   * Tabular contexts (KPI strip numbers, DataTable cells) override with
+   *   font-variant-numeric: tabular-nums + lnum to keep columns aligned.
+   */
+  font-feature-settings: 'kern' 1, 'liga' 1, 'onum' 1, 'pnum' 1;
 }
 
 ::selection {
@@ -99,6 +106,27 @@ button {
   background: none;
   color: inherit;
   padding: 0;
+}
+
+/*
+ * .ui-caps — small-caps for tracked uppercase UI labels (datelines, "Finding",
+ * "Exhibit", "By", "§ NN", footer nav). The combination of `smcp` (lowercase
+ * → small caps) and `c2sc` (uppercase → small caps) plus a small font-size
+ * boost gives proper editorial small caps where the OpenType fonts support
+ * it. Source Serif 4 supports both; Inter doesn't have true small caps so
+ * Inter labels remain visually uppercase via `text-transform`.
+ */
+.ui-caps {
+  font-feature-settings: 'kern' 1, 'liga' 1, 'smcp' 1, 'c2sc' 1;
+}
+
+/*
+ * Tabular numerals for any column of numbers (KPI cells, table cells).
+ * Use this class instead of inline font-feature-settings so it is consistent.
+ */
+.tabular-figures {
+  font-feature-settings: 'kern' 1, 'liga' 1, 'lnum' 1, 'tnum' 1;
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
 /* Skip link */
@@ -138,14 +166,21 @@ button {
 }
 
 .prose-article p {
-  margin: 0 0 22px;
+  margin: 0 0 28px;
   max-width: 68ch;
   font-size: 18px;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--color-ink);
 }
 .prose-article p.wide {
   max-width: none;
+}
+/* Subtle first-line emphasis on the first plain paragraph of each section,
+ * skipping leads and dropcap paragraphs which have their own opener treatment. */
+.prose-article section > p:first-of-type:not(.lead):not(.dropcap)::first-line,
+.prose-article section > p.first-line-emphasis::first-line {
+  font-weight: 500;
+  letter-spacing: 0.2px;
 }
 .prose-article p a,
 .prose-article li a {
@@ -243,6 +278,29 @@ section {
 @media (max-width: 760px) {
   section {
     scroll-margin-top: 130px;
+  }
+}
+
+/*
+ * ScrollReveal: applied via the <ScrollReveal> client component. Elements
+ * fade and lift in once their bounding box enters the viewport. Uses
+ * `prefers-reduced-motion` to short-circuit to a no-op.
+ */
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 

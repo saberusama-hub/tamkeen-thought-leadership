@@ -13,7 +13,7 @@ interface BylineProps {
  */
 export function Byline({ authors, filedFrom, publishedAt }: BylineProps) {
   return (
-    <div className="font-sans text-[11px] tracking-[1.5px] uppercase text-mute font-medium">
+    <div className="ui-caps font-sans text-[11px] tracking-[1.5px] uppercase text-mute font-medium">
       By <span className="text-ink font-semibold">{authors.map((a) => a.name).join(', ')}</span>
       {filedFrom ? (
         <>

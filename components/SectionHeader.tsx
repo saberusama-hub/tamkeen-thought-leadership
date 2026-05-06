@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { ScrollReveal } from './ScrollReveal';
 
 interface SectionHeaderProps {
   id?: string;
@@ -24,24 +25,28 @@ interface SectionHeaderProps {
  */
 export function SectionHeader({ id, number, kicker, title, italic, children }: SectionHeaderProps) {
   return (
-    <div id={id} className="mb-10 max-[640px]:mb-7">
-      <div className="flex items-center gap-3 mb-4">
+    <div id={id} className="mb-12 max-[640px]:mb-9">
+      <ScrollReveal className="flex items-center gap-3 mb-4">
         <span aria-hidden className="block h-px w-8 bg-green-light" />
-        <div className="font-sans text-[11px] tracking-[2px] uppercase font-semibold text-green">
+        <div className="ui-caps font-sans text-[11px] tracking-[2px] uppercase font-semibold text-green">
           § {number}
         </div>
         {kicker ? (
           <>
             <span aria-hidden className="block h-px w-3 bg-green-light/60" />
-            <div className="font-sans text-[11px] tracking-[1.6px] uppercase text-mute font-medium">
+            <div className="ui-caps font-sans text-[11px] tracking-[1.6px] uppercase text-mute font-medium">
               {kicker}
             </div>
           </>
         ) : null}
-      </div>
-      <h2 className="font-serif font-medium text-[40px] leading-[1.15] -tracking-[0.4px] text-green m-0 max-w-[26ch] max-[760px]:text-[30px]">
+      </ScrollReveal>
+      <ScrollReveal
+        as="h2"
+        delayMs={100}
+        className="font-serif font-medium text-[40px] leading-[1.15] -tracking-[0.4px] text-green m-0 max-w-[26ch] max-[760px]:text-[30px]"
+      >
         {renderTitleParts(title, italic)}
-      </h2>
+      </ScrollReveal>
       {children}
     </div>
   );
