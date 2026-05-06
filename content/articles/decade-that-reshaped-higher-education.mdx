@@ -32,6 +32,8 @@ import {
   lessonsTableRows,
 } from './decade-that-reshaped-higher-education.data';
 
+import top20ByYear from '@/content/data/the-top20-by-year.json';
+
 import { ArticleSection } from '@/components/ArticleLayout';
 
 <ArticleSection id="brief">
@@ -77,7 +79,16 @@ Asia rose. The US slipped at the elite tier. Western Europe held its position. T
 </Callout>
 
 <Exhibit
-  number="Exhibit A · The decade in one chart"
+  number="Exhibit A · Watch the decade"
+  title="The Top 20, played out year by year."
+  sub="THE overall score, top twenty institutions per year, 2016 to 2026. Press play, scrub, or use the arrow keys."
+  source="Source: Times Higher Education World University Rankings, annual editions 2016 to 2026; authors’ analysis. Bars are coloured by country: dark green for the United States, mid-green for the United Kingdom, light green for other countries, copper for Greater China entrants."
+>
+  <BarRace years={top20ByYear} />
+</Exhibit>
+
+<Exhibit
+  number="Exhibit B · The decade in one chart"
   title="Asia rose, the US slipped, Europe held."
   sub="Composition of the Times Higher Education Top 100 by region, 2016 to 2026 (% share)"
   source="Source: Times Higher Education World University Rankings, annual editions 2016 to 2026; authors’ analysis. Greater China = China + Hong Kong + Macao + Taiwan, included in East Asia."
@@ -93,7 +104,7 @@ Asia rose. The US slipped at the elite tier. Western Europe held its position. T
 </Exhibit>
 
 <Exhibit
-  number="Exhibit B · Country movement"
+  number="Exhibit C · Country movement"
   title="China is the biggest gainer; the US is the biggest decliner."
   sub="Net change in THE Top 500 institution count, 2016 to 2026. Top eight gainers and decliners."
   source="Source: THE World University Rankings 2016 vs 2026; authors’ analysis. China +24 leads; Saudi Arabia and the UAE join the top movers on the back of Vision-2030/2071 funding programmes."
@@ -102,7 +113,7 @@ Asia rose. The US slipped at the elite tier. Western Europe held its position. T
 </Exhibit>
 
 <Exhibit
-  number="Exhibit C · Volatility"
+  number="Exhibit D · Volatility"
   title="The elite is sticky; the Top 500 churns."
   sub="Median absolute year-over-year rank change, integer-ranked institutions only, by tier and system."
   source="Source: QS World University Rankings 2017 to 2026; THE World University Rankings 2016 to 2026; authors’ analysis."
