@@ -27,13 +27,13 @@ export function SectionHeader({ id, number, kicker, title, italic, children }: S
   return (
     <div id={id} className="mb-12 max-[640px]:mb-9">
       <ScrollReveal className="flex items-center gap-3 mb-4">
-        <span aria-hidden className="block h-px w-8 bg-green-light" />
+        <span aria-hidden className="block h-px w-8 bg-lime" />
         <div className="ui-caps font-sans text-[11px] tracking-[2px] uppercase font-semibold text-green">
           § {number}
         </div>
         {kicker ? (
           <>
-            <span aria-hidden className="block h-px w-3 bg-green-light/60" />
+            <span aria-hidden className="block h-px w-3 bg-lime/70" />
             <div className="ui-caps font-sans text-[11px] tracking-[1.6px] uppercase text-mute font-medium">
               {kicker}
             </div>

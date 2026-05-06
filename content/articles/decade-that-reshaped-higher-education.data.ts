@@ -12,12 +12,12 @@ export const stackedAreaPaths = [
   // North America
   {
     d: 'M0,300 L0,171 L82,168 L164,168 L246,168 L328,168 L410,174 L492,180 L574,186 L656,189 L738,189 L820,195 L820,300 Z',
-    fill: '#2F5C66',
+    fill: '#3F4818',
   },
   // Western Europe
   {
     d: 'M0,171 L82,168 L164,168 L246,168 L328,168 L410,174 L492,180 L574,186 L656,189 L738,189 L820,195 L820,99 L738,93 L656,93 L574,87 L492,75 L410,69 L328,57 L246,57 L164,54 L82,51 L0,45 Z',
-    fill: '#415866',
+    fill: '#5C6B1F',
   },
   // East Asia
   {
@@ -42,8 +42,8 @@ export const stackedAreaPaths = [
 ];
 
 export const stackedAreaLegend = [
-  { label: 'North America', color: '#2F5C66' },
-  { label: 'Western Europe', color: '#415866' },
+  { label: 'North America', color: '#3F4818' },
+  { label: 'Western Europe', color: '#5C6B1F' },
   { label: 'East Asia', color: '#A6B340' },
   { label: 'Oceania', color: '#7A8628' },
   { label: 'S. & SE Asia', color: '#C5CD7A' },
@@ -71,12 +71,12 @@ export const stackedAreaYears = [
 ];
 
 export const gainers = [
-  { name: 'China', value: 24, fill: '#2F5C66' },
-  { name: 'Saudi Arabia', value: 8, fill: '#2F5C66' },
-  { name: 'United Arab Emirates', value: 7, fill: '#2F5C66' },
-  { name: 'Malaysia', value: 6, fill: '#415866' },
-  { name: 'Germany', value: 5, fill: '#415866' },
-  { name: 'Australia', value: 5, fill: '#415866' },
+  { name: 'China', value: 24, fill: '#3F4818' },
+  { name: 'Saudi Arabia', value: 8, fill: '#3F4818' },
+  { name: 'United Arab Emirates', value: 7, fill: '#3F4818' },
+  { name: 'Malaysia', value: 6, fill: '#5C6B1F' },
+  { name: 'Germany', value: 5, fill: '#5C6B1F' },
+  { name: 'Australia', value: 5, fill: '#5C6B1F' },
   { name: 'Iran, Islamic Rep. of', value: 3, fill: '#7A8628' },
   { name: 'Korea, Republic of', value: 3, fill: '#7A8628' },
 ];
@@ -180,24 +180,24 @@ export const risers = [
 ];
 
 export const gerdBubbles = [
-  { code: 'CHN', x: 333, y: 41, r: 11, fill: '#2F5C66', fillOpacity: 0.7, labelDx: 16, labelDy: 3, labelStrong: true },
-  { code: 'KOR', x: 651, y: 99, r: 6, fill: '#2F5C66', fillOpacity: 0.55, labelDx: 11, labelDy: 3 },
-  { code: 'USA', x: 466, y: 151, r: 13, fill: '#415866', fillOpacity: 0.45, labelDx: 18, labelDy: 3, labelStrong: true },
-  { code: 'DEU', x: 412, y: 151, r: 9, fill: '#415866', fillOpacity: 0.5, labelDx: 13, labelDy: -3 },
-  { code: 'GBR', x: 359, y: 155, r: 10, fill: '#415866', fillOpacity: 0.5, labelDx: -21, labelDy: 17 },
-  { code: 'JPN', x: 439, y: 158, r: 6, fill: '#415866', fillOpacity: 0.5, labelDx: 9, labelDy: 14 },
+  { code: 'CHN', x: 333, y: 41, r: 11, fill: '#3F4818', fillOpacity: 0.7, labelDx: 16, labelDy: 3, labelStrong: true },
+  { code: 'KOR', x: 651, y: 99, r: 6, fill: '#3F4818', fillOpacity: 0.55, labelDx: 11, labelDy: 3 },
+  { code: 'USA', x: 466, y: 151, r: 13, fill: '#5C6B1F', fillOpacity: 0.45, labelDx: 18, labelDy: 3, labelStrong: true },
+  { code: 'DEU', x: 412, y: 151, r: 9, fill: '#5C6B1F', fillOpacity: 0.5, labelDx: 13, labelDy: -3 },
+  { code: 'GBR', x: 359, y: 155, r: 10, fill: '#5C6B1F', fillOpacity: 0.5, labelDx: -21, labelDy: 17 },
+  { code: 'JPN', x: 439, y: 158, r: 6, fill: '#5C6B1F', fillOpacity: 0.5, labelDx: 9, labelDy: 14 },
   { code: 'ISR', x: 745, y: 116, r: 5, fill: '#A6B340', fillOpacity: 0.95, labelDx: 10, labelDy: 3, labelStrong: true },
-  { code: 'FRA', x: 293, y: 128, r: 6, fill: '#415866', fillOpacity: 0.5, labelDx: 9, labelDy: 3 },
-  { code: 'CAN', x: 226, y: 151, r: 7, fill: '#415866', fillOpacity: 0.5, labelDx: 10, labelDy: 4 },
-  { code: 'AUS', x: 239, y: 116, r: 6, fill: '#415866', fillOpacity: 0.5, labelDx: 9, labelDy: 3 },
-  { code: 'ITA', x: 200, y: 145, r: 7, fill: '#415866', fillOpacity: 0.5, labelDx: -27, labelDy: -10 },
+  { code: 'FRA', x: 293, y: 128, r: 6, fill: '#5C6B1F', fillOpacity: 0.5, labelDx: 9, labelDy: 3 },
+  { code: 'CAN', x: 226, y: 151, r: 7, fill: '#5C6B1F', fillOpacity: 0.5, labelDx: 10, labelDy: 4 },
+  { code: 'AUS', x: 239, y: 116, r: 6, fill: '#5C6B1F', fillOpacity: 0.5, labelDx: 9, labelDy: 3 },
+  { code: 'ITA', x: 200, y: 145, r: 7, fill: '#5C6B1F', fillOpacity: 0.5, labelDx: -27, labelDy: -10 },
   { code: 'SAU', x: 93, y: 198, r: 5, fill: '#A6B340', fillOpacity: 0.85, labelDx: 10, labelDy: 3 },
   { code: 'UAE', x: 200, y: 172, r: 5, fill: '#A6B340', fillOpacity: 0.95, labelDx: 0, labelDy: 18, labelTextAnchor: 'middle' as const, labelStrong: true },
   { code: 'RUS', x: 133, y: 305, r: 5, fill: '#A0342A', fillOpacity: 0.75, labelDx: 9, labelDy: 3 },
 ];
 
 export const gerdAnnotations = [
-  { x: 370, y: 22, text: '↑ China and Korea anchor the upside', fill: '#2F5C66' },
+  { x: 370, y: 22, text: '↑ China and Korea anchor the upside', fill: '#3F4818' },
   { x: 710, y: 83, text: 'Israel: high R&D, modest gain →', textAnchor: 'end' as const },
   { x: 155, y: 296, text: 'Russia: only major negative score change', fill: '#A0342A' },
 ];

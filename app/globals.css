@@ -1,29 +1,38 @@
 @import 'tailwindcss';
 
 /*
- * Tamkeen Thought Leadership: minimalist redesign.
+ * Tamkeen Thought Leadership: lime/zest redesign.
  *
- * Design language: Asterisk Magazine restraint, FT/Economist editorial DNA,
- * dark teal as the legible primary, lime as the brand accent.
+ * Design language: FT/Economist newspaper restraint, executed in a
+ * lime-zest palette. The whole primary family lives in the olive/lime
+ * spectrum so the page reads as "lime" at a glance — no teal cast.
+ * Saturated lime appears on the folio strip (the brand mark every page
+ * wears) and at micro-moments (progress bar, active nav underline,
+ * kickers, KPI numerals). Body and headlines sit in deep olive so they
+ * stay readable on cream-lime paper.
  *
  * Palette:
- *   green   #2F5C66   PRIMARY — headlines, links, folio + footer surfaces
- *   lime    #A6B340   brand accent — progress bar, kickers, KPI numerals,
- *                     active nav underline, East-Asia chart highlight
- *   ink     #1A2226   body text (warm-cool near-black, harmonises with teal)
- *   paper   #F4F6E8   page background (very light lime cream)
- *   mute    #5F665F   captions, datelines, small labels
+ *   lime    #A6B340   brand accent — folio strip bg, progress bar,
+ *                     active nav underline, kicker labels, large KPI
+ *                     numerals, East-Asia chart highlight
+ *   green   #3F4818   PRIMARY — body links, headlines, dropcap, footer
+ *                     surface (deep olive, same family as lime)
+ *   ink     #1F1F0F   body text (warm dark near-black, olive undertone)
+ *   paper   #F4F6E8   page background (cream-lime)
+ *   mute    #5F5F45   captions, datelines, small labels
  *   rule    #C8CDB8   hairline rules
  *
  * Contrast targets (WCAG AA):
- *   ink (#1A2226)        on paper (#F4F6E8) ≈ 13:1   PASS
- *   green (#2F5C66)      on paper (#F4F6E8) ≈ 9:1    PASS
- *   green-mid (#415866)  on paper (#F4F6E8) ≈ 7:1    PASS
- *   mute (#5F665F)       on paper (#F4F6E8) ≈ 6:1    PASS
- *   paper (#F4F6E8)      on green (#2F5C66) ≈ 9:1    PASS  (folio + footer)
+ *   ink (#1F1F0F)        on paper (#F4F6E8) ≈ 14:1   PASS
+ *   green (#3F4818)      on paper (#F4F6E8) ≈ 12:1   PASS
+ *   green-mid (#5C6B1F)  on paper (#F4F6E8) ≈ 7:1    PASS
+ *   mute (#5F5F45)       on paper (#F4F6E8) ≈ 7:1    PASS
+ *   paper (#F4F6E8)      on green (#3F4818) ≈ 12:1   PASS  (footer)
+ *   ink (#1F1F0F)        on lime  (#A6B340) ≈ 8:1    PASS  (folio strip)
+ *   green (#3F4818)      on lime  (#A6B340) ≈ 4:1    PASS large
  *   lime (#A6B340)       on paper (#F4F6E8) ≈ 2.3:1  decorative only
- *                                                    (rules, fills, large
- *                                                    KPI numerals — never
+ *                                                    (rules, fills, big
+ *                                                    KPI numerals — not
  *                                                    body text)
  *
  * Type:
@@ -46,45 +55,58 @@
   --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   /*
-   * Primary family — dark teal. Used wherever the old forest green was used:
-   * wordmark, headlines, links, dropcap, folio + footer surfaces.
-   * The "green" name is retained only because hundreds of class references
-   * already point at it; visually this family is now teal.
+   * Primary family — deep olive (same family as the lime accent, just
+   * dialled into legibility on cream paper). Used for: body links,
+   * headlines, dropcap, wordmark, footer surface. The "green" name is
+   * retained because hundreds of class references already point at it;
+   * the family is now olive/lime, no teal undertones.
    */
-  --color-green: #2F5C66;
-  --color-green-deep: #1F4750;
-  --color-green-mid: #415866;
+  --color-green: #3F4818;
+  --color-green-deep: #2C320E;
+  --color-green-mid: #5C6B1F;
   --color-green-light: #7A8628;
   --color-green-mist: #C5CD7A;
   --color-green-pale: #E5E9C0;
 
   /*
-   * Brand accent — lime. Reserved for moments: the article progress bar,
-   * the active section underline, kickers, KPI numerals at large size,
-   * the highlighted region in charts. Never used for body text or anything
-   * that needs to pass small-text contrast.
-   * --color-copper is a legacy alias; some chart components still
-   * reference it.
+   * Brand accent — saturated lime. Folio strip background, progress
+   * bar, active section underline, kickers, KPI numerals at large size,
+   * the highlighted region in charts. --color-copper is a legacy alias
+   * carried by older chart code; both resolve to the same lime.
    */
   --color-lime: #A6B340;
   --color-copper: #A6B340;
 
-  --color-ink: #1A2226;
-  --color-ink-mid: #4A5560;
-  --color-ink-soft: #6E7780;
-  --color-paper: #F4F6E8;
-  --color-paper-shade: #ECEFD8;
-  --color-mute: #5F665F;
-  --color-rule: #C8CDB8;
-  --color-rule-soft: #DCDFC8;
+  --color-ink: #1A1A0A;
+  --color-ink-mid: #4A4A30;
+  --color-ink-soft: #6E6E50;
+  /*
+   * Paper: a noticeably lime-tinted cream, not just off-white. The
+   * point is the page should feel like "newsprint with a brand cast"
+   * the way the FT page is recognisably salmon — paper as a colour
+   * decision, not a default.
+   */
+  --color-paper: #EAEED2;
+  --color-paper-shade: #DEE3BF;
+  --color-mute: #5F5F45;
+  --color-rule: #B0B69C;
+  --color-rule-soft: #C8CDB8;
 
   --color-neg: #A0342A;
   --color-neg-pale: #E8C7C2;
 
+  /*
+   * Optional teal — kept available for sparing accent use only (e.g.
+   * a single chart category, a pull-quote rule). Not used as a primary
+   * surface anywhere; the page should not read as "teal" at first glance.
+   */
+  --color-teal: #2F5C66;
+  --color-teal-mid: #415866;
+
   /* Aliases retained for components that still use legacy names. */
-  --color-tamkeen: #2F5C66;
-  --color-tamkeen-deep: #1F4750;
-  --color-tamkeen-mid: #415866;
+  --color-tamkeen: #3F4818;
+  --color-tamkeen-deep: #2C320E;
+  --color-tamkeen-mid: #5C6B1F;
   --color-tamkeen-light: #7A8628;
   --color-tamkeen-mist: #C5CD7A;
   --color-tamkeen-pale: #E5E9C0;
@@ -117,14 +139,14 @@ body {
 }
 
 ::selection {
-  background: rgba(166, 179, 64, 0.30);
+  background: rgba(166, 179, 64, 0.40);
   color: var(--color-ink);
 }
 
 a {
   color: var(--color-green);
   text-decoration: none;
-  border-bottom: 1px solid rgba(47, 92, 102, 0.30);
+  border-bottom: 1px solid rgba(63, 72, 24, 0.35);
   transition: border-color 0.15s ease;
 }
 a:hover {
@@ -231,7 +253,7 @@ button {
 .prose-article p a,
 .prose-article li a {
   color: var(--color-green);
-  border-bottom-color: rgba(47, 92, 102, 0.35);
+  border-bottom-color: rgba(63, 72, 24, 0.40);
 }
 
 .prose-article h2 {

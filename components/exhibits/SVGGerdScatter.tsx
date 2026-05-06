@@ -49,7 +49,7 @@ export function SVGGerdScatter({
           <line x1={0} y1={232} x2={800} y2={232} />
           <line x1={0} y1={290} x2={800} y2={290} />
         </g>
-        <line x1={0} y1={256} x2={800} y2={256} stroke="#2F5C66" strokeWidth={1.2} />
+        <line x1={0} y1={256} x2={800} y2={256} stroke="#3F4818" strokeWidth={1.2} />
         <text x={796} y={251} textAnchor="end" fontSize={10.5} fontStyle="italic" fill="var(--color-ink-soft)">
           No change
         </text>

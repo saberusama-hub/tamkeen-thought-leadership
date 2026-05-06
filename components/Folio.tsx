@@ -39,11 +39,11 @@ export function Folio({ date, city = 'Abu Dhabi' }: FolioProps) {
   }, [date]);
 
   return (
-    <div className="bg-green text-paper">
+    <div className="bg-lime text-ink">
       <div className="ui-caps mx-auto max-w-[1240px] px-8 py-2.5 flex items-center justify-between gap-6 font-sans text-[11px] tracking-[1.6px] uppercase max-[640px]:px-5 max-[640px]:text-[10px]">
         <span className="font-semibold">Tamkeen Thought Leadership</span>
-        <span className="text-paper/80" suppressHydrationWarning>
-          {formatLongDate(today)} <span className="text-paper/40 mx-2">·</span> {city}
+        <span className="text-ink/85" suppressHydrationWarning>
+          {formatLongDate(today)} <span className="text-ink/50 mx-2">·</span> {city}
         </span>
       </div>
     </div>

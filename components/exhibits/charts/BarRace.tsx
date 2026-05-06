@@ -301,6 +301,27 @@ export function BarRace({ years, topN = 20, msPerYear = 700 }: BarRaceProps) {
         </svg>
       </div>
 
+      {/* Legend */}
+      <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 max-[640px]:gap-x-4">
+        {[
+          { color: 'var(--color-copper)', label: 'Greater China' },
+          { color: 'var(--color-green)', label: 'United States' },
+          { color: 'var(--color-green-mid)', label: 'United Kingdom' },
+          { color: 'var(--color-green-light)', label: 'Other countries' },
+        ].map((k) => (
+          <div key={k.label} className="flex items-center gap-2">
+            <span
+              aria-hidden
+              className="block w-3.5 h-2"
+              style={{ background: k.color }}
+            />
+            <span className="ui-caps font-sans text-[10px] tracking-[1.5px] uppercase text-mute font-medium">
+              {k.label}
+            </span>
+          </div>
+        ))}
+      </div>
+
       {/* Controls */}
       <div className="mt-4 flex items-center gap-4 max-[640px]:flex-wrap">
         <button
@@ -319,7 +340,7 @@ export function BarRace({ years, topN = 20, msPerYear = 700 }: BarRaceProps) {
           value={Math.round(visibleYear)}
           onChange={(e) => onScrub(Number(e.target.value))}
           aria-label="Year scrubber"
-          className="flex-1 max-w-[480px] accent-[var(--color-green)]"
+          className="flex-1 max-w-[480px] accent-[var(--color-lime)]"
         />
         <div className="ui-caps font-sans text-[11px] tracking-[1.6px] uppercase font-semibold text-mute tabular-nums" style={{ fontVariantNumeric: 'tabular-nums' }}>
           {yearLabel}

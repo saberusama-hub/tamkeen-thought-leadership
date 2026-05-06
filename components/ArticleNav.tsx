@@ -89,7 +89,7 @@ export function ArticleNav({ sections }: ArticleNavProps) {
         ))}
         <span
           aria-hidden
-          className="absolute bottom-0 h-[2px] bg-green pointer-events-none"
+          className="absolute bottom-0 h-[2px] bg-lime pointer-events-none"
           style={{
             left: underline.left,
             width: underline.width,

@@ -22,13 +22,13 @@ interface HeatmapProps {
 const RAMP = [
   { stop: -10, hex: '#404040', text: '#F4F6E8' },
   { stop: -6, hex: '#7c7c7c', text: '#F4F6E8' },
-  { stop: -2, hex: '#C8CDB8', text: '#1A2226' },
-  { stop: 0, hex: '#ECEFD8', text: '#5F665F' },
-  { stop: 2, hex: '#E5E9C0', text: '#2F5C66' },
-  { stop: 4, hex: '#C5CD7A', text: '#2F5C66' },
+  { stop: -2, hex: '#C8CDB8', text: '#1F1F0F' },
+  { stop: 0, hex: '#ECEFD8', text: '#5F5F45' },
+  { stop: 2, hex: '#E5E9C0', text: '#3F4818' },
+  { stop: 4, hex: '#C5CD7A', text: '#3F4818' },
   { stop: 8, hex: '#7A8628', text: '#F4F6E8' },
-  { stop: 16, hex: '#415866', text: '#F4F6E8' },
-  { stop: 30, hex: '#2F5C66', text: '#F4F6E8' },
+  { stop: 16, hex: '#5C6B1F', text: '#F4F6E8' },
+  { stop: 30, hex: '#3F4818', text: '#F4F6E8' },
 ];
 
 function colorFor(v: number): { bg: string; fg: string } {

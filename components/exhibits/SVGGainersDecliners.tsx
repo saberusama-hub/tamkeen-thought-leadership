@@ -33,8 +33,8 @@ export function SVGGainersDecliners({
       <title>{title}</title>
       <desc>{title}</desc>
       <g transform="translate(200,30)">
-        <line x1={ZERO_X} y1={0} x2={ZERO_X} y2={490} stroke="#2F5C66" strokeWidth={1.2} />
-        <text x={ZERO_X} y={-14} textAnchor="middle" fontSize={12} fontWeight={600} fill="#2F5C66">
+        <line x1={ZERO_X} y1={0} x2={ZERO_X} y2={490} stroke="#3F4818" strokeWidth={1.2} />
+        <text x={ZERO_X} y={-14} textAnchor="middle" fontSize={12} fontWeight={600} fill="#3F4818">
           {axisLabel}
         </text>
 
@@ -67,7 +67,7 @@ export function SVGGainersDecliners({
                 fontFamily="JetBrains Mono, ui-monospace, monospace"
                 fontWeight={600}
                 fontSize={11}
-                fill="#2F5C66"
+                fill="#3F4818"
               >
                 +{g.value}
               </text>
@@ -100,7 +100,7 @@ export function SVGGainersDecliners({
           );
         })}
 
-        <text x={600} y={2} fontSize={10.5} fill="#2F5C66" fontStyle="italic">
+        <text x={600} y={2} fontSize={10.5} fill="#3F4818" fontStyle="italic">
           ↑ Gainers
         </text>
         <text x={105} y={2} fontSize={10.5} fill="#A0342A" fontStyle="italic">
