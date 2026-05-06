@@ -20,3 +20,6 @@ Rankings/
 
 # Claude Code session state
 .claude/
+
+# Local QA scratch directory (downloaded HTML for grep checks)
+qa/

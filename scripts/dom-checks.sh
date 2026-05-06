@@ -75,8 +75,8 @@ for name in home about article notfound; do
   fi
 done
 
-# Step 5: every article anchor (#brief, #methodology, ...) is present in the article HTML.
-for anchor in brief methodology landscape break pillars uae movers implications outlook appendix; do
+# Step 5: every article anchor (#brief, #systems, ...) is present in the article HTML.
+for anchor in brief systems landscape break pillars uae movers implications outlook methodology; do
   if grep -q "id=\"$anchor\"" /tmp/article.html; then
     : # OK
   else

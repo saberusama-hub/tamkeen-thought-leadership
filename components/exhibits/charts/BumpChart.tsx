@@ -40,10 +40,14 @@ function colourFor(line: CohortLine): string {
   return 'var(--color-green-light)';
 }
 
+function keyFor(line: CohortLine): string {
+  return `${line.country}::${line.university}`;
+}
+
 export function BumpChart({ data }: BumpChartProps) {
   const yearMin = 2016;
   const yearMax = 2026;
-  const rankCap = 30; // y-axis cap; lines below this get clamped at the bottom
+  const rankCap = 30;
 
   const xScale = useMemo(
     () => scaleLinear().domain([yearMin, yearMax]).range([M.left, W - M.right]),
@@ -63,19 +67,25 @@ export function BumpChart({ data }: BumpChartProps) {
     [xScale, yScale],
   );
 
-  const [activeYear, setActiveYear] = useState(yearMax);
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
+  const [selectedKey, setSelectedKey] = useState<string | null>(null);
+  const activeKey = hoveredKey ?? selectedKey;
 
-  // Sort lines so hovered line draws last (on top).
   const drawOrder = useMemo(() => {
     return [...data.lines].sort((a, b) => {
-      const ak = `${a.country}::${a.university}` === hoveredKey ? 1 : 0;
-      const bk = `${b.country}::${b.university}` === hoveredKey ? 1 : 0;
+      const ak = keyFor(a) === activeKey ? 1 : 0;
+      const bk = keyFor(b) === activeKey ? 1 : 0;
       return ak - bk;
     });
-  }, [data.lines, hoveredKey]);
+  }, [data.lines, activeKey]);
 
-  const activeYearX = xScale(activeYear);
+  const sortedForSelect = useMemo(
+    () => [...data.lines].sort((a, b) => a.university.localeCompare(b.university)),
+    [data.lines],
+  );
+
+  const toggleSelected = (key: string) =>
+    setSelectedKey((prev) => (prev === key ? null : key));
 
   return (
     <div className="my-4">
@@ -83,8 +93,11 @@ export function BumpChart({ data }: BumpChartProps) {
         viewBox={`0 0 ${W} ${H}`}
         preserveAspectRatio="xMidYMid meet"
         role="img"
-        aria-label={`Rank trajectories of the THE Top 20 institutions from 2016, tracked through 2026.`}
+        aria-label="Rank trajectories of the THE Top 20 institutions from 2016, tracked through 2026."
         className="block w-full h-auto font-sans"
+        onClick={(e) => {
+          if (e.target === e.currentTarget) setSelectedKey(null);
+        }}
       >
         {/* Y-axis: rank gridlines 1, 5, 10, 15, 20, 25 */}
         <g>
@@ -155,82 +168,97 @@ export function BumpChart({ data }: BumpChartProps) {
 
         {/* Lines */}
         {drawOrder.map((line) => {
-          const key = `${line.country}::${line.university}`;
-          const isHovered = hoveredKey === key;
-          const dim = hoveredKey != null && !isHovered;
+          const key = keyFor(line);
+          const isActive = activeKey === key;
+          const dim = activeKey != null && !isActive;
+          const isSelected = selectedKey === key;
           return (
             <path
               key={key}
               d={lineGen(line.ranks) ?? ''}
               fill="none"
               stroke={colourFor(line)}
-              strokeWidth={isHovered ? 2.5 : 1.5}
-              opacity={dim ? 0.18 : 0.9}
-              style={{ transition: 'opacity 0.15s, stroke-width 0.15s' }}
+              strokeWidth={isActive ? 2.5 : 1.5}
+              opacity={dim ? 0.16 : 0.9}
+              style={{
+                transition: 'opacity 0.18s ease, stroke-width 0.18s ease',
+                cursor: 'pointer',
+              }}
               onMouseEnter={() => setHoveredKey(key)}
               onMouseLeave={() => setHoveredKey(null)}
               onFocus={() => setHoveredKey(key)}
               onBlur={() => setHoveredKey(null)}
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleSelected(key);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  toggleSelected(key);
+                } else if (e.key === 'Escape') {
+                  setSelectedKey(null);
+                }
+              }}
               tabIndex={0}
+              role="button"
               aria-label={`${line.university}, ${line.country}`}
+              aria-pressed={isSelected}
             >
               <title>{`${line.university}, ${line.country}`}</title>
             </path>
           );
         })}
 
-        {/* Active-year vertical scrubber */}
-        <line
-          x1={activeYearX}
-          y1={M.top}
-          x2={activeYearX}
-          y2={H - M.bottom}
-          stroke="var(--color-green)"
-          strokeWidth={1.5}
-        />
-
-        {/* Active-year intersection labels: institution rank at the scrubber position */}
-        {data.lines.map((line) => {
-          const point = line.ranks.find((p) => p.year === activeYear);
-          if (!point) return null;
-          const y = yScale(Math.min(rankCap, point.rankNumeric));
-          const key = `${line.country}::${line.university}`;
-          const isHovered = hoveredKey === key;
-          return (
-            <g key={key}>
-              <circle
-                cx={activeYearX}
-                cy={y}
-                r={isHovered ? 5 : 3.5}
-                fill={colourFor(line)}
-                stroke="var(--color-paper)"
-                strokeWidth={1.5}
-                style={{ transition: 'r 0.15s' }}
-              />
-            </g>
-          );
-        })}
+        {/* Endpoint dot for the active line, anchors the eye */}
+        {activeKey != null
+          ? (() => {
+              const line = data.lines.find((l) => keyFor(l) === activeKey);
+              if (!line) return null;
+              const last = line.ranks[line.ranks.length - 1];
+              if (!last) return null;
+              return (
+                <circle
+                  cx={xScale(last.year)}
+                  cy={yScale(Math.min(rankCap, last.rankNumeric))}
+                  r={4.5}
+                  fill={colourFor(line)}
+                  stroke="var(--color-paper)"
+                  strokeWidth={1.5}
+                  pointerEvents="none"
+                />
+              );
+            })()
+          : null}
 
         {/* Right-edge institution labels at the latest year */}
         {data.lines.map((line) => {
           const lastPoint = line.ranks[line.ranks.length - 1];
           if (!lastPoint) return null;
           const y = yScale(Math.min(rankCap, lastPoint.rankNumeric));
-          const key = `${line.country}::${line.university}`;
-          const isHovered = hoveredKey === key;
-          const dim = hoveredKey != null && !isHovered;
-          const label = line.university.length > 28
-            ? `${line.university.slice(0, 26)}…`
-            : line.university;
+          const key = keyFor(line);
+          const isActive = activeKey === key;
+          const dim = activeKey != null && !isActive;
+          const label =
+            line.university.length > 28 ? `${line.university.slice(0, 26)}…` : line.university;
           return (
             <text
               key={key}
               x={W - M.right + 8}
               y={y + 4}
               fontSize={11}
-              fill={isHovered ? 'var(--color-ink)' : 'var(--color-mute)'}
+              fill={isActive ? 'var(--color-ink)' : 'var(--color-mute)'}
               opacity={dim ? 0.3 : 1}
-              style={{ transition: 'opacity 0.15s, fill 0.15s' }}
+              style={{
+                transition: 'opacity 0.18s ease, fill 0.18s ease',
+                cursor: 'pointer',
+              }}
+              onMouseEnter={() => setHoveredKey(key)}
+              onMouseLeave={() => setHoveredKey(null)}
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleSelected(key);
+              }}
             >
               {label}
             </text>
@@ -238,26 +266,38 @@ export function BumpChart({ data }: BumpChartProps) {
         })}
       </svg>
 
-      <div className="mt-4 flex items-center gap-4 max-[640px]:flex-wrap">
-        <input
-          type="range"
-          min={yearMin}
-          max={yearMax}
-          step={1}
-          value={activeYear}
-          onChange={(e) => setActiveYear(Number(e.target.value))}
-          aria-label="Year"
-          className="flex-1 max-w-[480px] accent-[var(--color-green)]"
-        />
-        <div
-          className="ui-caps font-sans text-[11px] tracking-[1.6px] uppercase font-semibold text-mute tabular-nums"
-          style={{ fontVariantNumeric: 'tabular-nums' }}
-        >
-          {activeYear}
-        </div>
+      <div className="mt-4 flex items-center gap-4 flex-wrap">
+        <label className="ui-caps font-sans text-[11px] tracking-[1.6px] uppercase text-mute font-semibold flex items-center">
+          Highlight
+          <select
+            value={selectedKey ?? ''}
+            onChange={(e) => setSelectedKey(e.target.value || null)}
+            aria-label="Highlight a university"
+            className="ml-3 font-sans text-[12px] tracking-[0.4px] normal-case text-ink bg-paper border border-rule px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-1 focus:ring-green"
+          >
+            <option value="">— None —</option>
+            {sortedForSelect.map((line) => {
+              const key = keyFor(line);
+              return (
+                <option key={key} value={key}>
+                  {line.university}
+                </option>
+              );
+            })}
+          </select>
+        </label>
+        {selectedKey ? (
+          <button
+            type="button"
+            onClick={() => setSelectedKey(null)}
+            className="ui-caps font-sans text-[11px] tracking-[1.5px] uppercase text-mute hover:text-green border-none bg-transparent cursor-pointer p-0"
+          >
+            Clear
+          </button>
+        ) : null}
       </div>
       <div className="ui-caps font-sans text-[10px] tracking-[1.5px] uppercase text-mute mt-3">
-        Hover a line to highlight it. Drag the slider to mark a year.
+        Click a line, click the right-edge label, or pick from the menu to highlight a trajectory.
       </div>
     </div>
   );
