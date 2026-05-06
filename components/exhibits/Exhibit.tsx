@@ -23,7 +23,7 @@ export function Exhibit({ number, title, sub, source, children }: ExhibitProps) 
       <div className="font-sans text-[11px] tracking-[1.6px] uppercase text-mute font-medium mb-2">
         {number}
       </div>
-      <h3 className="font-serif text-[22px] font-medium leading-[1.3] -tracking-[0.2px] m-0 mb-1.5 text-ink">
+      <h3 className="font-serif text-[22px] font-medium leading-[1.3] -tracking-[0.2px] m-0 mb-1.5 text-green">
         {title}
       </h3>
       {sub ? (

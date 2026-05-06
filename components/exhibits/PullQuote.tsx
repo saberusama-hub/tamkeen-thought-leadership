@@ -15,7 +15,7 @@ interface PullQuoteProps {
 export function PullQuote({ children, cite }: PullQuoteProps) {
   return (
     <figure className="my-14 ml-8 pl-6 border-l-2 border-green-light max-w-[44ch] max-[880px]:ml-0 max-[880px]:max-w-none">
-      <blockquote className="font-serif italic text-[28px] leading-[1.3] text-ink m-0 -tracking-[0.2px] max-[640px]:text-[22px]">
+      <blockquote className="font-serif italic text-[28px] leading-[1.3] text-green m-0 -tracking-[0.2px] max-[640px]:text-[22px]">
         {children}
       </blockquote>
       {cite ? (

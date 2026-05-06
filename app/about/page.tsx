@@ -24,7 +24,7 @@ export default function AboutPage() {
               About this publication
             </div>
           </div>
-          <h1 className="font-serif text-[48px] font-normal text-ink leading-[1.1] -tracking-[0.6px] m-0 mb-8 max-w-[24ch] max-[640px]:text-[34px]">
+          <h1 className="font-serif text-[48px] font-normal text-green leading-[1.1] -tracking-[0.6px] m-0 mb-8 max-w-[24ch] max-[640px]:text-[34px]">
             Independent analysis on schools and universities.
           </h1>
 
@@ -45,13 +45,13 @@ export default function AboutPage() {
             structure and brevity.
           </p>
 
-          <h3 className="font-serif font-semibold text-[22px] mt-10 mb-3 text-ink">Cadence</h3>
+          <h3 className="font-serif font-semibold text-[22px] mt-10 mb-3 text-green">Cadence</h3>
           <p>
             We publish at most one piece per month. Volumes appear when the underlying analysis
             is ready, not on a fixed schedule.
           </p>
 
-          <h3 className="font-serif font-semibold text-[22px] mt-10 mb-3 text-ink">
+          <h3 className="font-serif font-semibold text-[22px] mt-10 mb-3 text-green">
             Editorial principles
           </h3>
           <ul className="list-disc pl-5 marker:text-mute">

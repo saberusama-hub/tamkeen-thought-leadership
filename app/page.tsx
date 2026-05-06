@@ -6,7 +6,7 @@ import { getAllArticles } from '@/lib/articles';
 import { formatLongDate } from '@/lib/format';
 
 export const metadata: Metadata = {
-  title: 'The Capability Review',
+  title: 'The Index',
   description:
     'Long-form, data-driven analysis on policy, capability, and strategy. Published monthly. Filed independently from Abu Dhabi.',
   alternates: { canonical: '/' },
@@ -65,7 +65,7 @@ export default function HomePage() {
                   href={`/articles/${a.slug}`}
                   className="block py-8 group no-underline border-none"
                 >
-                  <h2 className="font-serif text-[28px] font-medium text-ink leading-[1.2] -tracking-[0.2px] m-0 mb-2 group-hover:text-green transition-colors max-[640px]:text-[22px]">
+                  <h2 className="font-serif text-[28px] font-medium text-green leading-[1.2] -tracking-[0.2px] m-0 mb-2 group-hover:text-green-mid transition-colors max-[640px]:text-[22px]">
                     {a.title}
                   </h2>
                   <p className="font-serif italic text-[17px] leading-[1.5] text-ink/85 m-0 mb-3 max-w-[60ch]">

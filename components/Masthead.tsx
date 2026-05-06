@@ -22,9 +22,9 @@ export function Masthead({ date, articleSections }: MastheadProps) {
         <div className="mx-auto max-w-[1240px] px-8 py-5 flex items-center justify-center max-[640px]:px-5 max-[640px]:py-4">
           <Link
             href="/"
-            className="font-serif font-medium text-green text-[40px] leading-none -tracking-[0.6px] no-underline border-none max-[760px]:text-[32px] max-[640px]:text-[26px]"
+            className="font-serif font-medium text-green text-[44px] leading-none -tracking-[0.8px] no-underline border-none max-[760px]:text-[34px] max-[640px]:text-[28px]"
           >
-            The Capability Review
+            The Index
           </Link>
         </div>
       </div>

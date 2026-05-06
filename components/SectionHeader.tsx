@@ -39,7 +39,7 @@ export function SectionHeader({ id, number, kicker, title, italic, children }: S
           </>
         ) : null}
       </div>
-      <h2 className="font-serif font-medium text-[40px] leading-[1.15] -tracking-[0.4px] text-ink m-0 max-w-[26ch] max-[760px]:text-[30px]">
+      <h2 className="font-serif font-medium text-[40px] leading-[1.15] -tracking-[0.4px] text-green m-0 max-w-[26ch] max-[760px]:text-[30px]">
         {renderTitleParts(title, italic)}
       </h2>
       {children}
@@ -54,7 +54,7 @@ function renderTitleParts(title: string, italic?: string) {
   return (
     <>
       {title.slice(0, idx)}
-      <em className="italic font-medium">{title.slice(idx, idx + italic.length)}</em>
+      <em className="italic font-medium text-green-mid">{title.slice(idx, idx + italic.length)}</em>
       {title.slice(idx + italic.length)}
     </>
   );

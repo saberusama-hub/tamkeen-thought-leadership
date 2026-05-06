@@ -16,7 +16,7 @@ function renderTitle(title: string, emphasis?: string) {
   return (
     <>
       {title.slice(0, idx)}
-      <em className="italic font-normal">{title.slice(idx, idx + emphasis.length)}</em>
+      <em className="italic font-normal text-green-mid">{title.slice(idx, idx + emphasis.length)}</em>
       {title.slice(idx + emphasis.length)}
     </>
   );
@@ -37,7 +37,7 @@ export function ArticleHero({ article }: ArticleHeroProps) {
             </div>
           </div>
 
-          <h1 className="font-serif font-normal text-[60px] leading-[1.08] -tracking-[0.6px] m-0 mb-8 text-ink max-w-[26ch] max-[760px]:text-[40px] max-[760px]:leading-[1.12] max-[640px]:text-[32px]">
+          <h1 className="font-serif font-normal text-[60px] leading-[1.08] -tracking-[0.6px] m-0 mb-8 text-green max-w-[26ch] max-[760px]:text-[40px] max-[760px]:leading-[1.12] max-[640px]:text-[32px]">
             {renderTitle(article.title, article.emphasis)}
           </h1>
 

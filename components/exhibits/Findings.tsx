@@ -23,7 +23,7 @@ export function Findings({ items }: FindingsProps) {
           <div className="font-sans text-[11px] tracking-[1.6px] uppercase text-green font-semibold mb-2">
             Finding {String(i + 1).padStart(2, '0')}
           </div>
-          <h4 className="m-0 mb-2 font-serif text-[19px] font-semibold normal-case tracking-[-0.1px] text-ink leading-[1.3]">
+          <h4 className="m-0 mb-2 font-serif text-[19px] font-semibold normal-case tracking-[-0.1px] text-green leading-[1.3]">
             {item.title}
           </h4>
           <p className="m-0 text-[15px] leading-[1.55] text-ink/85 max-w-none">{item.body}</p>

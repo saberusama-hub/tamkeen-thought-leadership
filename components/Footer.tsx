@@ -10,7 +10,7 @@ export function Footer() {
     <footer className="mt-24 border-t border-green/30">
       <div className="mx-auto max-w-[1240px] px-8 py-10 flex flex-col gap-5 max-[640px]:px-5 max-[640px]:py-8">
         <div className="font-serif text-[22px] text-green leading-snug">
-          The Capability Review.{' '}
+          The Index.{' '}
           <span className="text-mute italic font-normal">A publication of Tamkeen Thought Leadership.</span>
         </div>
         <nav className="flex flex-wrap gap-x-6 gap-y-2 font-sans text-[12px] tracking-[1.4px] uppercase text-mute">

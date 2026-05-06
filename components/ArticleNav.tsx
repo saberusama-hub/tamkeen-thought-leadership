@@ -72,7 +72,7 @@ export function ArticleNav({ sections }: ArticleNavProps) {
     <nav
       ref={navRef}
       aria-label="Article sections"
-      className="border-b border-green/20 bg-green/[0.03]"
+      className="border-b border-green/25 bg-green/[0.05]"
     >
       <div className="mx-auto max-w-[1240px] px-8 flex items-stretch relative overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden max-[640px]:px-5">
         {sections.map((s) => (
