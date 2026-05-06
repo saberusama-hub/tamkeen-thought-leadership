@@ -121,8 +121,8 @@ export function SVGGerdScatter({
               y={sy(b.y) + (b.labelDy ?? 3)}
               textAnchor={b.labelTextAnchor ?? 'start'}
               fontFamily="JetBrains Mono, ui-monospace, monospace"
-              fontSize={b.labelStrong ? 11 : 10}
-              fontWeight={b.labelStrong ? 700 : 500}
+              fontSize={b.labelStrong ? 15 : 13}
+              fontWeight={b.labelStrong ? 700 : 600}
               fill="var(--color-ink)"
             >
               {b.code}

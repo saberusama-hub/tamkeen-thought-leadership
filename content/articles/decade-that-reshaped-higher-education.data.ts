@@ -17,7 +17,7 @@ export const stackedAreaPaths = [
   // Western Europe
   {
     d: 'M0,171 L82,168 L164,168 L246,168 L328,168 L410,174 L492,180 L574,186 L656,189 L738,189 L820,195 L820,99 L738,93 L656,93 L574,87 L492,75 L410,69 L328,57 L246,57 L164,54 L82,51 L0,45 Z',
-    fill: '#5C6B1F',
+    fill: '#2F5C66',
   },
   // East Asia
   {
@@ -43,7 +43,7 @@ export const stackedAreaPaths = [
 
 export const stackedAreaLegend = [
   { label: 'North America', color: '#3F4818' },
-  { label: 'Western Europe', color: '#5C6B1F' },
+  { label: 'Western Europe', color: '#2F5C66' },
   { label: 'East Asia', color: '#A6B340' },
   { label: 'Oceania', color: '#7A8628' },
   { label: 'S. & SE Asia', color: '#C5CD7A' },
@@ -182,15 +182,15 @@ export const risers = [
 export const gerdBubbles = [
   { code: 'CHN', x: 333, y: 41, r: 11, fill: '#3F4818', fillOpacity: 0.7, labelDx: 16, labelDy: 3, labelStrong: true },
   { code: 'KOR', x: 651, y: 99, r: 6, fill: '#3F4818', fillOpacity: 0.55, labelDx: 11, labelDy: 3 },
-  { code: 'USA', x: 466, y: 151, r: 13, fill: '#5C6B1F', fillOpacity: 0.45, labelDx: 18, labelDy: 3, labelStrong: true },
-  { code: 'DEU', x: 412, y: 151, r: 9, fill: '#5C6B1F', fillOpacity: 0.5, labelDx: 13, labelDy: -3 },
-  { code: 'GBR', x: 359, y: 155, r: 10, fill: '#5C6B1F', fillOpacity: 0.5, labelDx: -21, labelDy: 17 },
-  { code: 'JPN', x: 439, y: 158, r: 6, fill: '#5C6B1F', fillOpacity: 0.5, labelDx: 9, labelDy: 14 },
+  { code: 'USA', x: 466, y: 151, r: 13, fill: '#2F5C66', fillOpacity: 0.45, labelDx: 18, labelDy: 3, labelStrong: true },
+  { code: 'DEU', x: 412, y: 151, r: 9, fill: '#2F5C66', fillOpacity: 0.5, labelDx: 13, labelDy: -3 },
+  { code: 'GBR', x: 359, y: 155, r: 10, fill: '#2F5C66', fillOpacity: 0.5, labelDx: -21, labelDy: 17 },
+  { code: 'JPN', x: 439, y: 158, r: 6, fill: '#2F5C66', fillOpacity: 0.5, labelDx: 9, labelDy: 14 },
   { code: 'ISR', x: 745, y: 116, r: 5, fill: '#A6B340', fillOpacity: 0.95, labelDx: 10, labelDy: 3, labelStrong: true },
-  { code: 'FRA', x: 293, y: 128, r: 6, fill: '#5C6B1F', fillOpacity: 0.5, labelDx: 9, labelDy: 3 },
-  { code: 'CAN', x: 226, y: 151, r: 7, fill: '#5C6B1F', fillOpacity: 0.5, labelDx: 10, labelDy: 4 },
-  { code: 'AUS', x: 239, y: 116, r: 6, fill: '#5C6B1F', fillOpacity: 0.5, labelDx: 9, labelDy: 3 },
-  { code: 'ITA', x: 200, y: 145, r: 7, fill: '#5C6B1F', fillOpacity: 0.5, labelDx: -27, labelDy: -10 },
+  { code: 'FRA', x: 293, y: 128, r: 6, fill: '#2F5C66', fillOpacity: 0.5, labelDx: 9, labelDy: 3 },
+  { code: 'CAN', x: 226, y: 151, r: 7, fill: '#2F5C66', fillOpacity: 0.5, labelDx: 10, labelDy: 4 },
+  { code: 'AUS', x: 239, y: 116, r: 6, fill: '#2F5C66', fillOpacity: 0.5, labelDx: 9, labelDy: 3 },
+  { code: 'ITA', x: 200, y: 145, r: 7, fill: '#2F5C66', fillOpacity: 0.5, labelDx: -27, labelDy: -10 },
   { code: 'SAU', x: 93, y: 198, r: 5, fill: '#A6B340', fillOpacity: 0.85, labelDx: 10, labelDy: 3 },
   { code: 'UAE', x: 200, y: 172, r: 5, fill: '#A6B340', fillOpacity: 0.95, labelDx: 0, labelDy: 18, labelTextAnchor: 'middle' as const, labelStrong: true },
   { code: 'RUS', x: 133, y: 305, r: 5, fill: '#A0342A', fillOpacity: 0.75, labelDx: 9, labelDy: 3 },

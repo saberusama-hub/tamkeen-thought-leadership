@@ -248,11 +248,11 @@ export function BarRace({ years, topN = 20, msPerYear = 700 }: BarRaceProps) {
             const yPos = (b.position - 1) * (BAR_HEIGHT + BAR_GAP) + 60;
             const xEnd = xScale(b.score);
             const fill = b.greaterChina
-              ? 'var(--color-copper)'
+              ? 'var(--color-lime)'
               : b.country === 'United States'
               ? 'var(--color-green)'
               : b.country === 'United Kingdom'
-              ? 'var(--color-green-mid)'
+              ? 'var(--color-teal)'
               : 'var(--color-green-light)';
             const opacity = b.position > topN + 0.5 ? 0 : 1;
             return (
@@ -304,9 +304,9 @@ export function BarRace({ years, topN = 20, msPerYear = 700 }: BarRaceProps) {
       {/* Legend */}
       <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 max-[640px]:gap-x-4">
         {[
-          { color: 'var(--color-copper)', label: 'Greater China' },
+          { color: 'var(--color-lime)', label: 'Greater China' },
           { color: 'var(--color-green)', label: 'United States' },
-          { color: 'var(--color-green-mid)', label: 'United Kingdom' },
+          { color: 'var(--color-teal)', label: 'United Kingdom' },
           { color: 'var(--color-green-light)', label: 'Other countries' },
         ].map((k) => (
           <div key={k.label} className="flex items-center gap-2">

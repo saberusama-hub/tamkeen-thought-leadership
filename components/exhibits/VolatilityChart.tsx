@@ -26,13 +26,13 @@ export function VolatilityChart({ tiers, caveat }: VolatilityChartProps) {
             <div className="text-[14px] text-ink font-serif">{t.label}</div>
             <div className="relative h-7 border-b border-rule">
               <div
-                className="absolute left-0 top-1 h-2.5 bg-green"
-                style={{ width: `${qsPct}%` }}
+                className="absolute left-0 top-1 h-2.5"
+                style={{ width: `${qsPct}%`, background: 'var(--color-green)' }}
                 aria-label={`QS ${t.qs}`}
               />
               <div
-                className="absolute left-0 top-[14px] h-2.5 bg-ink/85"
-                style={{ width: `${thePct}%` }}
+                className="absolute left-0 top-[14px] h-2.5"
+                style={{ width: `${thePct}%`, background: 'var(--color-teal)' }}
                 aria-label={`THE ${t.the}`}
               />
             </div>
@@ -47,11 +47,19 @@ export function VolatilityChart({ tiers, caveat }: VolatilityChartProps) {
       })}
       <div className="flex gap-5 mt-4 text-[11.5px] text-mute items-center font-sans flex-wrap">
         <div className="flex items-center gap-2">
-          <span className="inline-block w-3.5 h-2 bg-green" aria-hidden />
+          <span
+            className="inline-block w-3.5 h-2"
+            style={{ background: 'var(--color-green)' }}
+            aria-hidden
+          />
           QS
         </div>
         <div className="flex items-center gap-2">
-          <span className="inline-block w-3.5 h-2 bg-ink/85" aria-hidden />
+          <span
+            className="inline-block w-3.5 h-2"
+            style={{ background: 'var(--color-teal)' }}
+            aria-hidden
+          />
           THE
         </div>
         {caveat ? <div className="ml-auto italic">{caveat}</div> : null}

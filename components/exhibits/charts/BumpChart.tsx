@@ -34,9 +34,9 @@ const H = 540;
 const M = { top: 24, right: 220, bottom: 40, left: 40 };
 
 function colourFor(line: CohortLine): string {
-  if (line.greaterChina) return 'var(--color-copper)';
+  if (line.greaterChina) return 'var(--color-lime)';
   if (line.country === 'United States') return 'var(--color-green)';
-  if (line.country === 'United Kingdom') return 'var(--color-green-mid)';
+  if (line.country === 'United Kingdom') return 'var(--color-teal)';
   return 'var(--color-green-light)';
 }
 
