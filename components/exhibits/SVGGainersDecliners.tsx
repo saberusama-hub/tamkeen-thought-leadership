@@ -11,6 +11,8 @@ interface SVGGainersDeclinersProps {
   axisLabel?: string;
   gainers: CountryBar[];
   decliners: CountryBar[];
+  /** Country name to highlight with a thin dotted box across the row. */
+  highlightName?: string;
 }
 
 const ZERO_X = 350;
@@ -21,7 +23,14 @@ export function SVGGainersDecliners({
   axisLabel = 'Net change in Top-500 institution count (THE), 2016 to 2026',
   gainers,
   decliners,
+  highlightName,
 }: SVGGainersDeclinersProps) {
+  const gainerHighlightIdx = highlightName
+    ? gainers.findIndex((g) => g.name === highlightName)
+    : -1;
+  const declinerHighlightIdx = highlightName
+    ? decliners.findIndex((d) => d.name === highlightName)
+    : -1;
   return (
     <svg
       viewBox="0 0 1000 540"
@@ -106,6 +115,57 @@ export function SVGGainersDecliners({
         <text x={105} y={2} fontSize={10.5} fill="#A0342A" fontStyle="italic">
           ↑ Decliners
         </text>
+
+        {gainerHighlightIdx >= 0 ? (
+          <g>
+            <rect
+              x={-205}
+              y={10 + gainerHighlightIdx * 32 - 4}
+              width={825}
+              height={30}
+              fill="none"
+              stroke="var(--color-neg)"
+              strokeWidth={1.2}
+              strokeDasharray="4 3"
+            />
+            <text
+              x={-205}
+              y={10 + gainerHighlightIdx * 32 - 9}
+              fontSize={9.5}
+              fontStyle="italic"
+              fontWeight={600}
+              fill="var(--color-neg)"
+              letterSpacing={1.2}
+            >
+              SPOTLIGHT
+            </text>
+          </g>
+        ) : null}
+        {declinerHighlightIdx >= 0 ? (
+          <g>
+            <rect
+              x={-205}
+              y={266 + declinerHighlightIdx * 32 - 4}
+              width={825}
+              height={30}
+              fill="none"
+              stroke="var(--color-neg)"
+              strokeWidth={1.2}
+              strokeDasharray="4 3"
+            />
+            <text
+              x={-205}
+              y={266 + declinerHighlightIdx * 32 - 9}
+              fontSize={9.5}
+              fontStyle="italic"
+              fontWeight={600}
+              fill="var(--color-neg)"
+              letterSpacing={1.2}
+            >
+              SPOTLIGHT
+            </text>
+          </g>
+        ) : null}
       </g>
     </svg>
   );

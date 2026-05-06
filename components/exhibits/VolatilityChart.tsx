@@ -32,7 +32,7 @@ export function VolatilityChart({ tiers, caveat }: VolatilityChartProps) {
               />
               <div
                 className="absolute left-0 top-[14px] h-2.5"
-                style={{ width: `${thePct}%`, background: 'var(--color-teal)' }}
+                style={{ width: `${thePct}%`, background: 'var(--color-lime)' }}
                 aria-label={`THE ${t.the}`}
               />
             </div>
@@ -57,7 +57,7 @@ export function VolatilityChart({ tiers, caveat }: VolatilityChartProps) {
         <div className="flex items-center gap-2">
           <span
             className="inline-block w-3.5 h-2"
-            style={{ background: 'var(--color-teal)' }}
+            style={{ background: 'var(--color-lime)' }}
             aria-hidden
           />
           THE
