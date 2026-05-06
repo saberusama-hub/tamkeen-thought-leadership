@@ -43,11 +43,11 @@ export function DataTable({ caption, columns, rows, cellRender }: DataTableProps
   return (
     <div className="my-10 -mx-2 overflow-x-auto">
       <table
-        className="w-full border-collapse font-sans text-[14px] min-w-[640px] mx-2"
+        className="w-full border-collapse font-sans text-[14px] mx-2 max-[640px]:text-[12px]"
         style={{ fontVariantNumeric: 'tabular-nums' }}
       >
         {caption ? (
-          <caption className="text-left font-serif font-medium text-[20px] mb-4 text-ink caption-top">
+          <caption className="text-left font-serif font-medium text-[20px] mb-4 text-ink caption-top max-[640px]:text-[17px]">
             {caption}
           </caption>
         ) : null}
@@ -57,7 +57,7 @@ export function DataTable({ caption, columns, rows, cellRender }: DataTableProps
               <th
                 key={c.key}
                 scope="col"
-                className={`px-3 py-3 font-sans font-semibold text-[10.5px] tracking-[1.5px] uppercase text-ink align-bottom ${
+                className={`px-3 py-3 font-sans font-semibold text-[10.5px] tracking-[1.5px] uppercase text-ink align-bottom max-[640px]:px-1.5 max-[640px]:py-2 max-[640px]:text-[9.5px] max-[640px]:tracking-[1.2px] ${
                   c.numeric || c.align === 'right' ? 'text-right' : 'text-left'
                 }`}
                 style={c.width ? { width: c.width } : undefined}
@@ -73,9 +73,9 @@ export function DataTable({ caption, columns, rows, cellRender }: DataTableProps
               {columns.map((c) => (
                 <td
                   key={c.key}
-                  className={`px-3 py-2.5 border-b border-rule text-ink/90 align-top ${
+                  className={`px-3 py-2.5 border-b border-rule text-ink/90 align-top max-[640px]:px-1.5 max-[640px]:py-2 ${
                     c.numeric
-                      ? 'text-right tabular-nums'
+                      ? 'text-right tabular-nums whitespace-nowrap'
                       : c.align === 'right'
                         ? 'text-right'
                         : ''

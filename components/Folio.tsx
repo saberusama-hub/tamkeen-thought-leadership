@@ -40,9 +40,25 @@ export function Folio({ date, city = 'Abu Dhabi' }: FolioProps) {
 
   return (
     <div className="bg-lime text-ink">
-      <div className="ui-caps mx-auto max-w-[1240px] px-8 py-2.5 flex items-center justify-between gap-6 font-sans text-[11px] tracking-[1.6px] uppercase max-[640px]:px-5 max-[640px]:text-[10px]">
-        <span className="font-semibold">Tamkeen Thought Leadership</span>
-        <span className="text-ink/85" suppressHydrationWarning>
+      <div className="mx-auto max-w-[1240px] px-8 py-2 flex items-center justify-between gap-6 max-[640px]:px-5 max-[640px]:py-1.5">
+        <div className="flex items-center gap-3 min-w-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/tamkeen-logo-mono.svg"
+            alt="Tamkeen"
+            width={200}
+            height={98}
+            className="h-7 w-auto text-ink max-[640px]:h-5"
+          />
+          <span aria-hidden className="hidden sm:block h-5 w-px bg-ink/30" />
+          <span className="hidden sm:inline ui-caps font-sans text-[11px] tracking-[1.6px] uppercase font-semibold whitespace-nowrap">
+            Thought Leadership
+          </span>
+        </div>
+        <span
+          className="ui-caps font-sans text-[11px] tracking-[1.6px] uppercase text-ink/85 text-right whitespace-nowrap max-[640px]:text-[10px] max-[640px]:tracking-[1.2px]"
+          suppressHydrationWarning
+        >
           {formatLongDate(today)} <span className="text-ink/50 mx-2">·</span> {city}
         </span>
       </div>
