@@ -49,7 +49,7 @@ export function SVGGerdScatter({
           <line x1={0} y1={232} x2={800} y2={232} />
           <line x1={0} y1={290} x2={800} y2={290} />
         </g>
-        <line x1={0} y1={256} x2={800} y2={256} stroke="#003D2B" strokeWidth={1.2} />
+        <line x1={0} y1={256} x2={800} y2={256} stroke="#2F5C66" strokeWidth={1.2} />
         <text x={796} y={251} textAnchor="end" fontSize={10.5} fontStyle="italic" fill="var(--color-ink-soft)">
           No change
         </text>
@@ -125,7 +125,7 @@ export function SVGGerdScatter({
           <text x={70} y={9} fontSize={10} fill="var(--color-ink-soft)">30</text>
           <circle cx={106} cy={6} r={11} fill="none" stroke="var(--color-ink-soft)" />
           <text x={122} y={9} fontSize={10} fill="var(--color-ink-soft)">70+</text>
-          <rect x={0} y={22} width={10} height={10} fill="#B5895C" opacity={0.95} />
+          <rect x={0} y={22} width={10} height={10} fill="#A6B340" opacity={0.95} />
           <text x={14} y={31} fontSize={10} fill="var(--color-ink-soft)">
             Highlighted (UAE / Gulf / outlier)
           </text>

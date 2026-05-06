@@ -56,9 +56,9 @@ export function SVGRisers({ title = 'Top risers slope chart', rows }: SVGRisersP
               >
                 {r.label}
               </text>
-              <line x1={startX} y1={0} x2={endX - 36} y2={0} stroke="#003D2B" strokeWidth={2} />
-              <polygon points={`${startX},0 ${startX + 10},-5 ${startX + 10},5`} fill="#003D2B" />
-              <circle cx={startX} cy={0} r={4} fill="#003D2B" />
+              <line x1={startX} y1={0} x2={endX - 36} y2={0} stroke="#2F5C66" strokeWidth={2} />
+              <polygon points={`${startX},0 ${startX + 10},-5 ${startX + 10},5`} fill="#2F5C66" />
+              <circle cx={startX} cy={0} r={4} fill="#2F5C66" />
               <circle cx={endX - 36} cy={0} r={4} fill="var(--color-ink-soft)" />
               <text
                 x={startX - 5}
@@ -66,7 +66,7 @@ export function SVGRisers({ title = 'Top risers slope chart', rows }: SVGRisersP
                 textAnchor="end"
                 fontFamily="JetBrains Mono, ui-monospace, monospace"
                 fontSize={10}
-                fill="#003D2B"
+                fill="#2F5C66"
               >
                 {r.fromRank}
               </text>
@@ -88,7 +88,7 @@ export function SVGRisers({ title = 'Top risers slope chart', rows }: SVGRisersP
           <text x={10} y={4} fontSize={10} fill="var(--color-ink-soft)">
             First appearance (decade-start rank)
           </text>
-          <circle cx={220} cy={0} r={4} fill="#003D2B" />
+          <circle cx={220} cy={0} r={4} fill="#2F5C66" />
           <text x={230} y={4} fontSize={10} fill="var(--color-ink-soft)">
             Most recent rank (2026)
           </text>

@@ -20,15 +20,15 @@ interface HeatmapProps {
  * since it is the data, not the chrome.
  */
 const RAMP = [
-  { stop: -10, hex: '#404040', text: '#faf6ee' },
-  { stop: -6, hex: '#7c7c7c', text: '#faf6ee' },
-  { stop: -2, hex: '#d8d3c4', text: '#111110' },
-  { stop: 0, hex: '#ece6d4', text: '#6b6862' },
-  { stop: 2, hex: '#cee0d6', text: '#003d2b' },
-  { stop: 4, hex: '#a8c2b4', text: '#003d2b' },
-  { stop: 8, hex: '#6b9f88', text: '#faf6ee' },
-  { stop: 16, hex: '#1f5a45', text: '#faf6ee' },
-  { stop: 30, hex: '#003d2b', text: '#faf6ee' },
+  { stop: -10, hex: '#404040', text: '#F4F6E8' },
+  { stop: -6, hex: '#7c7c7c', text: '#F4F6E8' },
+  { stop: -2, hex: '#C8CDB8', text: '#1A2226' },
+  { stop: 0, hex: '#ECEFD8', text: '#5F665F' },
+  { stop: 2, hex: '#E5E9C0', text: '#2F5C66' },
+  { stop: 4, hex: '#C5CD7A', text: '#2F5C66' },
+  { stop: 8, hex: '#7A8628', text: '#F4F6E8' },
+  { stop: 16, hex: '#415866', text: '#F4F6E8' },
+  { stop: 30, hex: '#2F5C66', text: '#F4F6E8' },
 ];
 
 function colorFor(v: number): { bg: string; fg: string } {
