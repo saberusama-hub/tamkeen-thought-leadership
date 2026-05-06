@@ -12,8 +12,11 @@ dist
 next-env.d.ts
 *.tsbuildinfo
 
-# Private working area — handoff briefs and prototype source
+# Private working area: handoff briefs and prototype source
 Edits Folder/
+
+# Source data: xlsx + PDF stay local. Preprocessed JSON in content/data is what ships.
+Rankings/
 
 # Claude Code session state
 .claude/

@@ -1,0 +1,1825 @@
+[
+  {
+    "year": 2016,
+    "bars": [
+      {
+        "rank": 1,
+        "university": "California Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 95.2
+      },
+      {
+        "rank": 2,
+        "university": "University of Oxford",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 94.2
+      },
+      {
+        "rank": 3,
+        "university": "Stanford University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 93.9
+      },
+      {
+        "rank": 4,
+        "university": "University of Cambridge",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 92.8
+      },
+      {
+        "rank": 5,
+        "university": "Massachusetts Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 92
+      },
+      {
+        "rank": 6,
+        "university": "Harvard University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 91.6
+      },
+      {
+        "rank": 7,
+        "university": "Princeton University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 90.1
+      },
+      {
+        "rank": 8,
+        "university": "Imperial College London",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 89.1
+      },
+      {
+        "rank": 9,
+        "university": "ETH Zurich",
+        "country": "Switzerland",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 88.3
+      },
+      {
+        "rank": 10,
+        "university": "The University of Chicago",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 87.9
+      },
+      {
+        "rank": 11,
+        "university": "Johns Hopkins University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 87.6
+      },
+      {
+        "rank": 12,
+        "university": "Yale University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 87.4
+      },
+      {
+        "rank": 13,
+        "university": "University of California, Berkeley",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 87.2
+      },
+      {
+        "rank": 14,
+        "university": "UCL",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 87.1
+      },
+      {
+        "rank": 15,
+        "university": "Columbia University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 86.1
+      },
+      {
+        "rank": 16,
+        "university": "University of California, Los Angeles",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 85.8
+      },
+      {
+        "rank": 17,
+        "university": "University of Pennsylvania",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 85.2
+      },
+      {
+        "rank": 18,
+        "university": "Cornell University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 84
+      },
+      {
+        "rank": 19,
+        "university": "University of Toronto",
+        "country": "Canada",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 83.9
+      },
+      {
+        "rank": 20,
+        "university": "Duke University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 82.7
+      }
+    ]
+  },
+  {
+    "year": 2017,
+    "bars": [
+      {
+        "rank": 1,
+        "university": "University of Oxford",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 95
+      },
+      {
+        "rank": 2,
+        "university": "California Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.3
+      },
+      {
+        "rank": 3,
+        "university": "Stanford University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 93.8
+      },
+      {
+        "rank": 4,
+        "university": "University of Cambridge",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 93.6
+      },
+      {
+        "rank": 5,
+        "university": "Massachusetts Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 93.4
+      },
+      {
+        "rank": 6,
+        "university": "Harvard University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 92.7
+      },
+      {
+        "rank": 7,
+        "university": "Princeton University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 90.2
+      },
+      {
+        "rank": 8,
+        "university": "Imperial College London",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 90
+      },
+      {
+        "rank": 9,
+        "university": "ETH Zurich",
+        "country": "Switzerland",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 89.3
+      },
+      {
+        "rank": 10,
+        "university": "University of California, Berkeley",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 88.9
+      },
+      {
+        "rank": 10,
+        "university": "The University of Chicago",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 88.9
+      },
+      {
+        "rank": 12,
+        "university": "Yale University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 88.2
+      },
+      {
+        "rank": 13,
+        "university": "University of Pennsylvania",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 87.1
+      },
+      {
+        "rank": 14,
+        "university": "University of California, Los Angeles",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 86.6
+      },
+      {
+        "rank": 15,
+        "university": "UCL",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 86.5
+      },
+      {
+        "rank": 16,
+        "university": "Columbia University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 86.1
+      },
+      {
+        "rank": 17,
+        "university": "Johns Hopkins University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 85.9
+      },
+      {
+        "rank": 18,
+        "university": "Duke University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 84.7
+      },
+      {
+        "rank": 19,
+        "university": "Cornell University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 84.6
+      },
+      {
+        "rank": 20,
+        "university": "Northwestern University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 83.7
+      }
+    ]
+  },
+  {
+    "year": 2018,
+    "bars": [
+      {
+        "rank": 1,
+        "university": "University of Oxford",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 94.3
+      },
+      {
+        "rank": 2,
+        "university": "University of Cambridge",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 93.2
+      },
+      {
+        "rank": 3,
+        "university": "California Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 93
+      },
+      {
+        "rank": 3,
+        "university": "Stanford University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 93
+      },
+      {
+        "rank": 5,
+        "university": "Massachusetts Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 92.5
+      },
+      {
+        "rank": 6,
+        "university": "Harvard University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 91.8
+      },
+      {
+        "rank": 7,
+        "university": "Princeton University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 91.1
+      },
+      {
+        "rank": 8,
+        "university": "Imperial College London",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 89.2
+      },
+      {
+        "rank": 9,
+        "university": "The University of Chicago",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 88.6
+      },
+      {
+        "rank": 10,
+        "university": "ETH Zurich",
+        "country": "Switzerland",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 87.7
+      },
+      {
+        "rank": 10,
+        "university": "University of Pennsylvania",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 87.7
+      },
+      {
+        "rank": 12,
+        "university": "Yale University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 87.6
+      },
+      {
+        "rank": 13,
+        "university": "Johns Hopkins University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 86.5
+      },
+      {
+        "rank": 14,
+        "university": "Columbia University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 86
+      },
+      {
+        "rank": 15,
+        "university": "University of California, Los Angeles",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 85.7
+      },
+      {
+        "rank": 16,
+        "university": "UCL",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 85.3
+      },
+      {
+        "rank": 17,
+        "university": "Duke University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 85.1
+      },
+      {
+        "rank": 18,
+        "university": "University of California, Berkeley",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 84.3
+      },
+      {
+        "rank": 19,
+        "university": "Cornell University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 84.2
+      },
+      {
+        "rank": 20,
+        "university": "Northwestern University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 83.3
+      }
+    ]
+  },
+  {
+    "year": 2019,
+    "bars": [
+      {
+        "rank": 1,
+        "university": "University of Oxford",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 96
+      },
+      {
+        "rank": 2,
+        "university": "University of Cambridge",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 94.8
+      },
+      {
+        "rank": 3,
+        "university": "Stanford University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.7
+      },
+      {
+        "rank": 4,
+        "university": "Massachusetts Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.2
+      },
+      {
+        "rank": 5,
+        "university": "California Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.1
+      },
+      {
+        "rank": 6,
+        "university": "Harvard University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 93.6
+      },
+      {
+        "rank": 7,
+        "university": "Princeton University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 92.3
+      },
+      {
+        "rank": 8,
+        "university": "Yale University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 91.3
+      },
+      {
+        "rank": 9,
+        "university": "Imperial College London",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 90.3
+      },
+      {
+        "rank": 10,
+        "university": "The University of Chicago",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 90.2
+      },
+      {
+        "rank": 11,
+        "university": "ETH Zurich",
+        "country": "Switzerland",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 89.3
+      },
+      {
+        "rank": 12,
+        "university": "Johns Hopkins University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 89
+      },
+      {
+        "rank": 12,
+        "university": "University of Pennsylvania",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 89
+      },
+      {
+        "rank": 14,
+        "university": "UCL",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 87.8
+      },
+      {
+        "rank": 15,
+        "university": "University of California, Berkeley",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 87.7
+      },
+      {
+        "rank": 16,
+        "university": "Columbia University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 87.2
+      },
+      {
+        "rank": 17,
+        "university": "University of California, Los Angeles",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 86.4
+      },
+      {
+        "rank": 18,
+        "university": "Duke University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 85.4
+      },
+      {
+        "rank": 19,
+        "university": "Cornell University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 85.1
+      },
+      {
+        "rank": 20,
+        "university": "University of Michigan-Ann Arbor",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 84.1
+      }
+    ]
+  },
+  {
+    "year": 2020,
+    "bars": [
+      {
+        "rank": 1,
+        "university": "University of Oxford",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 95.4
+      },
+      {
+        "rank": 2,
+        "university": "California Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.5
+      },
+      {
+        "rank": 3,
+        "university": "University of Cambridge",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 94.4
+      },
+      {
+        "rank": 4,
+        "university": "Stanford University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.3
+      },
+      {
+        "rank": 5,
+        "university": "Massachusetts Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 93.6
+      },
+      {
+        "rank": 6,
+        "university": "Princeton University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 93.2
+      },
+      {
+        "rank": 7,
+        "university": "Harvard University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 93
+      },
+      {
+        "rank": 8,
+        "university": "Yale University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 91.7
+      },
+      {
+        "rank": 9,
+        "university": "The University of Chicago",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 90.2
+      },
+      {
+        "rank": 10,
+        "university": "Imperial College London",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 89.8
+      },
+      {
+        "rank": 11,
+        "university": "University of Pennsylvania",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 89.6
+      },
+      {
+        "rank": 12,
+        "university": "Johns Hopkins University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 89.2
+      },
+      {
+        "rank": 13,
+        "university": "University of California, Berkeley",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 88.3
+      },
+      {
+        "rank": 13,
+        "university": "ETH Zurich",
+        "country": "Switzerland",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 88.3
+      },
+      {
+        "rank": 15,
+        "university": "UCL",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 87.1
+      },
+      {
+        "rank": 16,
+        "university": "Columbia University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 87
+      },
+      {
+        "rank": 17,
+        "university": "University of California, Los Angeles",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 86.8
+      },
+      {
+        "rank": 18,
+        "university": "University of Toronto",
+        "country": "Canada",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 85.5
+      },
+      {
+        "rank": 19,
+        "university": "Cornell University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 85.1
+      },
+      {
+        "rank": 20,
+        "university": "Duke University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 84
+      }
+    ]
+  },
+  {
+    "year": 2021,
+    "bars": [
+      {
+        "rank": 1,
+        "university": "University of Oxford",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 95.6
+      },
+      {
+        "rank": 2,
+        "university": "Stanford University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.9
+      },
+      {
+        "rank": 3,
+        "university": "Harvard University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.8
+      },
+      {
+        "rank": 4,
+        "university": "California Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.5
+      },
+      {
+        "rank": 5,
+        "university": "Massachusetts Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.4
+      },
+      {
+        "rank": 6,
+        "university": "University of Cambridge",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 94
+      },
+      {
+        "rank": 7,
+        "university": "University of California, Berkeley",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 92.2
+      },
+      {
+        "rank": 8,
+        "university": "Yale University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 91.6
+      },
+      {
+        "rank": 9,
+        "university": "Princeton University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 91.5
+      },
+      {
+        "rank": 10,
+        "university": "The University of Chicago",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 90.3
+      },
+      {
+        "rank": 11,
+        "university": "Imperial College London",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 89.4
+      },
+      {
+        "rank": 12,
+        "university": "Johns Hopkins University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 89.2
+      },
+      {
+        "rank": 13,
+        "university": "University of Pennsylvania",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 88.9
+      },
+      {
+        "rank": 14,
+        "university": "ETH Zurich",
+        "country": "Switzerland",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 87.9
+      },
+      {
+        "rank": 15,
+        "university": "University of California, Los Angeles",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 87.1
+      },
+      {
+        "rank": 16,
+        "university": "UCL",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 86.9
+      },
+      {
+        "rank": 17,
+        "university": "Columbia University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 86.8
+      },
+      {
+        "rank": 18,
+        "university": "University of Toronto",
+        "country": "Canada",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 86
+      },
+      {
+        "rank": 19,
+        "university": "Cornell University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 85.3
+      },
+      {
+        "rank": 20,
+        "university": "Duke University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 84.8
+      },
+      {
+        "rank": 20,
+        "university": "Tsinghua University",
+        "country": "China",
+        "region": "East Asia",
+        "greaterChina": true,
+        "overall": 84.8
+      }
+    ]
+  },
+  {
+    "year": 2022,
+    "bars": [
+      {
+        "rank": 1,
+        "university": "University of Oxford",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 95.7
+      },
+      {
+        "rank": 2,
+        "university": "California Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 95
+      },
+      {
+        "rank": 2,
+        "university": "Harvard University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 95
+      },
+      {
+        "rank": 4,
+        "university": "Stanford University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.9
+      },
+      {
+        "rank": 5,
+        "university": "University of Cambridge",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 94.6
+      },
+      {
+        "rank": 5,
+        "university": "Massachusetts Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.6
+      },
+      {
+        "rank": 7,
+        "university": "Princeton University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 93.6
+      },
+      {
+        "rank": 8,
+        "university": "University of California, Berkeley",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 92.2
+      },
+      {
+        "rank": 9,
+        "university": "Yale University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 90.8
+      },
+      {
+        "rank": 10,
+        "university": "The University of Chicago",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 89.8
+      },
+      {
+        "rank": 11,
+        "university": "Columbia University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 89.6
+      },
+      {
+        "rank": 12,
+        "university": "Imperial College London",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 89.3
+      },
+      {
+        "rank": 13,
+        "university": "Johns Hopkins University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 88.4
+      },
+      {
+        "rank": 13,
+        "university": "University of Pennsylvania",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 88.4
+      },
+      {
+        "rank": 15,
+        "university": "ETH Zurich",
+        "country": "Switzerland",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 88.2
+      },
+      {
+        "rank": 16,
+        "university": "Peking University",
+        "country": "China",
+        "region": "East Asia",
+        "greaterChina": true,
+        "overall": 87.5
+      },
+      {
+        "rank": 16,
+        "university": "Tsinghua University",
+        "country": "China",
+        "region": "East Asia",
+        "greaterChina": true,
+        "overall": 87.5
+      },
+      {
+        "rank": 18,
+        "university": "University of Toronto",
+        "country": "Canada",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 87.2
+      },
+      {
+        "rank": 18,
+        "university": "UCL",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 87.2
+      },
+      {
+        "rank": 20,
+        "university": "University of California, Los Angeles",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 86.7
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "bars": [
+      {
+        "rank": 1,
+        "university": "University of Oxford",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 96.4
+      },
+      {
+        "rank": 2,
+        "university": "Harvard University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 95.2
+      },
+      {
+        "rank": 3,
+        "university": "University of Cambridge",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 94.8
+      },
+      {
+        "rank": 3,
+        "university": "Stanford University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.8
+      },
+      {
+        "rank": 5,
+        "university": "Massachusetts Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.2
+      },
+      {
+        "rank": 6,
+        "university": "California Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.1
+      },
+      {
+        "rank": 7,
+        "university": "Princeton University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 92.4
+      },
+      {
+        "rank": 8,
+        "university": "University of California, Berkeley",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 92.1
+      },
+      {
+        "rank": 9,
+        "university": "Yale University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 91.4
+      },
+      {
+        "rank": 10,
+        "university": "Imperial College London",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 90.4
+      },
+      {
+        "rank": 11,
+        "university": "Columbia University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 89.4
+      },
+      {
+        "rank": 11,
+        "university": "ETH Zurich",
+        "country": "Switzerland",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 89.4
+      },
+      {
+        "rank": 13,
+        "university": "The University of Chicago",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 88.9
+      },
+      {
+        "rank": 14,
+        "university": "University of Pennsylvania",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 88.8
+      },
+      {
+        "rank": 15,
+        "university": "Johns Hopkins University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 88.3
+      },
+      {
+        "rank": 16,
+        "university": "Tsinghua University",
+        "country": "China",
+        "region": "East Asia",
+        "greaterChina": true,
+        "overall": 88.2
+      },
+      {
+        "rank": 17,
+        "university": "Peking University",
+        "country": "China",
+        "region": "East Asia",
+        "greaterChina": true,
+        "overall": 88.1
+      },
+      {
+        "rank": 18,
+        "university": "University of Toronto",
+        "country": "Canada",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 87.4
+      },
+      {
+        "rank": 19,
+        "university": "National University of Singapore",
+        "country": "Singapore",
+        "region": "South & Southeast Asia",
+        "greaterChina": false,
+        "overall": 87.1
+      },
+      {
+        "rank": 20,
+        "university": "Cornell University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 85.9
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "bars": [
+      {
+        "rank": 1,
+        "university": "University of Oxford",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 98.5
+      },
+      {
+        "rank": 2,
+        "university": "Stanford University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 98
+      },
+      {
+        "rank": 3,
+        "university": "Massachusetts Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 97.9
+      },
+      {
+        "rank": 4,
+        "university": "Harvard University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 97.8
+      },
+      {
+        "rank": 5,
+        "university": "University of Cambridge",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 97.5
+      },
+      {
+        "rank": 6,
+        "university": "Princeton University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 96.9
+      },
+      {
+        "rank": 7,
+        "university": "California Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 96.5
+      },
+      {
+        "rank": 8,
+        "university": "Imperial College London",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 95.1
+      },
+      {
+        "rank": 9,
+        "university": "University of California, Berkeley",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.6
+      },
+      {
+        "rank": 10,
+        "university": "Yale University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.2
+      },
+      {
+        "rank": 11,
+        "university": "ETH Zurich",
+        "country": "Switzerland",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 93.1
+      },
+      {
+        "rank": 12,
+        "university": "Tsinghua University",
+        "country": "China",
+        "region": "East Asia",
+        "greaterChina": true,
+        "overall": 92.4
+      },
+      {
+        "rank": 13,
+        "university": "The University of Chicago",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 92.1
+      },
+      {
+        "rank": 14,
+        "university": "Peking University",
+        "country": "China",
+        "region": "East Asia",
+        "greaterChina": true,
+        "overall": 91.8
+      },
+      {
+        "rank": 15,
+        "university": "Johns Hopkins University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 91.1
+      },
+      {
+        "rank": 16,
+        "university": "University of Pennsylvania",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 91
+      },
+      {
+        "rank": 17,
+        "university": "Columbia University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 90.9
+      },
+      {
+        "rank": 18,
+        "university": "University of California, Los Angeles",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 90.1
+      },
+      {
+        "rank": 19,
+        "university": "National University of Singapore",
+        "country": "Singapore",
+        "region": "South & Southeast Asia",
+        "greaterChina": false,
+        "overall": 90
+      },
+      {
+        "rank": 20,
+        "university": "Cornell University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 89.5
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "bars": [
+      {
+        "rank": 1,
+        "university": "University of Oxford",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 98.5
+      },
+      {
+        "rank": 2,
+        "university": "Massachusetts Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 98.1
+      },
+      {
+        "rank": 3,
+        "university": "Harvard University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 97.7
+      },
+      {
+        "rank": 4,
+        "university": "Princeton University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 97.5
+      },
+      {
+        "rank": 5,
+        "university": "University of Cambridge",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 97.4
+      },
+      {
+        "rank": 6,
+        "university": "Stanford University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 97.2
+      },
+      {
+        "rank": 7,
+        "university": "California Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 96.3
+      },
+      {
+        "rank": 8,
+        "university": "University of California, Berkeley",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.5
+      },
+      {
+        "rank": 9,
+        "university": "Imperial College London",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 94.4
+      },
+      {
+        "rank": 10,
+        "university": "Yale University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.1
+      },
+      {
+        "rank": 11,
+        "university": "ETH Zurich",
+        "country": "Switzerland",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 93
+      },
+      {
+        "rank": 12,
+        "university": "Tsinghua University",
+        "country": "China",
+        "region": "East Asia",
+        "greaterChina": true,
+        "overall": 92.5
+      },
+      {
+        "rank": 13,
+        "university": "Peking University",
+        "country": "China",
+        "region": "East Asia",
+        "greaterChina": true,
+        "overall": 92
+      },
+      {
+        "rank": 14,
+        "university": "The University of Chicago",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 90.9
+      },
+      {
+        "rank": 14,
+        "university": "University of Pennsylvania",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 90.9
+      },
+      {
+        "rank": 16,
+        "university": "Johns Hopkins University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 90.7
+      },
+      {
+        "rank": 17,
+        "university": "National University of Singapore",
+        "country": "Singapore",
+        "region": "South & Southeast Asia",
+        "greaterChina": false,
+        "overall": 89.9
+      },
+      {
+        "rank": 18,
+        "university": "Columbia University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 89.8
+      },
+      {
+        "rank": 18,
+        "university": "University of California, Los Angeles",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 89.8
+      },
+      {
+        "rank": 20,
+        "university": "Cornell University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 89.2
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "bars": [
+      {
+        "rank": 1,
+        "university": "University of Oxford",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 98.2
+      },
+      {
+        "rank": 2,
+        "university": "Massachusetts Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 97.7
+      },
+      {
+        "rank": 3,
+        "university": "Princeton University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 97.2
+      },
+      {
+        "rank": 3,
+        "university": "University of Cambridge",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 97.2
+      },
+      {
+        "rank": 5,
+        "university": "Harvard University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 97.1
+      },
+      {
+        "rank": 5,
+        "university": "Stanford University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 97.1
+      },
+      {
+        "rank": 7,
+        "university": "California Institute of Technology",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 96.3
+      },
+      {
+        "rank": 8,
+        "university": "Imperial College London",
+        "country": "United Kingdom",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 94.7
+      },
+      {
+        "rank": 9,
+        "university": "University of California, Berkeley",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.4
+      },
+      {
+        "rank": 10,
+        "university": "Yale University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 94.1
+      },
+      {
+        "rank": 11,
+        "university": "ETH Zurich",
+        "country": "Switzerland",
+        "region": "Western Europe",
+        "greaterChina": false,
+        "overall": 93.1
+      },
+      {
+        "rank": 12,
+        "university": "Tsinghua University",
+        "country": "China",
+        "region": "East Asia",
+        "greaterChina": true,
+        "overall": 93
+      },
+      {
+        "rank": 13,
+        "university": "Peking University",
+        "country": "China",
+        "region": "East Asia",
+        "greaterChina": true,
+        "overall": 92.3
+      },
+      {
+        "rank": 14,
+        "university": "University of Pennsylvania",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 90.8
+      },
+      {
+        "rank": 15,
+        "university": "The University of Chicago",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 90.6
+      },
+      {
+        "rank": 16,
+        "university": "Johns Hopkins University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 90.1
+      },
+      {
+        "rank": 17,
+        "university": "National University of Singapore",
+        "country": "Singapore",
+        "region": "South & Southeast Asia",
+        "greaterChina": false,
+        "overall": 89.7
+      },
+      {
+        "rank": 18,
+        "university": "Cornell University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 89.5
+      },
+      {
+        "rank": 18,
+        "university": "University of California, Los Angeles",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 89.5
+      },
+      {
+        "rank": 20,
+        "university": "Columbia University",
+        "country": "United States",
+        "region": "North America",
+        "greaterChina": false,
+        "overall": 89.4
+      }
+    ]
+  }
+]
