@@ -1,75 +1,26 @@
-import type { ReactNode } from 'react';
-
 interface HeadlineProps {
   text: string;
   emphasis?: string;
   className?: string;
   as?: 'h1' | 'h2' | 'h3';
-  animate?: boolean;
 }
 
-export function Headline({
-  text,
-  emphasis,
-  className = '',
-  as: Tag = 'h1',
-  animate = true,
-}: HeadlineProps) {
-  const wipeClass = animate ? 'anim-wipe' : '';
-  const emClass = animate ? 'anim-emphasis' : '';
-
-  if (!emphasis) {
-    return (
-      <Tag className={className}>
-        <span className={wipeClass} style={{ display: 'inline-block' }}>
-          {text}
-        </span>
-      </Tag>
-    );
-  }
+/**
+ * Splits a headline on the emphasis word and sets it in italic serif.
+ * No animation. No copper highlight. Asterisk-style restraint.
+ */
+export function Headline({ text, emphasis, className = '', as: Tag = 'h1' }: HeadlineProps) {
+  if (!emphasis) return <Tag className={className}>{text}</Tag>;
   const i = text.toLowerCase().indexOf(emphasis.toLowerCase());
-  if (i < 0) {
-    return (
-      <Tag className={className}>
-        <span className={wipeClass} style={{ display: 'inline-block' }}>
-          {text}
-        </span>
-      </Tag>
-    );
-  }
-
+  if (i < 0) return <Tag className={className}>{text}</Tag>;
   const before = text.slice(0, i);
   const word = text.slice(i, i + emphasis.length);
   const after = text.slice(i + emphasis.length);
-
-  const parts: ReactNode[] = [];
-  if (before) {
-    parts.push(
-      <span key="b" className={wipeClass} style={{ display: 'inline-block' }}>
-        {before}
-      </span>,
-    );
-  }
-  parts.push(
-    <em
-      key="e"
-      className={`italic text-accent-deep font-normal ${emClass}`}
-      style={{ display: 'inline-block' }}
-    >
-      {word}
-    </em>,
+  return (
+    <Tag className={className}>
+      {before}
+      <em className="italic font-normal">{word}</em>
+      {after}
+    </Tag>
   );
-  if (after) {
-    parts.push(
-      <span
-        key="a"
-        className={wipeClass}
-        style={{ display: 'inline-block', animationDelay: '0.15s' }}
-      >
-        {after}
-      </span>,
-    );
-  }
-
-  return <Tag className={className}>{parts}</Tag>;
 }

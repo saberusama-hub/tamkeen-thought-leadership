@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { ScrollReveal } from './ScrollReveal';
 
 interface SectionHeaderProps {
   id?: string;
@@ -6,55 +7,60 @@ interface SectionHeaderProps {
   kicker?: string;
   title: string;
   italic?: string;
-  dark?: boolean;
   children?: ReactNode;
+  /** @deprecated dark sections were collapsed into a single neutral surface. */
+  dark?: boolean;
 }
 
-function renderTitleParts(title: string, italic?: string): ReactNode {
+/**
+ * Section header.
+ *
+ *   ── § 04 · The 2024 break
+ *   The most consequential year of the
+ *   decade was a methodology year, not
+ *   an institutional one.
+ *
+ * Section number marker in dark green (the single page accent point),
+ * kicker label in muted gray. No box, no coloured fill, no border-top rule.
+ */
+export function SectionHeader({ id, number, kicker, title, italic, children }: SectionHeaderProps) {
+  return (
+    <div id={id} className="mb-12 max-[640px]:mb-9">
+      <ScrollReveal className="flex items-center gap-3 mb-4">
+        <span aria-hidden className="block h-px w-8 bg-green-light" />
+        <div className="ui-caps font-sans text-[11px] tracking-[2px] uppercase font-semibold text-green">
+          § {number}
+        </div>
+        {kicker ? (
+          <>
+            <span aria-hidden className="block h-px w-3 bg-green-light/60" />
+            <div className="ui-caps font-sans text-[11px] tracking-[1.6px] uppercase text-mute font-medium">
+              {kicker}
+            </div>
+          </>
+        ) : null}
+      </ScrollReveal>
+      <ScrollReveal
+        as="h2"
+        delayMs={100}
+        className="font-serif font-medium text-[40px] leading-[1.15] -tracking-[0.4px] text-green m-0 max-w-[26ch] max-[760px]:text-[30px]"
+      >
+        {renderTitleParts(title, italic)}
+      </ScrollReveal>
+      {children}
+    </div>
+  );
+}
+
+function renderTitleParts(title: string, italic?: string) {
   if (!italic) return title;
   const idx = title.toLowerCase().indexOf(italic.toLowerCase());
   if (idx < 0) return title;
   return (
     <>
       {title.slice(0, idx)}
-      <em className="italic text-copper-deep font-medium">{title.slice(idx, idx + italic.length)}</em>
+      <em className="italic font-medium text-green-mid">{title.slice(idx, idx + italic.length)}</em>
       {title.slice(idx + italic.length)}
     </>
-  );
-}
-
-export function SectionHeader({ id, number, kicker, title, italic, dark = false, children }: SectionHeaderProps) {
-  return (
-    <div
-      id={id}
-      className={`flex items-start gap-7 mb-9 pb-[18px] border-b ${dark ? 'border-paper/20' : 'border-rule'} max-[760px]:flex-col max-[760px]:gap-3.5`}
-    >
-      <div
-        className={`flex-none basis-[90px] font-mono text-[11px] tracking-[1.5px] font-semibold uppercase pt-3.5 border-t-2 ${
-          dark ? 'text-tamkeen-mist border-tamkeen-mist' : 'text-tamkeen border-tamkeen'
-        } max-[760px]:pt-2.5`}
-      >
-        § {number}
-      </div>
-      <div className="flex-1">
-        {kicker ? (
-          <div
-            className={`font-sans text-[11px] tracking-[1.8px] uppercase font-bold mb-2.5 ${
-              dark ? 'text-tamkeen-mist' : 'text-ink-soft'
-            }`}
-          >
-            {kicker}
-          </div>
-        ) : null}
-        <h2
-          className={`font-serif font-medium text-[42px] leading-[1.18] -tracking-[0.4px] m-0 mb-3.5 max-w-[920px] max-[760px]:text-[30px] ${
-            dark ? 'text-paper' : 'text-tamkeen'
-          }`}
-        >
-          {renderTitleParts(title, italic)}
-        </h2>
-        {children}
-      </div>
-    </div>
   );
 }

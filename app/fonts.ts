@@ -1,8 +1,17 @@
-import { Inter, JetBrains_Mono, Source_Serif_4 } from 'next/font/google';
+import { Inter, Source_Serif_4 } from 'next/font/google';
+
+/**
+ * Two families. That is all.
+ *
+ *   sourceSerif: body and headlines (varying weights).
+ *                Substitutes Asterisk's "Noe Text" / "Noe Standard" pairing.
+ *   inter:       small UI labels, datelines, captions, footer.
+ *                Substitutes Asterisk's "Atlas Grotesk".
+ */
 
 export const sourceSerif = Source_Serif_4({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
   display: 'swap',
   variable: '--font-source-serif',
@@ -10,14 +19,7 @@ export const sourceSerif = Source_Serif_4({
 
 export const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-  variable: '--font-inter',
-});
-
-export const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
   weight: ['400', '500', '600'],
   display: 'swap',
-  variable: '--font-jetbrains-mono',
+  variable: '--font-inter',
 });

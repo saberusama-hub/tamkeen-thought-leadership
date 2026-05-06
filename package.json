@@ -11,7 +11,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "preprocess": "tsx scripts/preprocess-rankings.ts",
+    "claims-audit": "tsx scripts/claims-audit.ts",
+    "dom-checks": "bash scripts/dom-checks.sh"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
@@ -36,6 +39,8 @@
     "postcss": "^8.5.1",
     "prettier": "^3.4.2",
     "tailwindcss": "^4.0.0",
-    "typescript": "^5.7.3"
+    "tsx": "^4.21.0",
+    "typescript": "^5.7.3",
+    "xlsx": "^0.18.5"
   }
 }

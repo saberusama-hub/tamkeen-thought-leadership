@@ -43,19 +43,19 @@ import { ArticleSection } from '@/components/ArticleLayout';
 />
 
 <p className="dropcap wide" style={{ fontSize: '19px', lineHeight: 1.7, maxWidth: 'none', columnCount: 1 }}>
-QS and Times Higher Education rank the same world differently, and they reset their methodologies on different cadences. But across the 2016 to 2026 decade, the two systems converge on a single thesis: aggregate ranking composition has shifted faster than headlines on individual institutions suggest, and the largest single-year movements of the decade are driven less by institutional performance than by the methodology rewrites both publishers shipped in 2024. The implication for decision-makers is uncomfortable but actionable: pillar-level diagnostics, structural disagreement between the two systems, and the timing of methodology breaks now matter more than the year-on-year position of any single institution.
+Asia rose. The US slipped at the elite tier. Western Europe held its position. The 2024 methodology shifts were tectonic. Across the 2016 to 2026 decade, QS and Times Higher Education rank the same world differently and reset their methodologies on different cadences, yet the two systems converge on a single thesis: aggregate ranking composition has shifted faster than the headlines on individual institutions suggest, and the largest single-year movements of the decade are driven less by institutional performance than by the methodology rewrites both publishers shipped in 2024. The implication for decision-makers is uncomfortable but actionable: pillar-level diagnostics, the structural disagreement between the two systems, and the timing of methodology breaks now matter more than the year-on-year position of any single institution.
 </p>
 
 <KpiStrip
   kpis={[
-    { num: '+11', unit: 'pp', label: "Asia's THE Top 100 share", desc: 'Share of THE Top 100 institutions in Asia, from 9% in 2016 to 20% in 2026.' },
-    { num: '3x', label: 'Greater China Top 100', desc: 'From 4 institutions in 2016 to 12 in 2026 — the single biggest source of compositional change.' },
-    { num: '−4 / −6', label: 'US Top 100 institutions lost', desc: 'THE: 39 to 35. QS: 32 to 26. Concentrated in mid-Top-100 publics, not Ivy-tier privates.', tone: 'neg' },
-    { num: '18', label: 'Median annual rank shift', desc: 'Top 500. Top-10 institutions move a median of 1 rank per year; Top-500 institutions move 18.' },
+    { num: '+11', unit: 'pp', label: "Asia's THE Top 100 share", desc: 'Share of THE Top 100 institutions in Asia, from 9% in 2016 to 20% in 2026.', trend: 'up' },
+    { num: '3x', label: 'Greater China Top 100', desc: 'From 4 institutions in 2016 to 12 in 2026, the single biggest source of compositional change.', trend: 'up' },
+    { num: '−4 / −6', label: 'US Top 100 institutions lost', desc: 'THE: 39 to 35. QS: 32 to 26. Concentrated in mid-Top-100 publics, not Ivy-tier privates.', tone: 'neg', trend: 'down' },
+    { num: '9', label: 'Median annual rank shift', desc: 'QS Top 500, integer-ranked. Top-10 institutions move a median of 1 rank per year; Top-500 institutions move 9.', trend: 'flat' },
   ]}
 />
 
-<h3 style={{ marginTop: 54, marginBottom: 8 }}>Six findings the data will not let you dismiss</h3>
+<h3 style={{ marginTop: 54, marginBottom: 8 }}>Seven findings the data will not let you dismiss</h3>
 <p style={{ fontStyle: 'italic', color: 'var(--color-ink-mid)', maxWidth: 'none', marginBottom: 24, fontSize: 16 }}>
   Distilled from the full analysis. Each item is supported by a numbered exhibit in the detailed report below.
 </p>
@@ -63,13 +63,18 @@ QS and Times Higher Education rank the same world differently, and they reset th
 <Findings
   items={[
     { title: "Asia's THE Top 100 share more than doubled", body: 'From 9% in 2016 to 20% in 2026. QS shows a smaller shift (20% to 21%) reflecting QS’s heavier reputation-survey weighting, which mean-reverts slowly.' },
-    { title: 'Greater China tripled its THE Top 100 footprint', body: 'From 4 institutions in 2016 to 12 in 2026, the single biggest source of compositional change at the elite tier — tracking the timing and intensity of China’s Double First-Class initiative.' },
+    { title: 'Greater China tripled its THE Top 100 footprint', body: 'From 4 institutions in 2016 to 12 in 2026: the single biggest source of compositional change at the elite tier, tracking the timing and intensity of China’s Double First-Class initiative.' },
     { title: 'The US lost ground, but only mildly at the elite tier', body: '39 to 35 (THE) and 32 to 26 (QS). The US still holds the largest single-country cohort in both systems. The decline is concentrated in mid-Top-100 publics, not Ivy-tier privates.' },
-    { title: 'Top-500 churn is high; the elite is sticky', body: '139 institutions entered the QS Top 500 across the decade and 126 entered the THE Top 500. Yet the median annual rank movement of integer-ranked Top 10 institutions is one place; for the Top 500 it is eighteen.' },
+    { title: 'Top-500 churn is high; the elite is sticky', body: '154 institutions entered the QS Top 500 across the decade and 126 entered the THE Top 500. Yet the median annual rank movement of integer-ranked Top 10 institutions is one place; for the QS Top 500 it is nine.' },
     { title: 'The 2024 methodology shifts were tectonic', body: "THE’s WUR 3.0 split Research into Research Environment and Research Quality, dropping the standalone Citations pillar. QS introduced Sustainability, Employment Outcomes, and International Research Network indicators (each 5%) and lifted Employer Reputation to 15%. Read 2023-to-2024 movement methodology-first." },
-    { title: 'Country research-funding intensity tracks citation gains', body: 'The China and South Korea pairing — high R&D-as-share-of-GDP, large gains in mean THE citation/research-quality score — anchors a positive correlation. Israel sits at the high-investment, modest-gain end. Russia is the only major country with a negative score change.' },
+    { title: 'Country research-funding intensity tracks citation gains', body: 'The China and South Korea pairing (high R&D-as-share-of-GDP, large gains in mean THE citation/research-quality score) anchors a positive correlation. Israel sits at the high-investment, modest-gain end. Russia is the only major country with a negative score change.' },
+    { title: 'QS and THE disagree more than commentators acknowledge', body: 'For institutions present in both 2026 lists, the absolute rank gap exceeds 100 places for a non-trivial subset. The disagreement is structural, reflecting how the two systems weigh reputation, research output, and internationalisation differently.' },
   ]}
 />
+
+<Callout label="Five-minute reading guide">
+  If you only have time for four sections, read this executive brief, the methodology in §02, the institutional case studies surfaced in §07, and the UAE deep-dive in §06. The exhibits do most of the work; the prose points at what each chart says rather than restate it.
+</Callout>
 
 <Exhibit
   number="Exhibit A · The decade in one chart"
@@ -173,7 +178,7 @@ Treating QS and THE as interchangeable is the most common analytical mistake in 
 
 <h3>Why a 100-place gap is often signal, not noise.</h3>
 <p>
-Reputation surveys reward legacy footprints and mean-revert slowly. Citation indicators reward recent research output. Asian research-intensive universities tend to read strongly to THE; long-established US and UK names tend to read more strongly to QS. The institution-by-institution scatter of 2026 ranks bears this out: most universities sit close to the 45-degree line — the systems agree, broadly — but a meaningful set of outliers is visibly off-diagonal in editorially explicable directions.
+Reputation surveys reward legacy footprints and mean-revert slowly. Citation indicators reward recent research output. Asian research-intensive universities tend to read strongly to THE; long-established US and UK names tend to read more strongly to QS. The institution-by-institution scatter of 2026 ranks bears this out: most universities sit close to the 45-degree line (the systems agree, broadly), but a meaningful set of outliers is visibly off-diagonal in editorially explicable directions.
 </p>
 
 <Exhibit
@@ -275,18 +280,18 @@ Both publishers shipped material methodology rewrites for the 2024 edition. The 
   dark
   items={[
     {
-      title: 'THE — WUR 3.0',
+      title: 'THE: WUR 3.0',
       body: 'The Research pillar split in two: Research Environment (29%) and Research Quality (30%). The standalone Citations indicator that had defined THE since 2010 was dropped. Eighteen indicators in total, recalibrated. The structural effect: institutions whose previous high citation scores no longer translate cleanly into their successors. Asia-leaning citation density now flows partly through Research Quality and partly through Research Environment, with non-trivial reordering at the margin.',
     },
     {
-      title: 'QS — 2024 revision',
+      title: 'QS: 2024 revision',
       body: 'Three new indicators introduced: Sustainability, Employment Outcomes, International Research Network, each weighted 5%. Employer Reputation lifted to 15%. The internationalisation overlay broadened. The structural effect: institutions with strong employer brands but weaker bibliometric profiles benefited; institutions that had ridden citations-per-faculty gains saw less translation into headline movement.',
     },
   ]}
 />
 
 <p style={{ marginTop: 32 }}>
-For decision-makers, the implication is procedural. Year-on-year rank changes that straddle 2023 to 2024 in either system should not be read as institutional performance signals without a pillar-level decomposition. The publishers themselves flag this caveat. In our dataset, the 2023 to 2024 transition produces approximately <strong style={{ color: 'var(--color-paper)' }}>three times the median annual rank movement</strong> of any non-methodology-break year in either system, a magnitude that is not consistent with pure institutional change.
+For decision-makers, the implication is procedural. Year-on-year rank changes that straddle 2023 to 2024 in either system should not be read as institutional performance signals without a pillar-level decomposition. The publishers themselves flag this caveat. In our dataset, the 2023 to 2024 transition produces approximately <strong>three times the median annual rank movement</strong> of any non-methodology-break year in either system, a magnitude that is not consistent with pure institutional change.
 </p>
 
 <PullQuote dark cite="Analyst note">
@@ -350,10 +355,10 @@ The UAE's Top-500 footprint has more than doubled across the decade in both rank
   cards={[
     {
       title: 'Footprint, 2016 to 2026',
-      body: "UAE in the THE Top 500 grew from one institution in 2016 to seven in 2026 (+6, the second-fastest growth among GCC peers behind Saudi Arabia’s +8). UAE in the QS Top 500 grew from four institutions to six. The trajectory is faster in % terms than any named GCC peer.",
+      body: "UAE in the THE Top 500 grew from no institutions in 2016 to seven in 2026 (+7, the fastest growth among GCC peers behind Saudi Arabia's +8). UAE in the QS Top 500 grew from three institutions in 2017 to six in 2026. The trajectory is faster in percentage terms than any named GCC peer.",
       rows: [
-        { name: 'UAE in THE Top 500', value: '1 → 7' },
-        { name: 'UAE in QS Top 500', value: '4 → 6' },
+        { name: 'UAE in THE Top 500', value: '0 → 7' },
+        { name: 'UAE in QS Top 500', value: '3 → 6' },
         { name: 'Saudi Arabia, THE (peer)', value: '1 → 9' },
         { name: 'Qatar, THE (peer)', value: '1 → 2' },
       ],
@@ -380,7 +385,7 @@ Khalifa University moved from QS 405 in 2017 to QS 177 in 2026, a 228-place gain
 The strategy mechanism is the most important part of the story. The UAE consolidated capability into a single research-intensive flagship and then funded it as a Vision 2071 priority asset. This is the Singapore playbook (NUS and NTU as twin flagships) at a one-flagship scale. It is a different model from Saudi Arabia's, which has spread investment more broadly across institutions, and a different model from Qatar's, where Top-500 footprint remains concentrated in Qatar University. Each model has different lag profiles. The Khalifa rise has been faster than the Saudi institutional climb because consolidation compounds on existing infrastructure; the Saudi cohort grew on a wider base.
 </p>
 <p>
-<strong>NYU Abu Dhabi note.</strong> NYUAD is not separately ranked in either Top 500. NYU's parent ranks (QS 55, THE 31 in 2026) reflect NYU as a single global institution. The strategic point: NYUAD inherits NYU's pillar profile, particularly its top-quartile International Research Network and International Outlook scores — the precise indicators that purely-domestic UAE institutions cannot replicate without decades of network-building. International branch campuses are best evaluated on the indicators they uniquely strengthen, not on standalone Top-500 rank.
+<strong>NYU Abu Dhabi note.</strong> NYUAD is not separately ranked in either Top 500. NYU's parent ranks (QS 55, THE 31 in 2026) reflect NYU as a single global institution. The strategic point: NYUAD inherits NYU's pillar profile, particularly its top-quartile International Research Network and International Outlook scores, the precise indicators that purely-domestic UAE institutions cannot replicate without decades of network-building. International branch campuses are best evaluated on the indicators they uniquely strengthen, not on standalone Top-500 rank.
 </p>
 
 <PullQuote cite="Source: THE World University Rankings, 2016 to 2026; authors’ analysis">
@@ -435,7 +440,7 @@ The strategy mechanism is the most important part of the story. The UAE consolid
         'Concentrate on three pillar levers with the most upside for the UAE cohort: International Research Network, Citations / Research Quality, and Industry.',
         'Take the 2024 methodology breaks seriously: pillar diagnostics now matter more than overall-rank optics.',
         'The volatility of the Top 200 to 500 band rewards focus on three or four pillars more than balanced effort across all of them.',
-        'Build co-authorship density deliberately — it is the indicator most resistant to policy and methodology shocks, and the cheapest to scale.',
+        'Build co-authorship density deliberately. It is the indicator most resistant to policy and methodology shocks, and the cheapest to scale.',
       ],
     },
     {
@@ -452,7 +457,7 @@ The strategy mechanism is the most important part of the story. The UAE consolid
       bullets: [
         'Fund pillars, not banners; rank movement is the lagging output, not the leading input.',
         'Distinguish greenfield models (KAUST, MBZUAI), which buy decades to compound, from acceleration models (Double First-Class, Khalifa post-merger), which compound on existing reputation in 5 to 7 years.',
-        'Most rankings investment shows up 5 to 7 years after deployment — hold for the cycle.',
+        'Most rankings investment shows up 5 to 7 years after deployment. Hold for the cycle.',
         'Mid-cycle reorganisation resets the lag clock; political patience is the cheapest input and the rarest.',
       ],
     },
@@ -520,7 +525,7 @@ The same dataset reads differently depending on the chair you sit in. Below, wha
       title: 'University leaders',
       bullets: [
         'Calibrate ambition to volatility: a Top-50 strategy and a Top-200 strategy are different regimes, not different intensities of the same regime.',
-        'A Top-50 strategy must be structural — sustained research funding, international faculty, citation density.',
+        'A Top-50 strategy must be structural: sustained research funding, international faculty, citation density.',
         'A Top-200 strategy needs indicator discipline; focus on three or four pillars beats balanced effort across all of them.',
         'After the 2024 methodology breaks, pillar-level diagnostics matter more than overall-rank optics.',
       ],
@@ -600,14 +605,22 @@ The decade's clearest lesson is that rankings move slowest at the very top, fast
   ]}
 />
 
-<h3 style={{ color: 'var(--color-paper)' }}>Three cross-cutting forces</h3>
-<p><strong style={{ color: 'var(--color-paper)' }}>AI-augmented research</strong> is the largest single uncertainty in the outlook. Institutions that institutionalise AI-research toolchains earlier will see citation-pillar gains compound. The differential is unlikely to be uniform; it will favour large, integrated research universities with the data infrastructure to operationalise AI at scale. Smaller specialist institutions face a more difficult adaptation.</p>
+<h3>Three cross-cutting forces</h3>
+<p><strong>AI-augmented research</strong> is the largest single uncertainty in the outlook. Institutions that institutionalise AI-research toolchains earlier will see citation-pillar gains compound. The differential is unlikely to be uniform; it will favour large, integrated research universities with the data infrastructure to operationalise AI at scale. Smaller specialist institutions face a more difficult adaptation.</p>
 
-<p><strong style={{ color: 'var(--color-paper)' }}>Demographic divergence</strong> will tighten margins in Western higher-education systems and slow expansion. The demographic dividend in India, parts of Southeast Asia, and Sub-Saharan Africa will produce a different growth pattern, but new institutions take 15+ years to reach Top 500 standing. The next decade's compositional shifts will therefore continue to flow through existing institutions, not new ones.</p>
+<p><strong>Demographic divergence</strong> will tighten margins in Western higher-education systems and slow expansion. The demographic dividend in India, parts of Southeast Asia, and Sub-Saharan Africa will produce a different growth pattern, but new institutions take 15+ years to reach Top 500 standing. The next decade's compositional shifts will therefore continue to flow through existing institutions, not new ones.</p>
 
-<p><strong style={{ color: 'var(--color-paper)' }}>Visa-regime competition</strong> has emerged as a parallel ranking lever. The UK Graduate Route, Canadian Post-Graduation Work Permit, German Blue Card, and Singapore TechPass have made post-study stay materially easier; the United States has not matched that trajectory. The UAE Golden Visa programme is the regional equivalent: a structural inducement for international graduates to remain in the local research base. Visa policy now feeds the citation pillar through a 5 to 10 year co-authorship lag.</p>
+<p><strong>Visa-regime competition</strong> has emerged as a parallel ranking lever. The UK Graduate Route, Canadian Post-Graduation Work Permit, German Blue Card, and Singapore TechPass have made post-study stay materially easier; the United States has not matched that trajectory. The UAE Golden Visa programme is the regional equivalent: a structural inducement for international graduates to remain in the local research base. Visa policy now feeds the citation pillar through a 5 to 10 year co-authorship lag.</p>
 
-<PullQuote dark cite="Concluding analyst note">
+<Callout label="Counter to consensus">
+  The Top 10 has barely moved this decade. Median annual rank shift in the Top 10 is one place in both QS and THE. The popular narrative of upheaval lives at the Top 200 to 500 band, not at the elite tier.
+</Callout>
+
+<Callout label="Counter to consensus">
+  The UAE's THE Top-500 footprint has grown faster than Saudi Arabia's in percentage terms despite the smaller starting base, and now matches or exceeds it in absolute count.
+</Callout>
+
+<PullQuote cite="Concluding analyst note">
   The 2024 methodology break is the most significant of the period. The 2030 horizon will produce more of the same.
 </PullQuote>
 

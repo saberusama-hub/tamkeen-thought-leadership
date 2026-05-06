@@ -1,38 +1,61 @@
 @import 'tailwindcss';
 
+/*
+ * Tamkeen Thought Leadership: minimalist redesign.
+ *
+ * Design language: Asterisk Magazine restraint, FT/Economist editorial DNA,
+ * Tamkeen dark green as the only chromatic accent.
+ *
+ * Palette:
+ *   green   #003d2b   wordmark, links, section markers (the only accent)
+ *   ink     #111110   body text
+ *   paper   #faf6ee   page background (cream)
+ *   mute    #6b6862   captions, datelines, small labels
+ *   rule    #d8d3c4   hairline rules
+ *
+ * Type:
+ *   Source Serif 4: body and headlines (single family, varying weights)
+ *   Inter:          labels, datelines, captions, footer
+ *
+ * Sizes (the only allowed text-* tokens):
+ *   18  body
+ *   16  caption / small body
+ *   12  ui-label (Inter, tracked, uppercase)
+ *   28  h3
+ *   42  h2
+ *   60  h1
+ *
+ * Anything outside this set should be a deliberate, justified one-off.
+ */
+
 @theme {
   --font-serif: var(--font-source-serif), 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
   --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, Menlo, monospace;
 
-  --color-ink: #1a1a14;
-  --color-ink-mid: #4a4a40;
-  --color-ink-soft: #75705f;
+  /*
+   * Green family. Dark green is the masthead, the wordmark and links.
+   * Lighter mint, mist, and pale shades are used sparingly across the
+   * page (subtle hover states, secondary accents, KPI second-tier numbers).
+   */
+  --color-green: #003d2b;
+  --color-green-deep: #002419;
+  --color-green-mid: #1f5a45;
+  --color-green-light: #6b9f88;
+  --color-green-mist: #a8c2b4;
+  --color-green-pale: #d4e4dd;
 
+  --color-ink: #111110;
   --color-paper: #faf6ee;
-  --color-paper-shade: #f3ecdb;
-  --color-paper-darkest: #ebe2cd;
+  --color-mute: #6b6862;
+  --color-rule: #d8d3c4;
 
-  --color-rule: #c9bfa8;
-  --color-rule-soft: #dcd3bb;
-  --color-rule-faint: #e8e0c9;
-
+  /* Aliases retained for components that still use legacy names. */
   --color-tamkeen: #003d2b;
   --color-tamkeen-deep: #002419;
   --color-tamkeen-mid: #1f5a45;
   --color-tamkeen-light: #6b9f88;
   --color-tamkeen-mist: #a8c2b4;
   --color-tamkeen-pale: #d4e4dd;
-
-  --color-accent: #b5895c;
-  --color-accent-deep: #8c6840;
-  --color-copper: #b5895c;
-  --color-copper-deep: #8c6840;
-
-  --color-neg: #a0342a;
-  --color-neg-pale: #e8c7c2;
-  --color-pos-pale: #c4d8cc;
-  --color-pos-mid: #7aab94;
 }
 
 :root {
@@ -47,21 +70,33 @@ body {
   background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-serif);
-  font-size: 17px;
-  line-height: 1.65;
+  font-size: 18px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-feature-settings: 'kern' 1, 'liga' 1, 'onum' 1;
+  /*
+   * onum: oldstyle figures (1, 2, 3 sit below the x-height; warmer, print-feel)
+   * pnum: proportional figures (kerned for inline reading)
+   * kern + liga: standard
+   * Tabular contexts (KPI strip numbers, DataTable cells) override with
+   *   font-variant-numeric: tabular-nums + lnum to keep columns aligned.
+   */
+  font-feature-settings: 'kern' 1, 'liga' 1, 'onum' 1, 'pnum' 1;
 }
 
 ::selection {
-  background: rgba(181, 137, 92, 0.32);
+  background: rgba(0, 61, 43, 0.18);
   color: var(--color-ink);
 }
 
 a {
-  color: inherit;
+  color: var(--color-green);
   text-decoration: none;
+  border-bottom: 1px solid rgba(0, 61, 43, 0.3);
+  transition: border-color 0.15s ease;
+}
+a:hover {
+  border-bottom-color: var(--color-green);
 }
 
 button {
@@ -71,6 +106,27 @@ button {
   background: none;
   color: inherit;
   padding: 0;
+}
+
+/*
+ * .ui-caps — small-caps for tracked uppercase UI labels (datelines, "Finding",
+ * "Exhibit", "By", "§ NN", footer nav). The combination of `smcp` (lowercase
+ * → small caps) and `c2sc` (uppercase → small caps) plus a small font-size
+ * boost gives proper editorial small caps where the OpenType fonts support
+ * it. Source Serif 4 supports both; Inter doesn't have true small caps so
+ * Inter labels remain visually uppercase via `text-transform`.
+ */
+.ui-caps {
+  font-feature-settings: 'kern' 1, 'liga' 1, 'smcp' 1, 'c2sc' 1;
+}
+
+/*
+ * Tabular numerals for any column of numbers (KPI cells, table cells).
+ * Use this class instead of inline font-feature-settings so it is consistent.
+ */
+.tabular-figures {
+  font-feature-settings: 'kern' 1, 'liga' 1, 'lnum' 1, 'tnum' 1;
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
 /* Skip link */
@@ -89,231 +145,212 @@ button {
   width: auto;
   height: auto;
   padding: 12px 16px;
-  background: var(--color-tamkeen);
+  background: var(--color-green);
   color: var(--color-paper);
   z-index: 100;
   font-family: var(--font-sans);
   font-size: 12px;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.4px;
   text-transform: uppercase;
   border: none;
 }
 
-/* Article prose defaults — apply to ArticleLayout content container */
+/*
+ * Article prose. One typographic system. No dark variants. No alt variants.
+ * Every section is the same neutral cream surface.
+ */
+
 .prose-article {
   font-family: var(--font-serif);
   color: var(--color-ink);
 }
+
 .prose-article p {
-  margin: 0 0 18px;
-  max-width: 780px;
+  margin: 0 0 24px;
+  max-width: 68ch;
+  font-size: 18px;
+  line-height: 1.65;
   color: var(--color-ink);
 }
 .prose-article p.wide {
   max-width: none;
 }
+
+/*
+ * Print-style paragraph indents: every body paragraph after the first one
+ * in a section gets a 1.5em first-line indent. Leads, dropcap paragraphs,
+ * and the first paragraph of any section keep flush left (no indent), which
+ * is what print typesetters do. The :not() chain below excludes the special
+ * paragraphs and uses the adjacent-sibling combinator (p + p) to skip the
+ * first one in each block.
+ */
+.prose-article section p + p:not(.lead):not(.dropcap):not(.wide):not(.no-indent) {
+  text-indent: 1.5em;
+  margin-top: -4px;
+}
+
+/* Subtle first-line emphasis on the first plain paragraph of each section,
+ * skipping leads and dropcap paragraphs which have their own opener treatment. */
+.prose-article section > p:first-of-type:not(.lead):not(.dropcap)::first-line,
+.prose-article section > p.first-line-emphasis::first-line {
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+.prose-article p a,
+.prose-article li a {
+  color: var(--color-green);
+  border-bottom-color: rgba(0, 61, 43, 0.35);
+}
+
 .prose-article h2 {
   font-family: var(--font-serif);
   font-weight: 500;
   font-size: 42px;
-  line-height: 1.18;
+  line-height: 1.15;
   letter-spacing: -0.4px;
-  color: var(--color-tamkeen);
-  margin: 0 0 14px;
-  max-width: 920px;
+  color: var(--color-green);
+  margin: 0 0 18px;
+  max-width: 30ch;
 }
 .prose-article h2 em {
   font-style: italic;
-  color: var(--color-copper-deep);
+  color: var(--color-green-mid);
   font-weight: 500;
 }
+
 .prose-article h3 {
   font-family: var(--font-serif);
   font-weight: 600;
   font-size: 24px;
   line-height: 1.3;
-  color: var(--color-tamkeen);
+  color: var(--color-green);
   margin: 36px 0 12px;
   letter-spacing: -0.2px;
 }
+
 .prose-article h4 {
   font-family: var(--font-sans);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 11px;
   letter-spacing: 1.6px;
   text-transform: uppercase;
-  color: var(--color-tamkeen);
-  margin: 24px 0 10px;
+  color: var(--color-mute);
+  margin: 24px 0 8px;
 }
+
 .prose-article .lead {
   font-family: var(--font-serif);
-  font-size: 21px;
-  line-height: 1.55;
+  font-size: 22px;
+  line-height: 1.5;
   color: var(--color-ink);
-  max-width: 820px;
-  margin: 0 0 28px;
+  max-width: 56ch;
+  margin: 0 0 32px;
   font-style: italic;
   font-weight: 400;
 }
+
 .prose-article .dropcap::first-letter {
   font-family: var(--font-serif);
   font-weight: 600;
-  font-size: 78px;
+  font-size: 64px;
   float: left;
-  line-height: 0.82;
-  padding: 8px 14px 0 0;
-  color: var(--color-tamkeen);
+  line-height: 0.88;
+  padding: 6px 12px 0 0;
+  color: var(--color-green);
   font-style: normal;
 }
 
-/*
- * Dark-section overrides for the article body.
- *
- * The unlayered .prose-article rules above set colors like
- * `var(--color-ink)` and `var(--color-tamkeen)` directly. Tailwind utility
- * classes (`text-paper`, `text-tamkeen-light` etc.) live in
- * `@layer utilities`, which loses to anything unlayered. Without these
- * overrides, every paragraph, lead, h2/h3/h4 and stake-card title inside
- * a `<section data-variant="dark">` renders as dark text on the dark
- * green background — i.e. visually green-on-green and barely readable.
- *
- * These selectors carry higher specificity than `.prose-article p` etc.,
- * so they win in unlayered cascade and force paper-tinted colours
- * everywhere inside dark sections.
- */
-.prose-article section[data-variant='dark'] p,
-.prose-article section[data-variant='dark'] li {
-  color: rgba(250, 246, 238, 0.85);
+.prose-article ul,
+.prose-article ol {
+  font-size: 18px;
+  line-height: 1.55;
+  margin: 0 0 22px;
+  padding-left: 24px;
+  max-width: 68ch;
 }
-.prose-article section[data-variant='dark'] p.lead,
-.prose-article section[data-variant='dark'] .lead {
-  color: rgba(250, 246, 238, 0.92);
-}
-.prose-article section[data-variant='dark'] strong {
-  color: var(--color-paper);
-  font-weight: 600;
-}
-.prose-article section[data-variant='dark'] em {
-  color: var(--color-copper);
-}
-.prose-article section[data-variant='dark'] h2 {
-  color: var(--color-paper);
-}
-.prose-article section[data-variant='dark'] h2 em {
-  color: var(--color-copper);
-}
-.prose-article section[data-variant='dark'] h3 {
-  color: var(--color-paper);
-}
-.prose-article section[data-variant='dark'] h4 {
-  /* Use paper for h4 in dark sections so StakeholderGrid card titles
-     ("THE — WUR 3.0", "QS — 2024 revision") read as bright label text
-     against the dark green section, not as muted mid-green. */
-  color: var(--color-paper);
-}
-.prose-article section[data-variant='dark'] a {
-  color: var(--color-tamkeen-light);
-  border-bottom-color: rgba(107, 159, 136, 0.35);
-}
-.prose-article section[data-variant='dark'] hr,
-.prose-article section[data-variant='dark'] .rule-thin {
-  background: rgba(250, 246, 238, 0.18);
+.prose-article ul li,
+.prose-article ol li {
+  margin-bottom: 8px;
 }
 
-/* Generic spacers */
+/* Generic spacers (used in MDX) */
 .rule-thin {
-  height: 1px;
-  background: var(--color-rule);
+  height: 0;
   border: none;
-  margin: 48px 0;
-}
-.rule-green {
-  height: 2px;
-  background: var(--color-tamkeen);
-  border: none;
+  border-top: 1px solid var(--color-rule);
   margin: 48px 0;
 }
 
 section {
-  /* Clears the sticky masthead (Folio + wordmark row + TabNav + ArticleNav)
-     so anchor jumps don't land behind the sticky header. */
-  scroll-margin-top: 180px;
+  /*
+   * Sticky header (Folio + wordmark row + ArticleNav) is approximately
+   * 150px tall on desktop, 120px on mobile. Add a few pixels for breathing
+   * room so anchor jumps land just below the header, not behind it.
+   */
+  scroll-margin-top: 160px;
 }
 @media (max-width: 760px) {
   section {
-    scroll-margin-top: 150px;
+    scroll-margin-top: 130px;
   }
 }
 
-/* ---------- Animations ---------- */
 /*
- * line-wipe: insets extend -15% above/below the line-box so descenders
- * (g, y, p, q) and ascenders aren't clipped by the inline-block clip-path
- * when the headline uses tight leading (1.02–1.1). The horizontal animation
- * is unaffected.
+ * ScrollReveal: applied via the <ScrollReveal> client component. Elements
+ * fade and lift in once their bounding box enters the viewport. Uses
+ * `prefers-reduced-motion` to short-circuit to a no-op.
  */
-@keyframes line-wipe {
-  from {
-    clip-path: inset(-15% 100% -15% 0);
-  }
-  to {
-    clip-path: inset(-15% 0 -15% 0);
-  }
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
 }
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.anim-wipe {
-  animation: line-wipe 0.65s cubic-bezier(0.65, 0, 0.35, 1) both;
+/*
+ * Staggered list reveal: items inside a `.reveal-stagger` container fade
+ * in with a small delay per index. Set --i: 0, 1, 2, … on each item via
+ * the inline style attribute.
+ */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) calc(var(--i, 0) * 80ms),
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) calc(var(--i, 0) * 80ms);
 }
-.anim-emphasis {
-  animation: fade-in 0.6s ease 0.45s both;
-}
-.anim-up {
-  animation: fade-up 0.5s cubic-bezier(0.65, 0, 0.35, 1) both;
-}
-.anim-up-d1 {
-  animation-delay: 0.1s;
-}
-.anim-up-d2 {
-  animation-delay: 0.2s;
-}
-.anim-up-d3 {
-  animation-delay: 0.3s;
-}
-.anim-up-d4 {
-  animation-delay: 0.4s;
-}
-.anim-up-d5 {
-  animation-delay: 0.5s;
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .anim-wipe,
-  .anim-emphasis,
-  .anim-up {
-    animation: none !important;
+  .reveal,
+  .reveal-stagger > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 
+/*
+ * Responsive type scale. Headlines step down on small viewports; body holds at 18px.
+ */
 @media (max-width: 760px) {
-  body {
-    font-size: 16px;
+  .prose-article h2 {
+    font-size: 32px;
+  }
+  .prose-article h3 {
+    font-size: 22px;
+  }
+  .prose-article .lead {
+    font-size: 19px;
+  }
+  .prose-article .dropcap::first-letter {
+    font-size: 52px;
   }
 }

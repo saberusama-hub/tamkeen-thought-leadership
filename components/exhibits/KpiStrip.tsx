@@ -4,40 +4,54 @@ interface KPI {
   label: string;
   desc: string;
   tone?: 'pos' | 'neg' | 'default';
+  /** Optional direction indicator. Renders a small ▲/▼/− next to the number. */
+  trend?: 'up' | 'down' | 'flat';
 }
 
 interface KpiStripProps {
   kpis: KPI[];
 }
 
+function TrendArrow({ direction }: { direction: 'up' | 'down' | 'flat' }) {
+  const symbol = direction === 'up' ? '▲' : direction === 'down' ? '▼' : '–';
+  const colour =
+    direction === 'up' ? 'text-green' : direction === 'down' ? 'text-ink' : 'text-mute';
+  return (
+    <span
+      aria-hidden
+      className={`inline-block ml-2 align-middle text-[14px] -translate-y-1 ${colour}`}
+    >
+      {symbol}
+    </span>
+  );
+}
+
+/**
+ * Four KPIs. Single dark green hairline on top, single rule beneath, no
+ * card chrome between cells. Numbers carry the weight in dark green
+ * (negative tone in ink). Stacks responsively at 760px and 540px.
+ */
 export function KpiStrip({ kpis }: KpiStripProps) {
   return (
-    <div className="grid grid-cols-4 my-9 mb-3 border-t-2 border-tamkeen border-b border-rule max-[920px]:grid-cols-2 max-[540px]:grid-cols-1">
-      {kpis.map((k, i) => {
-        const lastInRow = (i + 1) % 4 === 0;
-        return (
+    <div className="my-12 border-t border-green/30 border-b border-rule pt-7 pb-7 grid grid-cols-4 gap-x-10 gap-y-8 max-[920px]:grid-cols-2 max-[540px]:grid-cols-1">
+      {kpis.map((k, i) => (
+        <div key={i}>
           <div
-            key={i}
-            className={`px-6 pt-[26px] pb-6 bg-paper border-r border-rule ${
-              lastInRow ? 'last:border-r-0 max-[920px]:border-r' : ''
-            } max-[920px]:[&:nth-child(2n)]:border-r-0 max-[920px]:[&:nth-last-child(-n+2)]:border-b-0 max-[920px]:border-b max-[540px]:border-r-0`}
+            className={`font-serif font-medium text-[44px] leading-none -tracking-[0.5px] mb-3 tabular-nums max-[540px]:text-[36px] ${
+              k.tone === 'neg' ? 'text-ink' : 'text-green'
+            }`}
+            style={{ fontFeatureSettings: '"lnum" 1, "tnum" 1' }}
           >
-            <div
-              className={`font-serif text-[48px] font-semibold leading-none mb-2.5 -tracking-[1.5px] tabular-nums ${
-                k.tone === 'neg' ? 'text-neg' : 'text-tamkeen'
-              }`}
-              style={{ fontFeatureSettings: '"lnum" 1, "tnum" 1' }}
-            >
-              {k.num}
-              {k.unit ? <span className="text-[24px] tracking-normal font-medium">{k.unit}</span> : null}
-            </div>
-            <div className="font-sans text-[10.5px] text-ink-soft uppercase tracking-[1.5px] font-bold mb-2">
-              {k.label}
-            </div>
-            <div className="text-[13.5px] text-ink-mid leading-[1.5] font-serif">{k.desc}</div>
+            {k.num}
+            {k.unit ? <span className="text-[22px] tracking-normal font-normal text-mute ml-1">{k.unit}</span> : null}
+            {k.trend ? <TrendArrow direction={k.trend} /> : null}
           </div>
-        );
-      })}
+          <div className="ui-caps font-sans text-[11px] tracking-[1.6px] uppercase font-semibold text-ink mb-2">
+            {k.label}
+          </div>
+          <div className="font-serif text-[14px] text-mute leading-[1.5]">{k.desc}</div>
+        </div>
+      ))}
     </div>
   );
 }

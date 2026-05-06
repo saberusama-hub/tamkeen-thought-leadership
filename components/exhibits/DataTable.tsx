@@ -21,64 +21,74 @@ interface DataTableProps {
 
 function renderCell(col: Column, row: DataTableRow): ReactNode {
   const v = row[col.key];
-  if (v == null) return '-';
+  if (v == null) return '–';
   if (typeof v === 'object') {
     const cls =
       v.tone === 'pos'
-        ? 'text-tamkeen font-semibold'
+        ? 'text-green font-semibold'
         : v.tone === 'neg'
-          ? 'text-neg font-semibold'
+          ? 'text-ink font-semibold'
           : '';
     return <span className={cls}>{v.value}</span>;
   }
   return v;
 }
 
+/**
+ * Newspaper table: hairline rules only. Top of header, bottom of header,
+ * bottom of table. No vertical rules. No zebra striping. Tabular numerals.
+ * Numerics right-aligned, labels left-aligned.
+ */
 export function DataTable({ caption, columns, rows, cellRender }: DataTableProps) {
   return (
-    <table className="w-full border-collapse my-6 font-sans text-[13.5px]">
-      {caption ? (
-        <caption className="text-left font-serif font-semibold text-[18px] mb-2.5 text-tamkeen caption-top">
-          {caption}
-        </caption>
-      ) : null}
-      <thead>
-        <tr>
-          {columns.map((c) => (
-            <th
-              key={c.key}
-              scope="col"
-              className={`px-3.5 py-3 bg-tamkeen text-paper font-semibold text-[10.5px] tracking-[1.4px] uppercase border-none ${
-                c.numeric || c.align === 'right' ? 'text-right' : 'text-left'
-              }`}
-              style={c.width ? { width: c.width } : undefined}
-            >
-              {c.label}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map((r, ri) => (
-          <tr key={ri} className="hover:bg-paper-shade/60">
+    <div className="my-10 -mx-2 overflow-x-auto">
+      <table
+        className="w-full border-collapse font-sans text-[14px] min-w-[640px] mx-2"
+        style={{ fontVariantNumeric: 'tabular-nums' }}
+      >
+        {caption ? (
+          <caption className="text-left font-serif font-medium text-[20px] mb-4 text-ink caption-top">
+            {caption}
+          </caption>
+        ) : null}
+        <thead>
+          <tr className="border-y border-ink">
             {columns.map((c) => (
-              <td
+              <th
                 key={c.key}
-                className={`px-3.5 py-2.5 border-b border-rule-soft text-ink bg-paper ${
-                  c.numeric
-                    ? 'text-right font-mono text-[13px] tabular-nums'
-                    : c.align === 'right'
-                      ? 'text-right'
-                      : ''
+                scope="col"
+                className={`px-3 py-3 font-sans font-semibold text-[10.5px] tracking-[1.5px] uppercase text-ink align-bottom ${
+                  c.numeric || c.align === 'right' ? 'text-right' : 'text-left'
                 }`}
-                style={c.numeric ? { fontFeatureSettings: '"tnum" 1' } : undefined}
+                style={c.width ? { width: c.width } : undefined}
               >
-                {cellRender ? cellRender(c, r) : renderCell(c, r)}
-              </td>
+                {c.label}
+              </th>
             ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {rows.map((r, ri) => (
+            <tr key={ri}>
+              {columns.map((c) => (
+                <td
+                  key={c.key}
+                  className={`px-3 py-2.5 border-b border-rule text-ink/90 align-top ${
+                    c.numeric
+                      ? 'text-right tabular-nums'
+                      : c.align === 'right'
+                        ? 'text-right'
+                        : ''
+                  }`}
+                  style={c.numeric ? { fontVariantNumeric: 'tabular-nums' } : undefined}
+                >
+                  {cellRender ? cellRender(c, r) : renderCell(c, r)}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }

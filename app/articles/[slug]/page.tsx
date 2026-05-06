@@ -4,9 +4,9 @@ import { Masthead } from '@/components/Masthead';
 import { Footer } from '@/components/Footer';
 import { ArticleHero } from '@/components/ArticleHero';
 import { ArticleLayout } from '@/components/ArticleLayout';
+import { ArticleClosing } from '@/components/ArticleClosing';
 import { ProgressBar } from '@/components/ProgressBar';
 import { getAllArticles, getArticleBySlug } from '@/lib/articles';
-import { buildSearchIndex } from '@/lib/search';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -46,9 +46,6 @@ export default async function ArticlePage({ params }: PageProps) {
   const article = getArticleBySlug(slug);
   if (!article) notFound();
 
-  const allArticles = getAllArticles();
-  const searchEntries = buildSearchIndex();
-
   const mod = await import(`@/content/articles/${slug}.mdx`);
   const Body = mod.default as (props: Record<string, unknown>) => React.ReactNode;
 
@@ -65,27 +62,18 @@ export default async function ArticlePage({ params }: PageProps) {
     },
   };
 
-  const coverage = article.tags?.includes('rankings') ? '2016 to 2026 · Top 500' : undefined;
-  const dataset = '1,038 institutions · 96 countries';
-
   return (
     <>
       <ProgressBar />
-      <Masthead
-        date={article.publishedAt}
-        activeTab={article.category}
-        articleSections={article.sections}
-        searchEntries={searchEntries}
-        edition={{ number: article.categoryNumber, subtitle: 'Schools & Universities' }}
-        rightMeta={{ strong: `${article.readingTimeMinutes} min`, line: 'read' }}
-      />
+      <Masthead date={article.publishedAt} articleSections={article.sections} />
       <main id="main-content">
-        <ArticleHero article={article} coverage={coverage} dataset={dataset} />
+        <ArticleHero article={article} />
         <ArticleLayout>
           <Body />
+          <ArticleClosing article={article} />
         </ArticleLayout>
       </main>
-      <Footer articles={allArticles} />
+      <Footer />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJson) }}

@@ -2,6 +2,10 @@
 
 import { useEffect, useState } from 'react';
 
+/**
+ * Hairline reading progress indicator. 1px tamkeen green at the very top
+ * of the article page, fills as the reader scrolls.
+ */
 export function ProgressBar() {
   const [pct, setPct] = useState(0);
 
@@ -27,7 +31,7 @@ export function ProgressBar() {
       aria-valuenow={Math.round(pct)}
       aria-valuemin={0}
       aria-valuemax={100}
-      className="fixed top-0 left-0 h-[2px] bg-copper z-[60] transition-[width] duration-100"
+      className="fixed top-0 left-0 h-px bg-green z-[60] transition-[width] duration-100"
       style={{ width: `${pct}%` }}
     />
   );

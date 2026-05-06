@@ -11,44 +11,47 @@ interface VolatilityChartProps {
 
 const MAX = 18;
 
+/**
+ * Simple paired-bar chart. Two stripes per row (QS green, THE near-black).
+ * No card. No background.
+ */
 export function VolatilityChart({ tiers, caveat }: VolatilityChartProps) {
   return (
-    <div className="mt-2">
+    <div className="my-6">
       {tiers.map((t, i) => {
-        // Floor each bar at 3% so a value of 1 isn't visually invisible.
         const qsPct = Math.max(3, (t.qs / MAX) * 100);
         const thePct = Math.max(3, (t.the / MAX) * 100);
         return (
-          <div
-            key={i}
-            className="grid grid-cols-[90px_1fr_60px] gap-3.5 items-center py-2"
-          >
-            <div className="text-[13.5px] font-semibold text-ink font-serif">{t.label}</div>
-            <div className="relative h-8 bg-paper border border-rule">
+          <div key={i} className="grid grid-cols-[80px_1fr_60px] gap-3.5 items-center py-2.5 max-[480px]:grid-cols-[64px_1fr_48px] max-[480px]:gap-2">
+            <div className="text-[14px] text-ink font-serif">{t.label}</div>
+            <div className="relative h-7 border-b border-rule">
               <div
-                className="absolute left-0 top-1 h-[11px] bg-tamkeen"
+                className="absolute left-0 top-1 h-2.5 bg-green"
                 style={{ width: `${qsPct}%` }}
                 aria-label={`QS ${t.qs}`}
               />
               <div
-                className="absolute left-0 top-[17px] h-[11px] bg-copper"
+                className="absolute left-0 top-[14px] h-2.5 bg-ink/85"
                 style={{ width: `${thePct}%` }}
                 aria-label={`THE ${t.the}`}
               />
             </div>
-            <div className="font-mono text-[13px] font-semibold text-right text-ink tabular-nums">
+            <div
+              className="font-sans text-[13px] font-medium text-right text-ink tabular-nums"
+              style={{ fontVariantNumeric: 'tabular-nums' }}
+            >
               {t.qs} / {t.the}
             </div>
           </div>
         );
       })}
-      <div className="flex gap-5 mt-[18px] text-[11.5px] text-ink-soft items-center font-sans flex-wrap">
+      <div className="flex gap-5 mt-4 text-[11.5px] text-mute items-center font-sans flex-wrap">
         <div className="flex items-center gap-2">
-          <span className="inline-block w-3.5 h-2 bg-tamkeen" aria-hidden />
+          <span className="inline-block w-3.5 h-2 bg-green" aria-hidden />
           QS
         </div>
         <div className="flex items-center gap-2">
-          <span className="inline-block w-3.5 h-2 bg-copper" aria-hidden />
+          <span className="inline-block w-3.5 h-2 bg-ink/85" aria-hidden />
           THE
         </div>
         {caveat ? <div className="ml-auto italic">{caveat}</div> : null}

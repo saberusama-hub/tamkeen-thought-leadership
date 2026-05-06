@@ -9,6 +9,7 @@ import { VolatilityChart } from '@/components/exhibits/VolatilityChart';
 import { DataTable } from '@/components/exhibits/DataTable';
 import { StakeholderGrid } from '@/components/exhibits/StakeholderGrid';
 import { Exhibit } from '@/components/exhibits/Exhibit';
+import { Callout } from '@/components/exhibits/Callout';
 import { SVGStackedArea } from '@/components/exhibits/SVGStackedArea';
 import { SVGScatter } from '@/components/exhibits/SVGScatter';
 import { SVGGainersDecliners } from '@/components/exhibits/SVGGainersDecliners';
@@ -31,6 +32,7 @@ export const articleComponents: MDXComponents = {
   DataTable,
   StakeholderGrid,
   Exhibit,
+  Callout,
   SVGStackedArea,
   SVGScatter,
   SVGGainersDecliners,

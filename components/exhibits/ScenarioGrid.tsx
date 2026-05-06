@@ -8,18 +8,22 @@ interface ScenarioGridProps {
   scenarios: Scenario[];
 }
 
+/**
+ * Three scenarios. No card. Hairline above each, big serif probability
+ * number, tracked sans name, serif body.
+ */
 export function ScenarioGrid({ scenarios }: ScenarioGridProps) {
   return (
-    <div className="grid grid-cols-3 gap-5 my-[30px] max-[780px]:grid-cols-1">
+    <div className="my-12 grid grid-cols-3 gap-x-10 gap-y-10 max-[780px]:grid-cols-1">
       {scenarios.map((s, i) => (
-        <div key={i} className="px-6 py-7 bg-paper/[.04] border border-paper/20 relative">
-          <div className="font-serif text-[38px] font-semibold text-paper leading-none mb-1.5 -tracking-[1px]">
+        <div key={i} className="pt-5 border-t border-green/25 max-[780px]:first:border-t-0 max-[780px]:first:pt-0">
+          <div className="font-serif text-[40px] font-medium text-green leading-none mb-3 -tracking-[0.5px] max-[640px]:text-[32px]">
             {s.prob}
           </div>
-          <div className="font-sans text-[11px] tracking-[1.8px] uppercase text-tamkeen-mist font-bold mb-3.5">
+          <div className="font-sans text-[11px] tracking-[1.6px] uppercase text-mute font-medium mb-3">
             {s.name}
           </div>
-          <p className="text-[13.5px] text-paper/[.82] m-0 leading-[1.55] max-w-none font-serif">{s.body}</p>
+          <p className="text-[15px] text-ink/85 m-0 leading-[1.55] max-w-none font-serif">{s.body}</p>
         </div>
       ))}
     </div>

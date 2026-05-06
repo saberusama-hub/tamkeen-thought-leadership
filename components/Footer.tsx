@@ -1,114 +1,34 @@
 import Link from 'next/link';
-import type { Article } from '@/types/article';
-import { CATEGORY_KEYS, CATEGORY_LABELS } from '@/types/article';
 
-interface FooterProps {
-  articles?: Article[];
-}
-
-export function Footer({ articles = [] }: FooterProps) {
-  const firstFour = CATEGORY_KEYS.slice(0, 4);
-  const lastFour = CATEGORY_KEYS.slice(4);
-
+/**
+ * Minimalist footer. Light cream surface with a tamkeen-green brand line on
+ * top, four utility links beneath, copyright on the bottom. No category
+ * lists, no subscribe form, no social icons.
+ */
+export function Footer() {
   return (
-    <footer className="bg-tamkeen-deep text-paper pt-14 pb-9 mt-0">
-      <div className="mx-auto max-w-[1240px] px-8 max-[760px]:px-6">
-        <div className="grid grid-cols-[2fr_3fr] gap-12 pb-9 border-b border-paper/[.18] max-[980px]:grid-cols-1 max-[980px]:gap-8">
-          <div>
-            <div className="font-serif text-[36px] font-normal -tracking-[0.6px] mb-1.5">
-              Tamkeen
-            </div>
-            <p className="font-serif italic text-[16px] text-tamkeen-mist max-w-[36ch] m-0">
-              Long-form, data-driven analysis on the schools and universities portfolio.
-              Independent. Filed from Abu Dhabi.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-3 gap-8 max-[640px]:grid-cols-1">
-            <div>
-              <h3 className="font-sans text-[10.5px] tracking-[2.2px] uppercase font-bold text-paper m-0 mb-3.5">
-                Categories
-              </h3>
-              <ul className="list-none m-0 p-0">
-                {firstFour.map((k) => (
-                  <li key={k} className="py-1.5">
-                    <Link
-                      href={k === 'overall' ? '/' : `/category/${k}`}
-                      className="font-serif text-[14px] text-paper/85 hover:text-paper hover:underline underline-offset-[3px] decoration-tamkeen-mist transition-colors duration-[180ms]"
-                    >
-                      {CATEGORY_LABELS[k].label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3
-                className="font-sans text-[10.5px] tracking-[2.2px] uppercase font-bold text-paper m-0 mb-3.5"
-                aria-hidden
-              >
-                <span className="invisible">·</span>
-              </h3>
-              <ul className="list-none m-0 p-0">
-                {lastFour.map((k) => (
-                  <li key={k} className="py-1.5">
-                    <Link
-                      href={`/category/${k}`}
-                      className="font-serif text-[14px] text-paper/85 hover:text-paper hover:underline underline-offset-[3px] decoration-tamkeen-mist transition-colors duration-[180ms]"
-                    >
-                      {CATEGORY_LABELS[k].label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-sans text-[10.5px] tracking-[2.2px] uppercase font-bold text-paper m-0 mb-3.5">
-                The publication
-              </h3>
-              <ul className="list-none m-0 p-0">
-                <li className="py-1.5">
-                  <Link
-                    href="/about"
-                    className="font-serif text-[14px] text-paper/85 hover:text-paper hover:underline underline-offset-[3px] decoration-tamkeen-mist transition-colors duration-[180ms]"
-                  >
-                    About
-                  </Link>
-                </li>
-                <li className="py-1.5">
-                  <Link
-                    href="/about"
-                    className="font-serif text-[14px] text-paper/85 hover:text-paper hover:underline underline-offset-[3px] decoration-tamkeen-mist transition-colors duration-[180ms]"
-                  >
-                    Methodology
-                  </Link>
-                </li>
-                <li className="py-1.5">
-                  <Link
-                    href="/about"
-                    className="font-serif text-[14px] text-paper/85 hover:text-paper hover:underline underline-offset-[3px] decoration-tamkeen-mist transition-colors duration-[180ms]"
-                  >
-                    Subscribe
-                  </Link>
-                </li>
-                <li className="py-1.5">
-                  <Link
-                    href="/about"
-                    className="font-serif text-[14px] text-paper/85 hover:text-paper hover:underline underline-offset-[3px] decoration-tamkeen-mist transition-colors duration-[180ms]"
-                  >
-                    Contact the editor
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
+    <footer className="mt-24 border-t border-green/30">
+      <div className="mx-auto max-w-[1240px] px-8 py-10 flex flex-col gap-5 max-[640px]:px-5 max-[640px]:py-8">
+        <div className="font-serif text-[22px] text-green leading-snug">
+          The Index.{' '}
+          <span className="text-mute italic font-normal">A publication of Tamkeen Thought Leadership.</span>
         </div>
-        <div className="mt-7 flex justify-between font-sans text-[10px] tracking-[1.5px] uppercase font-medium text-tamkeen-mist opacity-70 max-[640px]:flex-col max-[640px]:gap-2">
-          <span>© {new Date().getFullYear()} Tamkeen · All rights reserved</span>
-          <span>
-            ISSN forthcoming · Issue 01
-            {articles.length > 0 ? ` · ${articles.length} published` : ''}
-          </span>
+        <nav className="ui-caps flex flex-wrap gap-x-6 gap-y-2 font-sans text-[12px] tracking-[1.4px] uppercase text-mute">
+          <Link href="/about" className="hover:text-green border-none transition-colors">
+            About
+          </Link>
+          <Link href="/about" className="hover:text-green border-none transition-colors">
+            Methodology
+          </Link>
+          <Link href="/about" className="hover:text-green border-none transition-colors">
+            Subscribe
+          </Link>
+          <Link href="/about" className="hover:text-green border-none transition-colors">
+            Contact
+          </Link>
+        </nav>
+        <div className="ui-caps font-sans text-[11px] tracking-[1.4px] uppercase text-mute opacity-80 mt-2">
+          © {new Date().getFullYear()} Tamkeen
         </div>
       </div>
     </footer>
