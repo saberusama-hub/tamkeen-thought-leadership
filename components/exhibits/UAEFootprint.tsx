@@ -20,7 +20,7 @@ export function UAEFootprint({ cards }: UAEFootprintProps) {
   return (
     <div className="my-12 grid grid-cols-2 gap-x-10 gap-y-10 max-[760px]:grid-cols-1">
       {cards.map((c, i) => (
-        <div key={i} className="pt-5 border-t border-rule">
+        <div key={i} className="pt-5 border-t border-green/25 max-[760px]:first:border-t-0 max-[760px]:first:pt-0">
           <h4 className="m-0 mb-3 font-sans text-[11px] tracking-[1.6px] uppercase font-semibold text-ink">
             {c.title}
           </h4>

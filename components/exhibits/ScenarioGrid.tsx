@@ -16,8 +16,8 @@ export function ScenarioGrid({ scenarios }: ScenarioGridProps) {
   return (
     <div className="my-12 grid grid-cols-3 gap-x-10 gap-y-10 max-[780px]:grid-cols-1">
       {scenarios.map((s, i) => (
-        <div key={i} className="pt-5 border-t border-rule">
-          <div className="font-serif text-[40px] font-medium text-green leading-none mb-3 -tracking-[0.5px]">
+        <div key={i} className="pt-5 border-t border-green/25 max-[780px]:first:border-t-0 max-[780px]:first:pt-0">
+          <div className="font-serif text-[40px] font-medium text-green leading-none mb-3 -tracking-[0.5px] max-[640px]:text-[32px]">
             {s.prob}
           </div>
           <div className="font-sans text-[11px] tracking-[1.6px] uppercase text-mute font-medium mb-3">

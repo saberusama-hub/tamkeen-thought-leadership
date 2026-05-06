@@ -33,7 +33,7 @@ export function StakeholderGrid({ items, cols = 3 }: StakeholderGridProps) {
   return (
     <div className={`my-12 grid ${colsClass} gap-x-10 gap-y-10`}>
       {items.map((it, i) => (
-        <div key={i} className="pt-5 border-t border-rule">
+        <div key={i} className="pt-5 border-t border-green/25 max-[600px]:first:border-t-0 max-[600px]:first:pt-0">
           <h4 className="m-0 mb-3 font-sans text-[11px] tracking-[1.6px] uppercase font-semibold text-ink">
             {it.title}
           </h4>

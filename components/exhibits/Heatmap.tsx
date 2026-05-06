@@ -82,16 +82,27 @@ export function Heatmap({ rows, cols, legend }: HeatmapProps) {
       </div>
 
       {legend ? (
-        <div className="flex items-center gap-2.5 mt-5 text-[11px] text-mute flex-wrap font-sans">
+        <div className="mt-6 inline-flex flex-col gap-1 font-sans">
           <span className="text-[11px] text-ink">{legend.label ?? 'Δ score'}</span>
-          <div className="flex items-center h-3.5 border border-rule">
+          <div className="flex items-center">
             {RAMP.map((r, i) => (
-              <span key={i} className="block w-[28px] h-[12px]" style={{ background: r.hex }} />
+              <span
+                key={i}
+                className="block w-[28px] h-[12px] border-r border-paper last:border-r-0"
+                style={{ background: r.hex }}
+              />
             ))}
           </div>
-          <span>{legend.min}</span>
-          <span>0</span>
-          <span>+{legend.max}</span>
+          <div
+            className="grid text-[10px] text-mute tabular-nums mt-0.5"
+            style={{ gridTemplateColumns: `repeat(${RAMP.length}, 28px)` }}
+          >
+            {RAMP.map((r, i) => (
+              <span key={i} className="text-center">
+                {r.stop > 0 ? `+${r.stop}` : r.stop}
+              </span>
+            ))}
+          </div>
         </div>
       ) : null}
     </div>

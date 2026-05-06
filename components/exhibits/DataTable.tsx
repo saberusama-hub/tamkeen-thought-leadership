@@ -41,9 +41,9 @@ function renderCell(col: Column, row: DataTableRow): ReactNode {
  */
 export function DataTable({ caption, columns, rows, cellRender }: DataTableProps) {
   return (
-    <div className="my-10 overflow-x-auto">
+    <div className="my-10 -mx-2 overflow-x-auto">
       <table
-        className="w-full border-collapse font-sans text-[14px] min-w-[640px]"
+        className="w-full border-collapse font-sans text-[14px] min-w-[640px] mx-2"
         style={{ fontVariantNumeric: 'tabular-nums' }}
       >
         {caption ? (

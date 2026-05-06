@@ -18,9 +18,9 @@ export function Findings({ items }: FindingsProps) {
       {items.map((item, i) => (
         <div
           key={i}
-          className="pt-6 border-t border-rule first:pt-0 first:border-t-0 max-[880px]:[&:nth-child(2)]:border-t max-[880px]:[&:nth-child(2)]:pt-6"
+          className="pt-6 border-t border-green/25 first:pt-0 first:border-t-0 max-[880px]:[&:nth-child(2)]:border-t max-[880px]:[&:nth-child(2)]:pt-6"
         >
-          <div className="font-sans text-[11px] tracking-[1.6px] uppercase text-mute font-medium mb-2">
+          <div className="font-sans text-[11px] tracking-[1.6px] uppercase text-green font-semibold mb-2">
             Finding {String(i + 1).padStart(2, '0')}
           </div>
           <h4 className="m-0 mb-2 font-serif text-[19px] font-semibold normal-case tracking-[-0.1px] text-ink leading-[1.3]">

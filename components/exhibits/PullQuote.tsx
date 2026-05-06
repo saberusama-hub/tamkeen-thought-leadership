@@ -8,12 +8,13 @@ interface PullQuoteProps {
 }
 
 /**
- * Asterisk-style pull quote. Indented from the left, larger italic serif,
- * no quote marks, optional small attribution underneath. No top/bottom rules.
+ * Pull quote: indented from the left with a vertical green-light rule.
+ * On tablet (≤880px) the indent collapses so the quote aligns with body
+ * copy rather than floating off to the right.
  */
 export function PullQuote({ children, cite }: PullQuoteProps) {
   return (
-    <figure className="my-14 ml-8 pl-6 border-l border-green max-w-[40ch] max-[640px]:ml-0">
+    <figure className="my-14 ml-8 pl-6 border-l-2 border-green-light max-w-[44ch] max-[880px]:ml-0 max-[880px]:max-w-none">
       <blockquote className="font-serif italic text-[28px] leading-[1.3] text-ink m-0 -tracking-[0.2px] max-[640px]:text-[22px]">
         {children}
       </blockquote>

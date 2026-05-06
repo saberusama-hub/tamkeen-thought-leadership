@@ -32,16 +32,30 @@
   --font-serif: var(--font-source-serif), 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
   --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
+  /*
+   * Green family. Dark green is the masthead, the wordmark and links.
+   * Lighter mint, mist, and pale shades are used sparingly across the
+   * page (subtle hover states, secondary accents, KPI second-tier numbers).
+   */
   --color-green: #003d2b;
   --color-green-deep: #002419;
+  --color-green-mid: #1f5a45;
+  --color-green-light: #6b9f88;
+  --color-green-mist: #a8c2b4;
+  --color-green-pale: #d4e4dd;
+
   --color-ink: #111110;
   --color-paper: #faf6ee;
   --color-mute: #6b6862;
   --color-rule: #d8d3c4;
 
-  /* Aliases retained for components still using legacy names. */
+  /* Aliases retained for components that still use legacy names. */
   --color-tamkeen: #003d2b;
   --color-tamkeen-deep: #002419;
+  --color-tamkeen-mid: #1f5a45;
+  --color-tamkeen-light: #6b9f88;
+  --color-tamkeen-mist: #a8c2b4;
+  --color-tamkeen-pale: #d4e4dd;
 }
 
 :root {
@@ -219,12 +233,16 @@ button {
 }
 
 section {
-  /* Sticky header height plus a comfortable gap for anchor jumps. */
-  scroll-margin-top: 120px;
+  /*
+   * Sticky header (Folio + wordmark row + ArticleNav) is approximately
+   * 150px tall on desktop, 120px on mobile. Add a few pixels for breathing
+   * room so anchor jumps land just below the header, not behind it.
+   */
+  scroll-margin-top: 160px;
 }
 @media (max-width: 760px) {
   section {
-    scroll-margin-top: 96px;
+    scroll-margin-top: 130px;
   }
 }
 

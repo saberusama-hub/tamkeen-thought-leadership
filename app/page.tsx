@@ -6,11 +6,44 @@ import { getAllArticles } from '@/lib/articles';
 import { formatLongDate } from '@/lib/format';
 
 export const metadata: Metadata = {
-  title: 'Tamkeen Thought Leadership',
+  title: 'The Capability Review',
   description:
-    'Long-form, data-driven analysis on policy, capability, and strategy. Independent. Filed from Abu Dhabi.',
+    'Long-form, data-driven analysis on policy, capability, and strategy. Published monthly. Filed independently from Abu Dhabi.',
   alternates: { canonical: '/' },
 };
+
+/**
+ * Placeholder pieces. Each is a working title for an upcoming brief; they
+ * sit at the same visual weight as the published article so the homepage
+ * does not look empty between issues.
+ */
+const FORTHCOMING = [
+  {
+    title: 'The arithmetic of the visa pipeline',
+    dek: 'Why post-study work permits feed citation counts on a five-year lag, and what that means for sovereign-strategy timing.',
+    eta: 'Forthcoming, June 2026',
+  },
+  {
+    title: 'Branch campuses, valued correctly',
+    dek: 'A methodology for evaluating international branch campuses on the indicators they uniquely strengthen, not on standalone Top-500 rank.',
+    eta: 'Forthcoming, July 2026',
+  },
+  {
+    title: 'Three readings of a declining university rank',
+    dek: 'Methodology break, pillar shift, or genuine institutional decline. A short field guide to telling them apart.',
+    eta: 'Forthcoming, August 2026',
+  },
+  {
+    title: 'Programme rankings vs institutional rankings',
+    dek: 'When a subject league table beats the headline number, and when it misleads.',
+    eta: 'Forthcoming, September 2026',
+  },
+  {
+    title: 'Patient capital in higher education',
+    dek: 'Why the funding cycle that compounds in research outcomes is longer than any political cycle, and how five systems handled the tension.',
+    eta: 'Forthcoming, October 2026',
+  },
+];
 
 export default function HomePage() {
   const articles = getAllArticles();
@@ -21,16 +54,16 @@ export default function HomePage() {
       <main id="main-content" className="mx-auto max-w-[1240px] px-8 max-[640px]:px-5">
         <section className="py-16 max-w-[820px] max-[640px]:py-10">
           <p className="font-serif italic text-[22px] leading-[1.5] text-mute m-0 mb-12 max-w-[56ch] max-[640px]:text-[18px]">
-            Long-form, data-driven analysis on policy, capability, and strategy. Filed
-            independently from Abu Dhabi.
+            Long-form, data-driven analysis on policy, capability, and strategy. Published
+            monthly. Filed independently from Abu Dhabi.
           </p>
 
           <ol className="list-none m-0 p-0">
             {articles.map((a) => (
-              <li key={a.slug} className="border-t border-rule">
+              <li key={a.slug} className="border-t border-green/25">
                 <Link
                   href={`/articles/${a.slug}`}
-                  className="block py-7 group no-underline border-none"
+                  className="block py-8 group no-underline border-none"
                 >
                   <h2 className="font-serif text-[28px] font-medium text-ink leading-[1.2] -tracking-[0.2px] m-0 mb-2 group-hover:text-green transition-colors max-[640px]:text-[22px]">
                     {a.title}
@@ -38,25 +71,40 @@ export default function HomePage() {
                   <p className="font-serif italic text-[17px] leading-[1.5] text-ink/85 m-0 mb-3 max-w-[60ch]">
                     {a.dek}
                   </p>
-                  <div className="font-sans text-[11px] tracking-[1.5px] uppercase text-mute font-medium">
+                  <div className="font-sans text-[11px] tracking-[1.5px] uppercase text-mute font-medium max-[400px]:flex-col max-[400px]:flex max-[400px]:gap-1">
                     By{' '}
                     <span className="text-ink">
                       {a.resolvedAuthors.map((author) => author.name).join(', ')}
                     </span>
-                    <span className="opacity-60 mx-2.5">·</span>
-                    {formatLongDate(a.publishedAt)}
-                    <span className="opacity-60 mx-2.5">·</span>
-                    {a.readingTimeMinutes} min read
+                    <span className="text-mute/60 mx-2.5 max-[400px]:hidden">·</span>
+                    <span>{formatLongDate(a.publishedAt)}</span>
+                    <span className="text-mute/60 mx-2.5 max-[400px]:hidden">·</span>
+                    <span>{a.readingTimeMinutes} min read</span>
                   </div>
                 </Link>
               </li>
             ))}
-            {articles.length === 0 ? (
-              <li className="py-12 font-serif italic text-[18px] text-mute">
-                Forthcoming.
+
+            {/* Forthcoming pieces. Same chronological-list visual rhythm but
+                muted, italic, and labelled. */}
+            {FORTHCOMING.map((p, i) => (
+              <li key={i} className="border-t border-green/25">
+                <div className="block py-8">
+                  <div className="font-sans text-[11px] tracking-[1.6px] uppercase text-green/70 font-semibold mb-2 inline-flex items-center gap-2">
+                    <span aria-hidden className="block h-px w-4 bg-green-light" />
+                    {p.eta}
+                  </div>
+                  <h2 className="font-serif italic text-[26px] font-normal text-ink/70 leading-[1.25] -tracking-[0.2px] m-0 mb-2 max-[640px]:text-[20px]">
+                    {p.title}
+                  </h2>
+                  <p className="font-serif text-[16px] leading-[1.55] text-mute m-0 max-w-[60ch]">
+                    {p.dek}
+                  </p>
+                </div>
               </li>
-            ) : null}
-            {articles.length > 0 ? <div className="border-t border-rule" /> : null}
+            ))}
+
+            <li className="border-t border-green/25" aria-hidden />
           </ol>
         </section>
       </main>

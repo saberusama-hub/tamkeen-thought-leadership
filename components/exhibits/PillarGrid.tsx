@@ -25,7 +25,7 @@ export function PillarGrid({ cards }: PillarGridProps) {
   return (
     <div className="my-12 grid grid-cols-2 gap-x-10 gap-y-10 max-[760px]:grid-cols-1">
       {cards.map((c, i) => (
-        <div key={i} className="pt-5 border-t border-rule">
+        <div key={i} className="pt-5 border-t border-green/25 max-[760px]:first:border-t-0 max-[760px]:first:pt-0">
           <div className="font-sans text-[11px] tracking-[1.6px] uppercase text-mute font-medium mb-2">
             {c.tag}
           </div>

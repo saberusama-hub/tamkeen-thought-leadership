@@ -6,10 +6,11 @@ interface ArticleLayoutProps {
 
 /**
  * Wraps the article body. Single neutral surface, no dark / alt variants.
+ * Inner column is 820px so prose, exhibits and tables share the same axis.
  */
 export function ArticleLayout({ children }: ArticleLayoutProps) {
   return (
-    <article className="prose-article mx-auto max-w-[1240px] px-8 py-12 max-[640px]:px-5 max-[640px]:py-8">
+    <article className="prose-article mx-auto max-w-[820px] px-8 py-12 max-[640px]:px-5 max-[640px]:py-8">
       {children}
     </article>
   );
@@ -28,8 +29,8 @@ interface SectionProps {
  */
 export function ArticleSection({ id, children }: SectionProps) {
   return (
-    <section id={id} className="py-14 first:pt-4 max-[640px]:py-10">
-      <div className="max-w-[820px] mx-auto">{children}</div>
+    <section id={id} className="py-12 first:pt-4 max-[640px]:py-8">
+      {children}
     </section>
   );
 }

@@ -22,7 +22,7 @@ export function VolatilityChart({ tiers, caveat }: VolatilityChartProps) {
         const qsPct = Math.max(3, (t.qs / MAX) * 100);
         const thePct = Math.max(3, (t.the / MAX) * 100);
         return (
-          <div key={i} className="grid grid-cols-[80px_1fr_60px] gap-3.5 items-center py-2.5">
+          <div key={i} className="grid grid-cols-[80px_1fr_60px] gap-3.5 items-center py-2.5 max-[480px]:grid-cols-[64px_1fr_48px] max-[480px]:gap-2">
             <div className="text-[14px] text-ink font-serif">{t.label}</div>
             <div className="relative h-7 border-b border-rule">
               <div

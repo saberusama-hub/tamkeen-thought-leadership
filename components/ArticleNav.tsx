@@ -72,7 +72,7 @@ export function ArticleNav({ sections }: ArticleNavProps) {
     <nav
       ref={navRef}
       aria-label="Article sections"
-      className="border-b border-rule bg-paper"
+      className="border-b border-green/20 bg-green/[0.03]"
     >
       <div className="mx-auto max-w-[1240px] px-8 flex items-stretch relative overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden max-[640px]:px-5">
         {sections.map((s) => (
@@ -81,7 +81,7 @@ export function ArticleNav({ sections }: ArticleNavProps) {
             href={`#${s.id}`}
             data-id={s.id}
             className={`font-sans text-[11px] tracking-[1.5px] uppercase font-medium py-3.5 mr-7 last:mr-0 whitespace-nowrap transition-colors duration-150 border-none ${
-              active === s.id ? 'text-green' : 'text-mute hover:text-ink'
+              active === s.id ? 'text-green' : 'text-mute hover:text-green'
             }`}
           >
             {s.label ?? s.title}
@@ -89,7 +89,7 @@ export function ArticleNav({ sections }: ArticleNavProps) {
         ))}
         <span
           aria-hidden
-          className="absolute bottom-0 h-px bg-green pointer-events-none"
+          className="absolute bottom-0 h-[2px] bg-green pointer-events-none"
           style={{
             left: underline.left,
             width: underline.width,
