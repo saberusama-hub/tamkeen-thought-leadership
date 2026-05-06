@@ -33,6 +33,7 @@ import {
 } from './decade-that-reshaped-higher-education.data';
 
 import top20ByYear from '@/content/data/the-top20-by-year.json';
+import theBumpCohort from '@/content/data/the-bump-cohort.json';
 
 import { ArticleSection } from '@/components/ArticleLayout';
 
@@ -90,17 +91,19 @@ Asia rose. The US slipped at the elite tier. Western Europe held its position. T
 <Exhibit
   number="Exhibit B · The decade in one chart"
   title="Asia rose, the US slipped, Europe held."
-  sub="Composition of the Times Higher Education Top 100 by region, 2016 to 2026 (% share)"
+  sub="Composition of the Times Higher Education Top 100 by region, 2016 to 2026 (% share). The chart reveals year by year as you scroll."
   source="Source: Times Higher Education World University Rankings, annual editions 2016 to 2026; authors’ analysis. Greater China = China + Hong Kong + Macao + Taiwan, included in East Asia."
 >
-  <SVGStackedArea
-    title="Stacked area chart of THE Top 100 region composition 2016 to 2026"
-    paths={stackedAreaPaths}
-    legend={stackedAreaLegend}
-    years={stackedAreaYears}
-    inlineLabels={stackedAreaInlineLabels}
-    breakLine={{ x: 656, label: '2024 methodology break (WUR 3.0 / QS revision)' }}
-  />
+  <ScrollReveal2DChart ariaLabel="Stacked area chart of THE Top 100 region composition 2016 to 2026, revealed as you scroll.">
+    <SVGStackedArea
+      title="Stacked area chart of THE Top 100 region composition 2016 to 2026"
+      paths={stackedAreaPaths}
+      legend={stackedAreaLegend}
+      years={stackedAreaYears}
+      inlineLabels={stackedAreaInlineLabels}
+      breakLine={{ x: 656, label: '2024 methodology break (WUR 3.0 / QS revision)' }}
+    />
+  </ScrollReveal2DChart>
 </Exhibit>
 
 <Exhibit
@@ -491,7 +494,16 @@ The biggest decade-long risers cluster in Greater China, Korea, and Northern Eur
 </p>
 
 <Exhibit
-  number="Exhibit 04"
+  number="Exhibit 04 · The cohort, year by year"
+  title="The 2016 elite tracked through 2026."
+  sub="Drag the slider to mark a year. Hover any line to see which institution it is. The 2024 vertical hairline marks the WUR 3.0 methodology break."
+  source="Source: THE World University Rankings, annual editions 2016 to 2026; authors’ analysis. Cohort = the THE Top 20 in 2016, tracked through every subsequent year."
+>
+  <BumpChart data={theBumpCohort} />
+</Exhibit>
+
+<Exhibit
+  number="Exhibit 05 · Top 15 risers"
   title="THE: top 15 risers across the decade."
   sub="First-appearance rank to most-recent rank. Institutions present at least 4 years; sorted by magnitude."
   source="Source: THE World University Rankings, annual editions 2016 to 2026; authors’ analysis. Integer-ranked endpoints only."

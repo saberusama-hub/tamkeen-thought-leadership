@@ -11,6 +11,8 @@ import { StakeholderGrid } from '@/components/exhibits/StakeholderGrid';
 import { Exhibit } from '@/components/exhibits/Exhibit';
 import { Callout } from '@/components/exhibits/Callout';
 import { BarRace } from '@/components/exhibits/charts/BarRace';
+import { ScrollReveal2DChart } from '@/components/exhibits/charts/ScrollReveal2DChart';
+import { BumpChart } from '@/components/exhibits/charts/BumpChart';
 import { SVGStackedArea } from '@/components/exhibits/SVGStackedArea';
 import { SVGScatter } from '@/components/exhibits/SVGScatter';
 import { SVGGainersDecliners } from '@/components/exhibits/SVGGainersDecliners';
@@ -35,6 +37,8 @@ export const articleComponents: MDXComponents = {
   Exhibit,
   Callout,
   BarRace,
+  ScrollReveal2DChart,
+  BumpChart,
   SVGStackedArea,
   SVGScatter,
   SVGGainersDecliners,

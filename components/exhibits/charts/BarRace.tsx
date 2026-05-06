@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  type CSSProperties,
-} from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { scaleLinear } from 'd3-scale';
 
 interface Bar {
@@ -262,7 +256,7 @@ export function BarRace({ years, topN = 20, msPerYear = 700 }: BarRaceProps) {
               : 'var(--color-green-light)';
             const opacity = b.position > topN + 0.5 ? 0 : 1;
             return (
-              <g key={b.university} style={{ transition: 'opacity 0.3s', opacity } as CSSProperties}>
+              <g key={b.university} style={{ transition: 'opacity 0.3s', opacity }}>
                 <rect
                   x={LABEL_WIDTH + PADDING_X}
                   y={yPos}
