@@ -14,6 +14,8 @@ const pages: PageDef[] = [
   // try fullPage; instead we walk down in viewport-height stops to give a
   // representative sample of mobile rendering across the piece.
   { name: 'article', path: '/articles/decade-that-reshaped-higher-education', fullPage: false, scrollStops: 8 },
+  // Sibling article — punchier sister of the above, uses the same charts.
+  { name: 'article-punchy', path: '/articles/rankings-decade-told-straight', fullPage: false, scrollStops: 6 },
 ];
 
 for (const p of pages) {

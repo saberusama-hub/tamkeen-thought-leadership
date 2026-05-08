@@ -1,0 +1,606 @@
+---
+title: "A decade in the rankings, told straight."
+dek: "Same decade of QS and Times Higher Education world university rankings. Same charts. Sharper commentary, fewer hedges. The numbers that move; the methodology break that explains the rest; what each stakeholder should do."
+emphasis: "told straight"
+slug: "rankings-decade-told-straight"
+category: "rankings"
+categoryNumber: 2
+publishedAt: "2026-05-08"
+filedFrom: "Abu Dhabi"
+authors: ["tamkeen-research"]
+heroExhibit: "regional-composition"
+tags: ["higher education", "rankings", "QS", "THE", "UAE"]
+status: "published"
+---
+
+import {
+  stackedAreaPaths,
+  stackedAreaLegend,
+  stackedAreaInlineLabels,
+  stackedAreaYears,
+  gainers,
+  decliners,
+  volatilityTiers,
+  heatmapRows,
+  heatmapCols,
+  risers,
+  gerdBubbles,
+  gerdAnnotations,
+  scatterPoints,
+  scatterOutliers,
+  countryTableRows,
+  lessonsTableRows,
+} from './decade-that-reshaped-higher-education.data';
+
+import top20ByYear from '@/content/data/the-top20-by-year.json';
+import theBumpCohort from '@/content/data/the-bump-cohort.json';
+
+import { ArticleSection } from '@/components/ArticleLayout';
+
+<ArticleSection id="brief">
+
+<SectionHeader
+  number="01"
+  kicker="The brief"
+  title="The numbers that move; the methodology break that explains the rest."
+/>
+
+<p className="dropcap wide" style={{ fontSize: '19px', lineHeight: 1.7, maxWidth: 'none', columnCount: 1 }}>
+**Asia rose. The US slipped, mildly, at the elite tier. Western Europe held.** The single biggest driver of rank movement in the last decade was not institutional performance — it was the **2024 methodology rewrite** that QS and Times Higher Education shipped on the same year. Read the rest of this report with that fact in front of you.
+</p>
+
+<KpiStrip
+  kpis={[
+    { num: '+11', unit: 'pp', label: "Asia's THE Top 100 share", desc: 'Share of THE Top 100 institutions in Asia, from 9% in 2016 to 20% in 2026.', trend: 'up' },
+    { num: '3x', label: 'Greater China Top 100', desc: 'From 4 institutions in 2016 to 12 in 2026, the single biggest source of compositional change.', trend: 'up' },
+    { num: '−4 / −6', label: 'US Top 100 institutions lost', desc: 'THE: 39 to 35. QS: 32 to 26. Concentrated in mid-Top-100 publics, not Ivy-tier privates.', tone: 'neg', trend: 'down' },
+    { num: '9', label: 'Median annual rank shift', desc: 'QS Top 500, integer-ranked. Top-10 institutions move a median of 1 rank per year; Top-500 institutions move 9.', trend: 'flat' },
+  ]}
+/>
+
+<Findings
+  items={[
+    { title: "Asia's THE Top 100 share more than doubled", body: 'From 9% in 2016 to 20% in 2026. QS shows a smaller shift (20% to 21%) reflecting QS’s heavier reputation-survey weighting, which mean-reverts slowly.' },
+    { title: 'Greater China tripled its THE Top 100 footprint', body: 'From 4 institutions in 2016 to 12 in 2026: the single biggest source of compositional change at the elite tier, tracking the timing and intensity of China’s Double First-Class initiative.' },
+    { title: 'The US lost ground, but only mildly at the elite tier', body: '39 to 35 (THE) and 32 to 26 (QS). The US still holds the largest single-country cohort in both systems. The decline is concentrated in mid-Top-100 publics, not Ivy-tier privates.' },
+    { title: 'Top-500 churn is high; the elite is sticky', body: '154 institutions entered the QS Top 500 across the decade and 126 entered the THE Top 500. Yet the median annual rank movement of integer-ranked Top 10 institutions is one place; for the QS Top 500 it is nine.' },
+    { title: 'The 2024 methodology shifts were tectonic', body: "THE’s WUR 3.0 split Research into Research Environment and Research Quality, dropping the standalone Citations pillar. QS introduced Sustainability, Employment Outcomes, and International Research Network indicators (each 5%) and lifted Employer Reputation to 15%. Read 2023-to-2024 movement methodology-first." },
+    { title: 'Country research-funding intensity tracks citation gains', body: 'The China and South Korea pairing (high R&D-as-share-of-GDP, large gains in mean THE citation/research-quality score) anchors a positive correlation. Israel sits at the high-investment, modest-gain end. Russia is the only major country with a negative score change.' },
+    { title: 'QS and THE disagree more than commentators acknowledge', body: 'For institutions present in both 2026 lists, the absolute rank gap exceeds 100 places for a non-trivial subset. The disagreement is structural, reflecting how the two systems weigh reputation, research output, and internationalisation differently.' },
+  ]}
+/>
+
+<Callout label="What follows">
+  Eight short sections. The exhibits do the heavy lifting; the prose says only what the chart cannot. If you have read the long version, this is the same analysis with the hedges removed.
+</Callout>
+
+<Exhibit
+  number="Exhibit A · Watch the decade"
+  title="The Top 20, played out year by year."
+  sub="THE overall score, top twenty institutions per year, 2016 to 2026. Press play, scrub, or use the arrow keys."
+  source="Source: Times Higher Education World University Rankings, annual editions 2016 to 2026; authors’ analysis. Bars are coloured by country: deep olive for the United States, teal for the United Kingdom, light olive for other countries, lime for Greater China entrants."
+>
+  <BarRace years={top20ByYear} />
+</Exhibit>
+
+<Exhibit
+  number="Exhibit B · The decade in one chart"
+  title="Asia rose, the US slipped, Europe held."
+  sub="Composition of the Times Higher Education Top 100 by region, 2016 to 2026 (% share). The chart reveals year by year as you scroll."
+  source="Source: Times Higher Education World University Rankings, annual editions 2016 to 2026; authors’ analysis. Greater China = China + Hong Kong + Macao + Taiwan, included in East Asia."
+>
+  <ScrollReveal2DChart ariaLabel="Stacked area chart of THE Top 100 region composition 2016 to 2026, revealed as you scroll.">
+    <SVGStackedArea
+      title="Stacked area chart of THE Top 100 region composition 2016 to 2026"
+      paths={stackedAreaPaths}
+      legend={stackedAreaLegend}
+      years={stackedAreaYears}
+      inlineLabels={stackedAreaInlineLabels}
+      breakLine={{ x: 656, label: '2024 methodology break (WUR 3.0 / QS revision)' }}
+    />
+  </ScrollReveal2DChart>
+</Exhibit>
+
+<Exhibit
+  number="Exhibit C · Country movement"
+  title="China is the biggest gainer; the US is the biggest decliner."
+  sub="Net change in THE Top 500 institution count, 2016 to 2026. Top eight gainers and decliners."
+  source="Source: THE World University Rankings 2016 vs 2026; authors’ analysis. China +24 leads; Saudi Arabia and the UAE join the top movers on the back of Vision-2030/2071 funding programmes."
+>
+  <SVGGainersDecliners gainers={gainers} decliners={decliners} highlightName="United Arab Emirates" />
+</Exhibit>
+
+<Exhibit
+  number="Exhibit D · Volatility"
+  title="The elite is sticky; the Top 500 churns."
+  sub="Median absolute year-over-year rank change, integer-ranked institutions only, by tier and system."
+  source="Source: QS World University Rankings 2017 to 2026; THE World University Rankings 2016 to 2026; authors’ analysis."
+>
+  <VolatilityChart tiers={volatilityTiers} caveat="Banded ranks (e.g., THE 401–500) excluded to avoid artefactual ties." />
+</Exhibit>
+
+<PullQuote cite="From the analysis">
+  The rank number, on its own, is the least informative part of the rankings dataset.
+</PullQuote>
+
+<Handoff href="#systems">The full report</Handoff>
+
+</ArticleSection>
+
+<FullDivider>The full report <span style={{ opacity: 0.65, margin: '0 14px' }}>·</span> Sections 02 through 09</FullDivider>
+
+<ArticleSection id="systems" variant="alt">
+
+<SectionHeader
+  number="02"
+  kicker="Why the systems disagree"
+  title="QS and THE measure different things. A 100-place gap is usually signal, not noise."
+  italic="signal, not noise"
+/>
+
+<PillarGrid
+  cards={[
+    {
+      tag: 'QS · 2024 methodology',
+      title: 'Reputation-led, with internationalisation overlay.',
+      body: 'QS combines two reputation surveys (45% combined) with citations per faculty (20%), faculty-to-student ratio (10%), and four internationalisation and outcomes indicators introduced or rebalanced in 2024 (each 5%).',
+      segments: [
+        { label: 'Academic Rep', weight: 30, color: '#3F4818' },
+        { label: 'Employer Rep', weight: 15, color: '#5C6B1F' },
+        { label: 'Citations / Fac', weight: 20, color: '#A6B340' },
+        { label: 'Fac/Stu', weight: 10, color: '#7A8628' },
+        { label: 'Intl & Outcomes', weight: 25, color: '#2F5C66', textLight: true },
+      ],
+      legend: [
+        { label: 'Academic Reputation 30%', color: '#3F4818' },
+        { label: 'Employer Reputation 15%', color: '#5C6B1F' },
+        { label: 'Citations per Faculty 20%', color: '#A6B340' },
+        { label: 'Faculty/Student 10%', color: '#7A8628' },
+        { label: 'Intl Faculty / Intl Students / Intl Research Network / Sustainability / Employment Outcomes (each 5%)', color: '#2F5C66', full: true },
+      ],
+    },
+    {
+      tag: 'THE · WUR 3.0 (2024)',
+      title: 'Research-quality led, with bibliometric depth.',
+      body: "THE’s overall score uses 18 indicators across five pillars. The 2024 edition split Research into Research Environment and Research Quality, dropping the standalone Citations indicator that had defined THE since 2010.",
+      segments: [
+        { label: 'Teaching', weight: 29.5, color: '#3F4818' },
+        { label: 'Research Env', weight: 29, color: '#5C6B1F' },
+        { label: 'Research Qual', weight: 30, color: '#A6B340' },
+        { label: 'Ind', weight: 4, color: '#7A8628' },
+        { label: 'Intl', weight: 7.5, color: '#2F5C66', textLight: true },
+      ],
+      legend: [
+        { label: 'Teaching 29.5%', color: '#3F4818' },
+        { label: 'Research Environment 29%', color: '#5C6B1F' },
+        { label: 'Research Quality 30%', color: '#A6B340' },
+        { label: 'Industry 4%', color: '#7A8628' },
+        { label: 'International Outlook 7.5%', color: '#2F5C66' },
+      ],
+    },
+  ]}
+/>
+
+<p style={{ marginTop: 8, marginBottom: 8 }}>**Four facts that explain most rank-gap surprises:**</p>
+
+<ul>
+  <li>**Reputation surveys mean-revert slowly.** Big QS reputation gains take years to register. Big losses take just as long to disappear.</li>
+  <li>**Citation indicators move faster.** A research-intensive institution can climb the citation pillar in 3–5 years; QS rewards that less than THE does.</li>
+  <li>**Asian research universities read strongly to THE.** Long-established US/UK names read more strongly to QS. The same institution sits in two different places on the two lists, by design.</li>
+  <li>**The 12 largest divergences in 2026** all fall into one of the two structural buckets above. None are noise.</li>
+</ul>
+
+<Exhibit
+  number="Exhibit 02"
+  title="QS and THE often disagree, and the disagreement is structural."
+  sub="Institution-level QS rank vs THE rank, 2026 edition. Each dot is one institution; outliers labelled."
+  source="Source: QS World University Rankings 2026; THE World University Rankings 2026; authors’ analysis. Schematic representation; outliers reflect actual divergences identified in 2026 data."
+>
+  <SVGScatter
+    points={scatterPoints}
+    outliers={scatterOutliers}
+    diagonal
+    diagonalLabel="QS rank = THE rank (perfect agreement)"
+    xAxisLabel="QS rank (better →)"
+    yAxisLabel="THE rank (better →)"
+  />
+</Exhibit>
+
+<PullQuote cite="From the analysis">
+  Reading rank movement on either system as a quality signal independent of methodology is the most common decision-maker error. It rarely is.
+</PullQuote>
+
+</ArticleSection>
+
+<ArticleSection id="landscape">
+
+<SectionHeader
+  number="03"
+  kicker="The global landscape"
+  title="One region accounts for almost all the change."
+  italic="almost all"
+/>
+
+<p className="lead">
+Greater China is the engine. The Gulf is the second-tier story. The US has slipped at the band where its mid-tier publics live, not at the elite.
+</p>
+
+<ul>
+  <li>**Greater China: +24** institutions in the THE Top 500. Top-100 footprint **4 → 12**. Tsinghua, Peking, Fudan, Shanghai Jiao Tong, Zhejiang, USTC have each entered or consolidated Top-100 positions.</li>
+  <li>**Saudi Arabia: 1 → 9** in the THE Top 500. The Vision 2030 target ("at least five institutions in the global Top 200") put rank movement on a ministerial dashboard.</li>
+  <li>**United Arab Emirates: 0 → 7** in the THE Top 500. Faster percentage growth than any named GCC peer. Detail in §06.</li>
+  <li>**United States: still the largest single-country cohort** in both systems. Erosion is in the **Top 200–500 band** and concentrated in mid-Top-100 publics. The Ivy tier is not being unseated.</li>
+</ul>
+
+<DataTable
+  caption="Top-15 countries by 2026 Top-500 count, both ranking systems"
+  columns={[
+    { key: 'country', label: 'Country' },
+    { key: 'qs17', label: "QS '17", numeric: true },
+    { key: 'qs26', label: "QS '26", numeric: true },
+    { key: 'qsD', label: 'QS Δ', numeric: true },
+    { key: 'the16', label: "THE '16", numeric: true },
+    { key: 'the26', label: "THE '26", numeric: true },
+    { key: 'theD', label: 'THE Δ', numeric: true },
+  ]}
+  rows={countryTableRows}
+/>
+
+<p style={{ marginTop: 32 }}>
+**Money tracks citations.** Countries that lifted research as a share of GDP saw their universities' citation pillars rise. China and South Korea anchor the upside. Israel sits at the high-investment, modest-gain end. Russia is the only major country with a **negative** score change, consistent with post-2022 isolation.
+</p>
+
+<Exhibit
+  number="Cross-cutting view"
+  numberTone="copper"
+  title="Research-funding intensity tracks citation gains, but with notable outliers."
+  sub="Country-level R&D expenditure as % of GDP (latest year) vs decade change in mean citation score; bubble size = number of Top-500 universities in 2026."
+  source="Source: World Bank indicator GB.XPD.RSDV.GD.ZS (R&D expenditure as % of GDP, latest available year per country); Times Higher Education World University Rankings 2016 to 2026; authors’ analysis."
+>
+  <SVGGerdScatter bubbles={gerdBubbles} annotations={gerdAnnotations} />
+</Exhibit>
+
+</ArticleSection>
+
+<ArticleSection id="break" variant="dark">
+
+<SectionHeader
+  number="04"
+  kicker="The 2024 break"
+  title="The most consequential year of the decade was a methodology year."
+  italic="methodology"
+  dark
+/>
+
+<p className="lead">
+Both publishers shipped material rewrites for the 2024 edition. The largest single-year movements of the decade are concentrated in the 2023-to-2024 transition.
+</p>
+
+<StakeholderGrid
+  cols={2}
+  dark
+  items={[
+    {
+      title: 'THE: WUR 3.0',
+      body: 'Research split into Research Environment (29%) and Research Quality (30%). The standalone Citations indicator that had defined THE since 2010 was dropped. Institutions whose previous high citation scores no longer translate cleanly into the successors saw non-trivial reordering at the margin.',
+    },
+    {
+      title: 'QS: 2024 revision',
+      body: 'Three new indicators (Sustainability, Employment Outcomes, International Research Network), each at 5%. Employer Reputation lifted to 15%. Strong-employer-brand institutions benefited; institutions that had ridden citations-per-faculty gains saw less translation into headline movement.',
+    },
+  ]}
+/>
+
+<p style={{ marginTop: 32 }}>
+The 2023-to-2024 transition produces approximately **three times the median annual rank movement** of any non-methodology-break year in either system. That is not a magnitude consistent with pure institutional change.
+</p>
+
+<PullQuote dark cite="Analyst note">
+  Read 2023 to 2024 rank movement methodology-first. Read every other year-on-year movement second.
+</PullQuote>
+
+</ArticleSection>
+
+<ArticleSection id="pillars">
+
+<SectionHeader
+  number="05"
+  kicker="Pillar decomposition"
+  title="Citations are doing most of the work. Teaching is doing almost none."
+  italic="Teaching is doing almost none."
+/>
+
+<p className="lead">
+Read rank changes through the indicators, not through the headline number. The Citations / Research-Quality pillar is where regions diverge most sharply. The International Outlook pillar is where they all took a hit.
+</p>
+
+<Exhibit
+  number="Exhibit 03"
+  title="Where the convergence is, and isn't: change in median pillar score by region."
+  sub="Δ median THE pillar score, 2016 to 2026, Top 500 institutions. Higher = stronger pillar gain."
+  source="Source: Times Higher Education World University Rankings, annual editions 2016 to 2026; authors’ analysis. 2024 onwards Research uses Research Quality (post WUR 3.0); the comparison is conceptual, normalised across the methodology break."
+>
+  <Heatmap
+    rows={heatmapRows}
+    cols={heatmapCols}
+    legend={{ min: -10, max: 30, label: 'Δ pillar score' }}
+  />
+</Exhibit>
+
+<ul>
+  <li>**Citations / Research Quality is where regions diverge.** East Asia **+36**, MENA & Gulf **+28**, North America **+4**, Western Europe **+6**. Asia is moving; the West has effectively stopped rising.</li>
+  <li>**Industry-pillar gains cluster in Asia.** Korean, Chinese and Singaporean patent density and industry collaboration mature on a 5–10 year arc.</li>
+  <li>**Teaching is broadly flat.** Slow-moving reputation-survey inputs lock the indicator in place. It is not where strategy gets rewarded.</li>
+  <li>**International Outlook is the only column with widespread negatives.** The 2020–2022 international-mobility shock has not fully unwound. Australia and Western Europe took the largest hits.</li>
+</ul>
+
+</ArticleSection>
+
+<ArticleSection id="uae" variant="alt">
+
+<SectionHeader
+  number="06"
+  kicker="Spotlight · United Arab Emirates"
+  title="The Gulf is no longer the periphery; it is part of the story."
+  italic="part of the story"
+/>
+
+<p className="lead">
+The UAE doubled its Top-500 footprint in both systems. **Khalifa University** posted the **strongest decade-long QS rise of any Gulf institution.** The UAE story is a working test case for the patterns this report describes.
+</p>
+
+<UAEFootprint
+  cards={[
+    {
+      title: 'Footprint, 2016 to 2026',
+      body: "UAE in the THE Top 500 grew from no institutions in 2016 to seven in 2026 (+7, the fastest growth among GCC peers behind Saudi Arabia's +8). UAE in the QS Top 500 grew from three institutions in 2017 to six in 2026. The trajectory is faster in percentage terms than any named GCC peer.",
+      rows: [
+        { name: 'UAE in THE Top 500', value: '0 → 7' },
+        { name: 'UAE in QS Top 500', value: '3 → 6' },
+        { name: 'Saudi Arabia, THE (peer)', value: '1 → 9' },
+        { name: 'Qatar, THE (peer)', value: '1 → 2' },
+      ],
+    },
+    {
+      title: 'UAE institutions in QS 2026 Top 500',
+      rows: [
+        { name: 'Khalifa University', value: '177' },
+        { name: 'United Arab Emirates University', value: '229' },
+        { name: 'American University of Sharjah', value: '272' },
+        { name: 'University of Sharjah', value: '328' },
+        { name: 'Abu Dhabi University', value: '391' },
+        { name: 'Ajman University', value: '440' },
+      ],
+    },
+  ]}
+/>
+
+<p style={{ marginTop: 32 }}>
+**Khalifa: QS 405 → 177 in nine years.** 228 places. Largest single-institution QS improvement of any Gulf university in our dataset. The 2017 merger that consolidated the Petroleum Institute and the Masdar Institute into Khalifa is the structural explanation. The pillar pattern is decisive: Citations per Faculty and Citations / Research Quality moved more than the academic-reputation indicator. **The gain is research-driven, not reputation-led.**
+</p>
+
+<p>
+The strategy is the Singapore playbook at one-flagship scale: **consolidate, then fund as a Vision 2071 priority asset.** It is a different model from Saudi Arabia's broader-base investment and a different model from Qatar's concentrated Qatar-University model. The lag profiles differ; consolidation compounds on existing infrastructure faster than greenfield does.
+</p>
+
+<PullQuote cite="Source: THE World University Rankings, 2016 to 2026; authors’ analysis">
+  The UAE's THE Top-500 footprint has grown faster than any named GCC peer over the decade.
+</PullQuote>
+
+<h3 style={{ marginTop: 8 }}>Six countries, six lessons.</h3>
+
+<DataTable
+  columns={[
+    { key: 'country', label: 'Country', width: '140px' },
+    { key: 'data', label: "What the decade's data shows" },
+    { key: 'lesson', label: 'Key lesson' },
+  ]}
+  rows={lessonsTableRows}
+  cellRender={(col, row) => {
+    const v = row[col.key];
+    if (col.key === 'lesson' || col.key === 'data') {
+      return (
+        <span
+          style={{ fontSize: 13.5, lineHeight: 1.55, color: col.key === 'data' ? 'var(--color-ink-mid)' : undefined, fontFamily: 'var(--font-serif)' }}
+          dangerouslySetInnerHTML={{ __html: String(v) }}
+        />
+      );
+    }
+    if (col.key === 'country') {
+      return <span style={{ fontWeight: 600 }}>{String(v)}</span>;
+    }
+    return String(v);
+  }}
+/>
+
+<h3>An action quartet for UAE leadership.</h3>
+
+<StakeholderGrid
+  cols={2}
+  items={[
+    {
+      title: 'Government & Ministry of Education',
+      bullets: [
+        '**Publish a numbered, time-bound 2030 target.** "Two universities in the global Top 100, eight in the Top 500 by 2030." Report against it annually.',
+        '**Fund disciplines on 10-year cycles, not three-year budgets.** Pick three or four fields where the UAE can credibly lead globally.',
+        '**Treat the Golden Visa as a citation-pillar instrument.** Retained international graduates produce co-authored citations that compound over 5 to 10 years.',
+        'Continue the dual-track: domestic flagships (Khalifa, UAEU) plus international branch campuses (NYUAD, Sorbonne Abu Dhabi, MBZUAI).',
+      ],
+    },
+    {
+      title: 'University leaders',
+      bullets: [
+        '**Concentrate on three pillar levers:** International Research Network, Citations / Research Quality, and Industry.',
+        '**Take the 2024 methodology breaks seriously.** Pillar diagnostics now matter more than overall-rank optics.',
+        'The volatility of the Top 200 to 500 band rewards focus on three or four pillars more than balanced effort across all of them.',
+        '**Build co-authorship density.** It is the indicator most resistant to policy and methodology shocks, and the cheapest to scale.',
+      ],
+    },
+    {
+      title: 'International branch campuses',
+      bullets: [
+        '**Use branch campuses as international-pillar accelerators**, not as standalone Top-500 entrants.',
+        "NYU's pillar profile (top-quartile International Research Network and International Outlook) is what NYUAD inherits and adds back to UAE national-system statistics.",
+        'Branch campuses add national-level pillar value through co-authorship and visiting-faculty networks, even when not separately ranked.',
+        'Evaluate each branch campus on the indicators it uniquely strengthens.',
+      ],
+    },
+    {
+      title: 'Sovereign funders',
+      bullets: [
+        '**Fund pillars, not banners.** Rank movement is the lagging output, not the leading input.',
+        '**Pick the timeline before the model.** Greenfield (KAUST, MBZUAI) buys decades to compound; acceleration (Double First-Class, Khalifa post-merger) compounds in 5 to 7 years.',
+        'Most rankings investment shows up 5 to 7 years after deployment. Hold for the cycle.',
+        '**Mid-cycle reorganisation resets the lag clock.** Political patience is the cheapest input and the rarest.',
+      ],
+    },
+  ]}
+/>
+
+</ArticleSection>
+
+<ArticleSection id="movers">
+
+<SectionHeader
+  number="07"
+  kicker="Movers and shakers"
+  title="The narrative is not 'Asia rose.' It is 'specific Asian institutions in specific funding programmes rose.'"
+  italic="specific funding programmes"
+/>
+
+<Exhibit
+  number="Exhibit 04 · The cohort, year by year"
+  title="The 2016 elite tracked through 2026."
+  sub="Click any line, end-label, or pick from the menu to highlight a trajectory; the others fade. The 2024 vertical hairline marks the WUR 3.0 methodology break."
+  source="Source: THE World University Rankings, annual editions 2016 to 2026; authors’ analysis. Cohort = the THE Top 20 in 2016, tracked through every subsequent year."
+>
+  <BumpChart data={theBumpCohort} />
+</Exhibit>
+
+<Exhibit
+  number="Exhibit 05 · Top 15 risers"
+  title="THE: top 15 risers across the decade."
+  sub="First-appearance rank to most-recent rank. Institutions present at least 4 years; sorted by magnitude."
+  source="Source: THE World University Rankings, annual editions 2016 to 2026; authors’ analysis. Integer-ranked endpoints only."
+>
+  <SVGRisers rows={risers} />
+</Exhibit>
+
+<p style={{ marginTop: 32 }}>
+The risers list reads as a policy document. **Six of the top ten** are funded under China's Double First-Class Construction. **The next three** benefit from sustained Korean and German federal programmes (Brain Korea 21, Excellence Strategy). Two are Hong Kong institutions that compound independently of mainland funding cycles.
+</p>
+
+<p>
+**Structural rises track structural funding programmes, with a 5-to-7 year lag.** That is the only pattern that holds across the entire risers list.
+</p>
+
+</ArticleSection>
+
+<ArticleSection id="implications" variant="alt">
+
+<SectionHeader
+  number="08"
+  kicker="Implications"
+  title="A single set of findings, six agendas."
+  italic="six"
+/>
+
+<p className="lead">
+The same dataset reads differently depending on the chair you sit in. What the decade should change for each major stakeholder.
+</p>
+
+<StakeholderGrid
+  cols={3}
+  items={[
+    {
+      title: 'Governments',
+      bullets: [
+        '**Articulate explicitly what you want from rankings before funding for them.**',
+        "Fund what they reward (research quality, internationalisation infrastructure, employment outcomes) without losing sight of what they don't measure.",
+        '**Treat international-student visa policy as research-citation policy.** The two are now empirically linked through co-authorship networks.',
+      ],
+    },
+    {
+      title: 'University leaders',
+      bullets: [
+        '**Calibrate ambition to volatility.** Top-50 and Top-200 are different regimes, not different intensities of the same regime.',
+        'Top-50 must be structural: sustained research funding, international faculty, citation density.',
+        'Top-200 needs indicator discipline: focus on three or four pillars beats balanced effort.',
+        '**After 2024, pillar diagnostics matter more than overall-rank optics.**',
+      ],
+    },
+    {
+      title: 'Sovereign & philanthropic funders',
+      bullets: [
+        '**Fund pillars, not banners.** Rank movement is the lagging output.',
+        'Distinguish greenfield models (KAUST, MBZUAI) from acceleration models (Double First-Class, Khalifa post-merger). Lag profiles differ.',
+        'Greenfield: 15+ years. Acceleration: 5 to 7 years.',
+        '**Choose the timeline before you choose the model.**',
+      ],
+    },
+    {
+      title: 'Students & families',
+      bullets: [
+        '**Look at pillars, not overall ranks.**',
+        'Read both QS and THE. Either alone is half the picture.',
+        'A 50-place gap between systems is normal. **A 100-place gap is a structural signal.** Understand it before a multi-year decision.',
+        'Programme-level rankings beat institutional rankings for most career-outcome questions.',
+      ],
+    },
+    {
+      title: 'Employers',
+      bullets: [
+        '**QS Employer Reputation is a brand-visibility lag, not a hiring guide.**',
+        'Use rankings to track talent-pool shifts, not to make individual hiring decisions.',
+        'The rise of Asian and Gulf institutions is real, durable, and visible in research-collaboration data.',
+        'Companies hiring on a 5-year horizon should already be calibrating university-relations spend against the new map.',
+      ],
+    },
+    {
+      title: 'Researchers',
+      bullets: [
+        'Citation patterns now compound faster than reputation surveys reset.',
+        'Where you publish is a longer-horizon ranking decision than ever before.',
+        '**The 2024 split of THE Research into Environment and Quality changes which behaviours pay off.**',
+        "Review your institution's pillar profile before optimising your own.",
+      ],
+    },
+  ]}
+/>
+
+</ArticleSection>
+
+<ArticleSection id="methodology" variant="alt">
+
+<SectionHeader
+  number="09"
+  kicker="Methodology & sources"
+  title="How we built the dataset."
+/>
+
+<ul>
+  <li>**Coverage.** QS Top 500, 2017–2026 (ten editions). THE Top 500, 2016–2026 (eleven editions). 1,038 distinct canonical institutions across 96 countries; 10,536 institution-year-system rows.</li>
+  <li>**Rank handling.** Integer ranks pass through unchanged. Banded ranks (e.g., "401–500") converted to numerical midpoints with the original band retained for tier-boundary analysis. Tie markers stripped.</li>
+  <li>**Country normalisation.** ISO-3166 alpha-3 via pycountry, plus manual aliases for Hong Kong, Macao, Taiwan, Iran, Korea, Russia, the UAE, and other commonly inconsistent entries. Greater China (China + Hong Kong + Macao + Taiwan) retained as a separate analytical view.</li>
+  <li>**Institution matching.** Three rules in order: hard alias for known cases; exact match on aggressively-normalised name; controlled fuzzy match (token_sort_ratio ≥ 97 AND first significant token agrees AND length ratio ≥ 0.75). All fuzzy edges audited.</li>
+  <li>**2024 methodology break flagging.** Year-over-year rank changes computed only for integer-ranked rows. The 2024 breaks (THE WUR 3.0; QS revision) are flagged in the data; cross-year analyses straddling the break are discussed methodology-first throughout. Validated against a 28-institution truth panel with anti-collision tests.</li>
+</ul>
+
+<hr className="rule-thin" />
+
+<div style={{ fontSize: 13, lineHeight: 1.65, maxWidth: 880, fontFamily: 'var(--font-serif)' }}>
+  <h3 style={{ marginTop: 0 }}>Sources</h3>
+  <ol style={{ paddingLeft: 24, margin: '14px 0 0' }}>
+    <li style={{ marginBottom: 11, color: 'var(--color-ink-mid)', paddingLeft: 4 }}>Times Higher Education, <em style={{ color: 'var(--color-ink)' }}>World University Rankings 2024 methodology (WUR 3.0)</em>.</li>
+    <li style={{ marginBottom: 11, color: 'var(--color-ink-mid)', paddingLeft: 4 }}>QS Quacquarelli Symonds, <em style={{ color: 'var(--color-ink)' }}>World University Rankings 2024 methodology changes</em>.</li>
+    <li style={{ marginBottom: 11, color: 'var(--color-ink-mid)', paddingLeft: 4 }}>Wikipedia, <em style={{ color: 'var(--color-ink)' }}>Double First-Class Construction</em> (initiated 2015; replaced Project 985/211).</li>
+    <li style={{ marginBottom: 11, color: 'var(--color-ink-mid)', paddingLeft: 4 }}>Deutsche Forschungsgemeinschaft (DFG), <em style={{ color: 'var(--color-ink)' }}>Excellence Strategy (ExStra)</em>, funding 2019 to 2026 and 2026 onwards.</li>
+    <li style={{ marginBottom: 11, color: 'var(--color-ink-mid)', paddingLeft: 4 }}>King Abdullah University of Science and Technology (KAUST), institutional and Vision 2030 page.</li>
+    <li style={{ marginBottom: 11, color: 'var(--color-ink-mid)', paddingLeft: 4 }}>Science|Business, <em style={{ color: 'var(--color-ink)' }}>UK official association to Horizon Europe</em> (September 2023).</li>
+    <li style={{ marginBottom: 11, color: 'var(--color-ink-mid)', paddingLeft: 4 }}>World Bank Open Data, indicator GB.XPD.RSDV.GD.ZS (Research and development expenditure, % of GDP).</li>
+    <li style={{ marginBottom: 11, color: 'var(--color-ink-mid)', paddingLeft: 4 }}>QS World University Rankings, annual editions 2017 to 2026.</li>
+    <li style={{ marginBottom: 11, color: 'var(--color-ink-mid)', paddingLeft: 4 }}>Times Higher Education, World University Rankings, annual editions 2016 to 2026.</li>
+  </ol>
+</div>
+
+</ArticleSection>
