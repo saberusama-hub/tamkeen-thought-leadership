@@ -280,15 +280,15 @@ export const countryTableRows = [
   { country: 'Germany', qs17: 31, qs26: 30, qsD: { value: '-1', tone: 'neg' as const }, the16: 36, the26: 41, theD: { value: '+5', tone: 'pos' as const } },
   { country: 'Australia', qs17: 23, qs26: 28, qsD: { value: '+5', tone: 'pos' as const }, the16: 27, the26: 32, theD: { value: '+5', tone: 'pos' as const } },
   { country: 'Italy', qs17: 12, qs26: 15, qsD: { value: '+3', tone: 'pos' as const }, the16: 33, the26: 25, theD: { value: '-8', tone: 'neg' as const } },
-  { country: 'Spain', qs17: 10, qs26: 15, qsD: { value: '+5', tone: 'pos' as const }, the16: '-', the26: '-', theD: '-' },
+  { country: 'Spain', qs17: 10, qs26: 15, qsD: { value: '+5', tone: 'pos' as const }, the16: 9, the26: 5, theD: { value: '-4', tone: 'neg' as const } },
   { country: 'France', qs17: 20, qs26: 14, qsD: { value: '-6', tone: 'neg' as const }, the16: 20, the26: 11, theD: { value: '-9', tone: 'neg' as const } },
   { country: 'Canada', qs17: 18, qs26: 18, qsD: '+0', the16: 21, the26: 18, theD: { value: '-3', tone: 'neg' as const } },
   { country: 'Korea, Republic of', qs17: 16, qs26: 13, qsD: { value: '-3', tone: 'neg' as const }, the16: 11, the26: 14, theD: { value: '+3', tone: 'pos' as const } },
   { country: 'Japan', qs17: 17, qs26: 13, qsD: { value: '-4', tone: 'neg' as const }, the16: 11, the26: 9, theD: { value: '-2', tone: 'neg' as const } },
   { country: 'Netherlands', qs17: 13, qs26: 13, qsD: '+0', the16: 13, the26: 12, theD: { value: '-1', tone: 'neg' as const } },
-  { country: 'Saudi Arabia', qs17: 5, qs26: 9, qsD: { value: '+4', tone: 'pos' as const }, the16: 1, the26: 9, theD: { value: '+8', tone: 'pos' as const } },
-  { country: 'Malaysia', qs17: 5, qs26: 10, qsD: { value: '+5', tone: 'pos' as const }, the16: '-', the26: '-', theD: '-' },
-  { country: 'United Arab Emirates', qs17: 4, qs26: 6, qsD: { value: '+2', tone: 'pos' as const }, the16: 1, the26: 7, theD: { value: '+6', tone: 'pos' as const } },
+  { country: 'Saudi Arabia', qs17: 3, qs26: 5, qsD: { value: '+2', tone: 'pos' as const }, the16: 1, the26: 9, theD: { value: '+8', tone: 'pos' as const } },
+  { country: 'Malaysia', qs17: 5, qs26: 10, qsD: { value: '+5', tone: 'pos' as const }, the16: 1, the26: 7, theD: { value: '+6', tone: 'pos' as const } },
+  { country: 'United Arab Emirates', qs17: 3, qs26: 6, qsD: { value: '+3', tone: 'pos' as const }, the16: 0, the26: 7, theD: { value: '+7', tone: 'pos' as const } },
 ];
 
 export const lessonsTableRows = [

@@ -20,15 +20,63 @@ import path from 'node:path';
 
 const ROOT = process.cwd();
 const claimsPath = path.join(ROOT, 'content', 'data', 'computed-claims.json');
+const masterPath = path.join(ROOT, 'content', 'data', 'rankings-master.json');
 const mdxPath = path.join(
   ROOT,
   'content',
   'articles',
   'decade-that-reshaped-higher-education.mdx',
 );
+const dataTsPath = path.join(
+  ROOT,
+  'content',
+  'articles',
+  'decade-that-reshaped-higher-education.data.ts',
+);
 
 const claims = JSON.parse(readFileSync(claimsPath, 'utf-8')) as Record<string, unknown>;
 const mdx = readFileSync(mdxPath, 'utf-8');
+const dataTs = readFileSync(dataTsPath, 'utf-8');
+interface MasterRow {
+  system: 'THE' | 'QS';
+  year: number;
+  rankNumeric: number;
+  country: string;
+}
+const master = JSON.parse(readFileSync(masterPath, 'utf-8')) as MasterRow[];
+
+const COUNTRY_GROUPS: Record<string, string[]> = {
+  'United States': ['United States', 'United States of America', 'USA', 'U.S.A.'],
+  'United Kingdom': ['United Kingdom', 'UK'],
+  China: ['China', 'China (Mainland)', 'PRC'],
+  Germany: ['Germany'],
+  Australia: ['Australia'],
+  Italy: ['Italy'],
+  Spain: ['Spain'],
+  France: ['France'],
+  Canada: ['Canada'],
+  'Korea, Republic of': [
+    'South Korea',
+    'Korea, Republic of',
+    'Republic of Korea',
+    'Korea (South)',
+  ],
+  Japan: ['Japan'],
+  Netherlands: ['Netherlands', 'The Netherlands'],
+  'Saudi Arabia': ['Saudi Arabia'],
+  Malaysia: ['Malaysia'],
+  'United Arab Emirates': ['United Arab Emirates', 'UAE'],
+};
+
+function countTop500(system: 'THE' | 'QS', year: number, names: string[]): number {
+  return master.filter(
+    (r) =>
+      r.system === system &&
+      r.year === year &&
+      names.includes(r.country) &&
+      r.rankNumeric <= 500,
+  ).length;
+}
 
 interface Check {
   label: string;
@@ -186,6 +234,77 @@ const discrepancies = [
 ];
 for (const d of discrepancies) {
   console.log(`  ${d.metric}: report=${d.report} | source=${d.source}`);
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Country-table row audit. Every row in countryTableRows
+// (in decade-that-reshaped-higher-education.data.ts) must match the
+// counts computed from rankings-master.json, the xlsx-derived source.
+// ────────────────────────────────────────────────────────────────────────────
+
+console.log('\n================ COUNTRY TABLE ROW AUDIT ================');
+
+interface RowSpec {
+  country: string;
+  qs17: number | '-';
+  qs26: number | '-';
+  the16: number | '-';
+  the26: number | '-';
+}
+
+function parseRows(): RowSpec[] {
+  // Naive parse — matches each "{ country: 'X', qs17: ..., qs26: ..., ... the16: ..., the26: ..., ... }"
+  // line in the countryTableRows export.
+  const start = dataTs.indexOf('export const countryTableRows');
+  const end = dataTs.indexOf('];', start);
+  const block = dataTs.slice(start, end);
+  const lines = block.split('\n').filter((l) => l.trim().startsWith('{ country:'));
+  const out: RowSpec[] = [];
+  for (const line of lines) {
+    const country = /country:\s*'([^']+)'/.exec(line)?.[1];
+    const qs17 = /qs17:\s*([0-9]+|'-')/.exec(line)?.[1];
+    const qs26 = /qs26:\s*([0-9]+|'-')/.exec(line)?.[1];
+    const the16 = /the16:\s*([0-9]+|'-')/.exec(line)?.[1];
+    const the26 = /the26:\s*([0-9]+|'-')/.exec(line)?.[1];
+    if (!country) continue;
+    out.push({
+      country,
+      qs17: qs17 === "'-'" ? '-' : Number(qs17),
+      qs26: qs26 === "'-'" ? '-' : Number(qs26),
+      the16: the16 === "'-'" ? '-' : Number(the16),
+      the26: the26 === "'-'" ? '-' : Number(the26),
+    });
+  }
+  return out;
+}
+
+const rows = parseRows();
+let rowFail = 0;
+for (const row of rows) {
+  const aliases = COUNTRY_GROUPS[row.country] ?? [row.country];
+  const checks: { col: string; declared: number | '-'; actual: number }[] = [
+    { col: 'qs17', declared: row.qs17, actual: countTop500('QS', 2017, aliases) },
+    { col: 'qs26', declared: row.qs26, actual: countTop500('QS', 2026, aliases) },
+    { col: 'the16', declared: row.the16, actual: countTop500('THE', 2016, aliases) },
+    { col: 'the26', declared: row.the26, actual: countTop500('THE', 2026, aliases) },
+  ];
+  const issues = checks.filter((c) => c.declared !== '-' && c.declared !== c.actual);
+  if (issues.length === 0) {
+    console.log(`  PASS   ${row.country}`);
+  } else {
+    rowFail++;
+    console.log(`  FAIL   ${row.country}`);
+    for (const i of issues) {
+      console.log(`         ${i.col}: declared=${i.declared}, source=${i.actual}`);
+    }
+  }
+}
+
+if (rowFail > 0) {
+  console.error(
+    `\ncountry-table audit FAILED — ${rowFail} row(s) disagree with source xlsx data. Fix decade-...data.ts > countryTableRows.`,
+  );
+  process.exit(1);
 }
 
 if (FAIL > 0) {
