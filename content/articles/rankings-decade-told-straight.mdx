@@ -54,7 +54,7 @@ import { ArticleSection } from '@/components/ArticleLayout';
     { num: '+11', unit: 'pp', label: "Asia's THE Top 100 share", desc: 'Share of THE Top 100 institutions in Asia, from 9% in 2016 to 20% in 2026.', trend: 'up' },
     { num: '3x', label: 'Greater China Top 100', desc: 'From 4 institutions in 2016 to 12 in 2026, the single biggest source of compositional change.', trend: 'up' },
     { num: '−4 / −6', label: 'US Top 100 institutions lost', desc: 'THE: 39 to 35. QS: 32 to 26. Concentrated in mid-Top-100 publics, not Ivy-tier privates.', tone: 'neg', trend: 'down' },
-    { num: '9', label: 'Median annual rank shift', desc: 'QS Top 500, integer-ranked. Top-10 institutions move a median of 1 rank per year; Top-500 institutions move 9.', trend: 'flat' },
+    { num: '9', label: 'Median annual rank shift', desc: 'Integer-ranked institutions only. Top-10 institutions move 1 rank per year; Top-500 institutions move 9 in QS, 5 in THE (where integer ranks effectively cover the Top 200).', trend: 'flat' },
   ]}
 />
 
@@ -63,7 +63,7 @@ import { ArticleSection } from '@/components/ArticleLayout';
     { title: "Asia's THE Top 100 share more than doubled", body: 'From 9% in 2016 to 20% in 2026. QS shows a smaller shift (20% to 21%) reflecting QS’s heavier reputation-survey weighting, which mean-reverts slowly.' },
     { title: 'Greater China tripled its THE Top 100 footprint', body: 'From 4 institutions in 2016 to 12 in 2026: the single biggest source of compositional change at the elite tier, tracking the timing and intensity of China’s Double First-Class initiative.' },
     { title: 'The US lost ground, but only mildly at the elite tier', body: '39 to 35 (THE) and 32 to 26 (QS). The US still holds the largest single-country cohort in both systems. The decline is concentrated in mid-Top-100 publics, not Ivy-tier privates.' },
-    { title: 'Top-500 churn is high; the elite is sticky', body: '154 institutions entered the QS Top 500 across the decade and 126 entered the THE Top 500. Yet the median annual rank movement of integer-ranked Top 10 institutions is one place; for the QS Top 500 it is nine.' },
+    { title: 'Top-500 churn is high; the elite is sticky', body: '154 institutions entered the QS Top 500 across the decade and 126 entered the THE Top 500. Yet the median annual rank movement of integer-ranked Top 10 institutions is one place; for the Top 500 it is nine in QS and five in THE.' },
     { title: 'The 2024 methodology shifts were tectonic', body: "THE’s WUR 3.0 split Research into Research Environment and Research Quality, dropping the standalone Citations pillar. QS introduced Sustainability, Employment Outcomes, and International Research Network indicators (each 5%) and lifted Employer Reputation to 15%. Read 2023-to-2024 movement methodology-first." },
     { title: 'Country research-funding intensity tracks citation gains', body: 'The China and South Korea pairing (high R&D-as-share-of-GDP, large gains in mean THE citation/research-quality score) anchors a positive correlation. Israel sits at the high-investment, modest-gain end. Russia is the only major country with a negative score change.' },
     { title: 'QS and THE disagree more than commentators acknowledge', body: 'For institutions present in both 2026 lists, the absolute rank gap exceeds 100 places for a non-trivial subset. The disagreement is structural, reflecting how the two systems weigh reputation, research output, and internationalisation differently.' },
@@ -184,7 +184,7 @@ import { ArticleSection } from '@/components/ArticleLayout';
 <p style={{ marginTop: 8, marginBottom: 8 }}><strong>Four facts that explain most rank-gap surprises:</strong></p>
 
 <ul>
-  <li><strong>Reputation surveys mean-revert slowly.</strong> Big QS reputation gains take years to register. Big losses take just as long to disappear.</li>
+  <li><strong>Reputation surveys mean-revert slowly.</strong> Big reputation gains take years to register. Big losses take just as long to disappear.</li>
   <li><strong>Citation indicators move faster.</strong> A research-intensive institution can climb the citation pillar in 3–5 years; QS rewards that less than THE does.</li>
   <li><strong>Asian research universities read strongly to THE.</strong> Long-established US/UK names read more strongly to QS. The same institution sits in two different places on the two lists, by design.</li>
   <li><strong>The 12 largest divergences in 2026</strong> all fall into one of the two structural buckets above. None are noise.</li>
@@ -228,7 +228,7 @@ Greater China is the engine. The Gulf is the second-tier story. The US has slipp
 <ul>
   <li><strong>Greater China: +24</strong> institutions in the THE Top 500. Top-100 footprint <strong>4 → 12</strong>. Tsinghua, Peking, Fudan, Shanghai Jiao Tong, Zhejiang, USTC have each entered or consolidated Top-100 positions.</li>
   <li><strong>Saudi Arabia: 1 → 9</strong> in the THE Top 500. The Vision 2030 target ("at least five institutions in the global Top 200") put rank movement on a ministerial dashboard.</li>
-  <li><strong>United Arab Emirates: 0 → 7</strong> in the THE Top 500. Faster percentage growth than any named GCC peer. Detail in §06.</li>
+  <li><strong>United Arab Emirates: 0 → 7</strong> in the THE Top 500. Faster percentage growth than any named GCC peer. Detail in section 06.</li>
   <li><strong>United States: still the largest single-country cohort</strong> in both systems. Erosion is in the <strong>Top 200–500 band</strong> and concentrated in mid-Top-100 publics. The Ivy tier is not being unseated.</li>
 </ul>
 
@@ -346,7 +346,7 @@ Read rank changes through the indicators, not through the headline number. The C
 />
 
 <p className="lead">
-The UAE doubled its Top-500 footprint in both systems. <strong>Khalifa University</strong> posted the <strong>strongest decade-long QS rise of any Gulf institution.</strong> The UAE story is a working test case for the patterns this report describes.
+The UAE went from <strong>zero institutions</strong> in the THE Top 500 in 2016 to <strong>seven</strong> in 2026 — the fastest percentage growth of any GCC peer. <strong>Khalifa University</strong> is the flagship that compounded across both rankings. The UAE story is a working test case for the patterns this report describes.
 </p>
 
 <UAEFootprint
@@ -376,7 +376,7 @@ The UAE doubled its Top-500 footprint in both systems. <strong>Khalifa Universit
 />
 
 <p style={{ marginTop: 32 }}>
-<strong>Khalifa: QS 405 → 177 in nine years.</strong> 228 places. Largest single-institution QS improvement of any Gulf university in our dataset. The 2017 merger that consolidated the Petroleum Institute and the Masdar Institute into Khalifa is the structural explanation. The pillar pattern is decisive: Citations per Faculty and Citations / Research Quality moved more than the academic-reputation indicator. <strong>The gain is research-driven, not reputation-led.</strong>
+<strong>Khalifa: QS 405 → 177 (228 places); THE 326 → 226</strong> (entered the integer-ranked tier in 2018, sits at top-quartile of the integer band by 2026). The 2017 merger that consolidated the Petroleum Institute and the Masdar Institute into Khalifa is the structural explanation. The pillar pattern is decisive in both systems: Citations / Research Quality moved more than the academic-reputation indicator. <strong>The gain is research-driven, not reputation-led.</strong>
 </p>
 
 <p>

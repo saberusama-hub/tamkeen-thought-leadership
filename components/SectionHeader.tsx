@@ -15,7 +15,7 @@ interface SectionHeaderProps {
 /**
  * Section header.
  *
- *   ── § 04 · The 2024 break
+ *   ── Section 04 · The 2024 break
  *   The most consequential year of the
  *   decade was a methodology year, not
  *   an institutional one.
@@ -29,7 +29,7 @@ export function SectionHeader({ id, number, kicker, title, italic, children }: S
       <ScrollReveal className="flex items-center gap-3 mb-4">
         <span aria-hidden className="block h-px w-8 bg-lime" />
         <div className="ui-caps font-sans text-[11px] tracking-[2px] uppercase font-semibold text-green">
-          § {number}
+          Section {number}
         </div>
         {kicker ? (
           <>
