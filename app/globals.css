@@ -121,7 +121,22 @@ html {
 }
 
 body {
-  background: var(--color-paper);
+  /*
+   * Paper texture: an inline SVG with feTurbulence (fractalNoise) is layered
+   * over the solid paper colour. stitchTiles='stitch' makes the noise pattern
+   * seamlessly tileable so the 240×240 repeat is invisible at any viewport
+   * width. baseFrequency 0.9 gives a fine grain (closer to uncoated newsprint
+   * stock than to coarse linen); the feColorMatrix turns the luminance noise
+   * into a low-opacity warm-olive overlay tuned to the lime-cream palette.
+   *
+   * Zero KB cost (data URI is ~400 bytes), AA contrast preserved, no extra
+   * DOM. Hidden in @media print so the texture does not double-print over
+   * the actual paper.
+   */
+  background-color: var(--color-paper);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10  0 0 0 0 0.10  0 0 0 0 0.05  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-repeat: repeat;
+  background-size: 240px 240px;
   color: var(--color-ink);
   font-family: var(--font-serif);
   font-size: 18px;
@@ -136,6 +151,12 @@ body {
    *   font-variant-numeric: tabular-nums + lnum to keep columns aligned.
    */
   font-feature-settings: 'kern' 1, 'liga' 1, 'onum' 1, 'pnum' 1;
+}
+
+@media print {
+  body {
+    background-image: none;
+  }
 }
 
 ::selection {
