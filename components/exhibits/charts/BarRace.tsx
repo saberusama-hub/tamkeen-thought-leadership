@@ -225,7 +225,7 @@ export function BarRace({ years, topN = 20, msPerYear = 700 }: BarRaceProps) {
   return (
     <div className="my-4">
       <div
-        className="relative bg-paper"
+        className="relative"
         role="img"
         aria-label={`Animated bar chart of THE Top ${topN} institutions by overall score, ${minYear} to ${maxYear}.`}
         tabIndex={0}

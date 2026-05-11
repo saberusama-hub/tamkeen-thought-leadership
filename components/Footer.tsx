@@ -1,9 +1,5 @@
-import Link from 'next/link';
-
 /**
- * Minimalist footer. Light cream surface with a tamkeen-green brand line on
- * top, four utility links beneath, copyright on the bottom. No category
- * lists, no subscribe form, no social icons.
+ * Minimalist footer. Wordmark + copyright. No utility nav links.
  */
 export function Footer() {
   return (
@@ -13,20 +9,6 @@ export function Footer() {
           The Index.{' '}
           <span className="text-mute italic font-normal">A publication of Tamkeen Thought Leadership.</span>
         </div>
-        <nav className="ui-caps flex flex-wrap gap-x-6 gap-y-2 font-sans text-[12px] tracking-[1.4px] uppercase text-mute">
-          <Link href="/about" className="hover:text-green border-none transition-colors">
-            About
-          </Link>
-          <Link href="/about" className="hover:text-green border-none transition-colors">
-            Methodology
-          </Link>
-          <Link href="/about" className="hover:text-green border-none transition-colors">
-            Subscribe
-          </Link>
-          <Link href="/about" className="hover:text-green border-none transition-colors">
-            Contact
-          </Link>
-        </nav>
         <div className="ui-caps font-sans text-[11px] tracking-[1.4px] uppercase text-mute opacity-80 mt-2">
           © {new Date().getFullYear()} Tamkeen
         </div>

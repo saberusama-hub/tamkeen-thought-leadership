@@ -122,21 +122,25 @@ html {
 
 body {
   /*
-   * Paper texture: an inline SVG with feTurbulence (fractalNoise) is layered
-   * over the solid paper colour. stitchTiles='stitch' makes the noise pattern
-   * seamlessly tileable so the 240×240 repeat is invisible at any viewport
-   * width. baseFrequency 0.9 gives a fine grain (closer to uncoated newsprint
-   * stock than to coarse linen); the feColorMatrix turns the luminance noise
-   * into a low-opacity warm-olive overlay tuned to the lime-cream palette.
+   * Newspaper paper feel: two layered backgrounds over the solid paper
+   * colour. The first layer is a tight halftone-dot pattern — two tiny
+   * dark-olive dots offset on a 6×6 SVG tile — which evokes the CMYK
+   * dot screen of actual newsprint. Regular pattern, not random noise,
+   * so it reads as 'printed' rather than 'noisy.' The second layer is
+   * a viewport-locked radial gradient that darkens the corners of the
+   * page slightly, evoking the way light falls on a physical page or
+   * the way newsprint ages at the edges. Together they say 'real
+   * paper, printed' without any single effect being loud.
    *
-   * Zero KB cost (data URI is ~400 bytes), AA contrast preserved, no extra
-   * DOM. Hidden in @media print so the texture does not double-print over
-   * the actual paper.
+   * Pure CSS, zero KB, AA contrast preserved. Hidden in @media print.
    */
   background-color: var(--color-paper);
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10  0 0 0 0 0.10  0 0 0 0 0.05  0 0 0 0.28 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  background-repeat: repeat;
-  background-size: 240px 240px;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><circle cx='1.5' cy='1.5' r='0.55' fill='%231a1a0a' opacity='0.16'/><circle cx='4.5' cy='4.5' r='0.55' fill='%231a1a0a' opacity='0.16'/></svg>"),
+    radial-gradient(ellipse at center, transparent 45%, rgba(63, 72, 24, 0.07) 100%);
+  background-repeat: repeat, no-repeat;
+  background-size: 6px 6px, 100% 100vh;
+  background-attachment: scroll, fixed;
   color: var(--color-ink);
   font-family: var(--font-serif);
   font-size: 18px;
