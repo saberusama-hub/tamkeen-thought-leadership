@@ -121,26 +121,42 @@ html {
 }
 
 body {
-  /*
-   * Newspaper paper feel: two layered backgrounds over the solid paper
-   * colour. The first layer is a tight halftone-dot pattern — two tiny
-   * dark-olive dots offset on a 6×6 SVG tile — which evokes the CMYK
-   * dot screen of actual newsprint. Regular pattern, not random noise,
-   * so it reads as 'printed' rather than 'noisy.' The second layer is
-   * a viewport-locked radial gradient that darkens the corners of the
-   * page slightly, evoking the way light falls on a physical page or
-   * the way newsprint ages at the edges. Together they say 'real
-   * paper, printed' without any single effect being loud.
-   *
-   * Pure CSS, zero KB, AA contrast preserved. Hidden in @media print.
-   */
   background-color: var(--color-paper);
+  /*
+   * Aged-paper feel, four layered backgrounds. Recipe matches the
+   * reference image vibe (vintage manuscript / aged document) but kept
+   * on the lime-cream paper identity.
+   *
+   *  1. Page-edge vignette: viewport-locked radial gradient. Centre
+   *     ~40% stays untouched; corners darken to rgba(50,40,15,0.20).
+   *     This is the strongest single signal of "physical paper" in the
+   *     reference — the way an aged page darkens at its edges.
+   *
+   *  2-4. Three irregular ageing splotches: large soft radial gradients
+   *     at non-symmetric positions, fixed to the viewport. Each is
+   *     gentle (4–6% alpha) but together they break up the uniformity
+   *     of the paper, so it reads as a sheet that has lived a bit
+   *     rather than a clean digital surface.
+   *
+   *  5. Wispy directional fibre noise: feTurbulence with anisotropic
+   *     baseFrequency (low X / high Y) produces horizontally-stretched
+   *     organic streaks — the paper-fibre look from the reference,
+   *     not random speckle. stitchTiles seamlessly tiles the 400×400
+   *     SVG, scrolls with content.
+   *
+   * No halftone, no regular grid: the previous pass read as digital
+   * because of the regular pattern. Pure CSS, zero KB, AA contrast
+   * preserved, hidden in @media print.
+   */
   background-image:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><circle cx='1.5' cy='1.5' r='0.55' fill='%231a1a0a' opacity='0.16'/><circle cx='4.5' cy='4.5' r='0.55' fill='%231a1a0a' opacity='0.16'/></svg>"),
-    radial-gradient(ellipse at center, transparent 45%, rgba(63, 72, 24, 0.07) 100%);
-  background-repeat: repeat, no-repeat;
-  background-size: 6px 6px, 100% 100vh;
-  background-attachment: scroll, fixed;
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='0.03 0.4' numOctaves='2' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.20  0 0 0 0 0.16  0 0 0 0 0.06  0 0 0 0.18 0'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>"),
+    radial-gradient(ellipse 320px 240px at 22% 18%, rgba(60, 50, 18, 0.06), transparent 70%),
+    radial-gradient(ellipse 280px 200px at 78% 72%, rgba(60, 50, 18, 0.05), transparent 70%),
+    radial-gradient(ellipse 220px 280px at 88% 22%, rgba(60, 50, 18, 0.04), transparent 70%),
+    radial-gradient(ellipse 78% 72% at center, transparent 40%, rgba(50, 40, 15, 0.11) 80%, rgba(45, 35, 10, 0.20) 100%);
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size: 400px 400px, auto, auto, auto, 100% 100vh;
+  background-attachment: scroll, fixed, fixed, fixed, fixed;
   color: var(--color-ink);
   font-family: var(--font-serif);
   font-size: 18px;
