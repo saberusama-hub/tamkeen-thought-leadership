@@ -86,8 +86,8 @@
    * the way the FT page is recognisably salmon — paper as a colour
    * decision, not a default.
    */
-  --color-paper: #F6F8E6;
-  --color-paper-shade: #EAEFD0;
+  --color-paper: #F8FAEC;
+  --color-paper-shade: #EDF1D3;
   --color-mute: #5F5F45;
   --color-rule: #B0B69C;
   --color-rule-soft: #C8CDB8;
@@ -123,27 +123,36 @@ html {
 body {
   background-color: var(--color-paper);
   /*
-   * Aged-paper feel — split across two paint surfaces:
+   * Well-handled-paper feel — two paint surfaces working together:
    *
-   * 1. Body background-image (this rule): wispy directional fibre noise
-   *    via feTurbulence with anisotropic baseFrequency (low X, high Y).
-   *    Tiled 400×400, stitched, scrolls with content — feels like the
-   *    paper grain moving with the page.
+   * 1. Body background-image (this rule): TWO layered fractalNoise
+   *    tiles producing linear creases/scratches across the surface.
+   *    - First layer (top of stack): pale lime-cream highlight
+   *      scratches. Anisotropic baseFrequency 0.005 1.5 stretches the
+   *      noise into long thin near-horizontal streaks. feColorMatrix
+   *      maps to a brighter lime-cream tone (R0.97 G1.00 B0.92) so
+   *      where the scratch lands, the paper appears scuffed lighter —
+   *      the optical signature of a sheet that has been handled.
+   *    - Second layer: olive crease marks. Same baseFrequency family
+   *      (0.005 1.2) but mapped to a warm olive darken (R0.20 G0.16
+   *      B0.06) at slightly lower alpha. Reads as crease lines and
+   *      fold ghosting.
+   *    Both stitched, both tile at 800×400 (wider tile so the
+   *    horizontal streaks don't visibly repeat), both scroll with
+   *    content. Stays in the lime palette by construction.
    *
    * 2. body::before pseudo (below): viewport-locked vignette + three
-   *    ageing splotches. Implemented as a position-fixed pseudo-element
-   *    rather than background-attachment: fixed, because iOS Safari
-   *    sizes attachment-fixed backgrounds against the document height
-   *    not the viewport, producing a visible darker band mid-page on
-   *    long articles. A position-fixed pseudo is sized against the
-   *    actual viewport across every browser.
+   *    ageing splotches. Pseudo-fixed rather than background-fixed
+   *    so iOS Safari sizes against the viewport, not the document.
    *
-   * No halftone, no regular grid. Pure CSS, zero KB, AA contrast
-   * preserved. Both layers hidden in @media print.
+   * Pure CSS, zero KB, AA contrast preserved (lighter paper helps).
+   * Both layers hidden in @media print.
    */
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='0.03 0.4' numOctaves='2' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.20  0 0 0 0 0.16  0 0 0 0 0.06  0 0 0 0.18 0'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>");
-  background-repeat: repeat;
-  background-size: 400px 400px;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='400'><filter id='h'><feTurbulence type='fractalNoise' baseFrequency='0.005 1.5' numOctaves='2' seed='7' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.97  0 0 0 0 1.00  0 0 0 0 0.92  0 0 0 0.32 0'/></filter><rect width='100%' height='100%' filter='url(%23h)'/></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='400'><filter id='d'><feTurbulence type='fractalNoise' baseFrequency='0.005 1.2' numOctaves='2' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.20  0 0 0 0 0.16  0 0 0 0 0.06  0 0 0 0.16 0'/></filter><rect width='100%' height='100%' filter='url(%23d)'/></svg>");
+  background-repeat: repeat, repeat;
+  background-size: 800px 400px, 800px 400px;
   color: var(--color-ink);
   font-family: var(--font-serif);
   font-size: 18px;
@@ -171,10 +180,10 @@ body::before {
   pointer-events: none;
   z-index: -1;
   background-image:
-    radial-gradient(ellipse 320px 240px at 22% 18%, rgba(60, 50, 18, 0.06), transparent 70%),
-    radial-gradient(ellipse 280px 200px at 78% 72%, rgba(60, 50, 18, 0.05), transparent 70%),
+    radial-gradient(ellipse 320px 240px at 22% 18%, rgba(60, 50, 18, 0.05), transparent 70%),
+    radial-gradient(ellipse 280px 200px at 78% 72%, rgba(60, 50, 18, 0.04), transparent 70%),
     radial-gradient(ellipse 220px 280px at 88% 22%, rgba(60, 50, 18, 0.04), transparent 70%),
-    radial-gradient(ellipse 78% 72% at center, transparent 40%, rgba(50, 40, 15, 0.11) 80%, rgba(45, 35, 10, 0.20) 100%);
+    radial-gradient(ellipse 80% 75% at center, transparent 45%, rgba(50, 40, 15, 0.06) 80%, rgba(45, 35, 10, 0.12) 100%);
 }
 
 @media print {
