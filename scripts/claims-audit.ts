@@ -36,14 +36,61 @@ const dataTsPath = path.join(
 
 const claims = JSON.parse(readFileSync(claimsPath, 'utf-8')) as Record<string, unknown>;
 const mdx = readFileSync(mdxPath, 'utf-8');
+const siblingMdxPath = path.join(
+  ROOT,
+  'content',
+  'articles',
+  'rankings-decade-told-straight.mdx',
+);
+const siblingMdx = readFileSync(siblingMdxPath, 'utf-8');
 const dataTs = readFileSync(dataTsPath, 'utf-8');
 interface MasterRow {
   system: 'THE' | 'QS';
   year: number;
   rankNumeric: number;
   country: string;
+  university: string;
+  isBanded: boolean;
+  rank: number | null;
 }
 const master = JSON.parse(readFileSync(masterPath, 'utf-8')) as MasterRow[];
+
+/**
+ * Median absolute year-over-year rank movement for integer-ranked
+ * institutions whose rank is in [rankFrom, rankTo] at either endpoint
+ * of the year-pair. Used by the sibling article's KPI card 4 claim
+ * ('a university near rank 400 on QS moves about 20').
+ */
+function medianAbsMovement(system: 'QS' | 'THE', rankFrom: number, rankTo: number): number {
+  const rows = master.filter(
+    (r) => r.system === system && !r.isBanded && Number.isInteger(r.rank as number),
+  );
+  const byYear = new Map<number, Map<string, number>>();
+  for (const r of rows) {
+    if (!byYear.has(r.year)) byYear.set(r.year, new Map());
+    byYear.get(r.year)!.set(r.university, r.rankNumeric);
+  }
+  const years = [...byYear.keys()].sort();
+  const moves: number[] = [];
+  for (let i = 1; i < years.length; i++) {
+    const prev = byYear.get(years[i - 1])!;
+    const curr = byYear.get(years[i])!;
+    for (const [u, currRank] of curr) {
+      const prevRank = prev.get(u);
+      if (prevRank == null) continue;
+      const inBand =
+        (currRank >= rankFrom && currRank <= rankTo) ||
+        (prevRank >= rankFrom && prevRank <= rankTo);
+      if (!inBand) continue;
+      moves.push(Math.abs(currRank - prevRank));
+    }
+  }
+  moves.sort((a, b) => a - b);
+  const m = moves.length;
+  return m % 2 === 0 ? (moves[m / 2 - 1] + moves[m / 2]) / 2 : moves[Math.floor(m / 2)];
+}
+
+const qs300_500Median = medianAbsMovement('QS', 300, 500);
 
 const COUNTRY_GROUPS: Record<string, string[]> = {
   'United States': ['United States', 'United States of America', 'USA', 'U.S.A.'],
@@ -304,6 +351,39 @@ if (rowFail > 0) {
   console.error(
     `\ncountry-table audit FAILED — ${rowFail} row(s) disagree with source xlsx data. Fix decade-...data.ts > countryTableRows.`,
   );
+  process.exit(1);
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Sibling article-specific check: KPI card 4 claims 'about 20' for the
+// QS rank 300–500 band median annual movement. Verify the computed value
+// is in the 18–22 range and that the sibling article body mentions it.
+// ────────────────────────────────────────────────────────────────────────────
+
+console.log('\n================ SIBLING ARTICLE KPI CARD 4 ================');
+console.log(`  Computed QS rank 300–500 median YoY movement: ${qs300_500Median}`);
+let siblingFail = 0;
+if (qs300_500Median < 18 || qs300_500Median > 22) {
+  siblingFail++;
+  console.log(
+    `  FAIL   computed value ${qs300_500Median} is outside the 18–22 band the article claims as 'about 20'`,
+  );
+} else {
+  console.log(
+    `  PASS   computed value ${qs300_500Median} is within the 18–22 band the article claims as 'about 20'`,
+  );
+}
+if (/near rank 400 on QS moves about 20/i.test(siblingMdx)) {
+  console.log("  PASS   sibling article body mentions 'about 20' for QS rank-400 movement");
+} else {
+  siblingFail++;
+  console.log(
+    "  FAIL   sibling article body does not mention 'about 20' for QS rank-400 movement",
+  );
+}
+
+if (siblingFail > 0) {
+  console.error('\nsibling KPI audit FAILED — fix the sibling MDX or update the patterns.');
   process.exit(1);
 }
 
