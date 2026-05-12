@@ -30,7 +30,7 @@ interface BumpChartProps {
 }
 
 const W = 1000;
-const H = 540;
+const H = 720;
 const M = { top: 24, right: 220, bottom: 40, left: 40 };
 
 function colourFor(line: CohortLine): string {
@@ -273,7 +273,7 @@ export function BumpChart({ data }: BumpChartProps) {
             value={selectedKey ?? ''}
             onChange={(e) => setSelectedKey(e.target.value || null)}
             aria-label="Highlight a university"
-            className="ml-3 font-sans text-[12px] tracking-[0.4px] normal-case text-ink bg-paper border border-rule px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-1 focus:ring-green"
+            className="ml-3 font-sans text-[12px] tracking-[0.4px] normal-case text-ink bg-transparent border border-rule px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-1 focus:ring-green"
           >
             <option value="">— None —</option>
             {sortedForSelect.map((line) => {

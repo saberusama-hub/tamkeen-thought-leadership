@@ -32,7 +32,7 @@ export function SVGStackedArea({
   const xStep = 820 / (years.length - 1);
   return (
     <svg
-      viewBox="0 0 1000 380"
+      viewBox="0 0 1000 410"
       preserveAspectRatio="xMidYMid meet"
       role="img"
       aria-label={title}
@@ -107,7 +107,7 @@ export function SVGStackedArea({
         </g>
       </g>
 
-      <g transform="translate(70,360)" fontSize={11} fontFamily="Inter, sans-serif">
+      <g transform="translate(70,392)" fontSize={11} fontFamily="Inter, sans-serif">
         {legend.map((l, i) => {
           const x = i * 130;
           return (

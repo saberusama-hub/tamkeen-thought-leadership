@@ -27,7 +27,7 @@ function renderCell(col: Column, row: DataTableRow): ReactNode {
       v.tone === 'pos'
         ? 'text-green font-semibold'
         : v.tone === 'neg'
-          ? 'text-ink font-semibold'
+          ? 'text-neg font-semibold'
           : '';
     return <span className={cls}>{v.value}</span>;
   }

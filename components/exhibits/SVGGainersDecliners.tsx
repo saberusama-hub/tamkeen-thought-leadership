@@ -117,54 +117,28 @@ export function SVGGainersDecliners({
         </text>
 
         {gainerHighlightIdx >= 0 ? (
-          <g>
-            <rect
-              x={-205}
-              y={10 + gainerHighlightIdx * 32 - 4}
-              width={825}
-              height={30}
-              fill="none"
-              stroke="var(--color-neg)"
-              strokeWidth={1.2}
-              strokeDasharray="4 3"
-            />
-            <text
-              x={-205}
-              y={10 + gainerHighlightIdx * 32 - 9}
-              fontSize={9.5}
-              fontStyle="italic"
-              fontWeight={600}
-              fill="var(--color-neg)"
-              letterSpacing={1.2}
-            >
-              SPOTLIGHT
-            </text>
-          </g>
+          <rect
+            x={-195}
+            y={10 + gainerHighlightIdx * 32 - 4}
+            width={810}
+            height={30}
+            fill="none"
+            stroke="var(--color-neg)"
+            strokeWidth={1.4}
+            strokeDasharray="4 3"
+          />
         ) : null}
         {declinerHighlightIdx >= 0 ? (
-          <g>
-            <rect
-              x={-205}
-              y={266 + declinerHighlightIdx * 32 - 4}
-              width={825}
-              height={30}
-              fill="none"
-              stroke="var(--color-neg)"
-              strokeWidth={1.2}
-              strokeDasharray="4 3"
-            />
-            <text
-              x={-205}
-              y={266 + declinerHighlightIdx * 32 - 9}
-              fontSize={9.5}
-              fontStyle="italic"
-              fontWeight={600}
-              fill="var(--color-neg)"
-              letterSpacing={1.2}
-            >
-              SPOTLIGHT
-            </text>
-          </g>
+          <rect
+            x={-195}
+            y={266 + declinerHighlightIdx * 32 - 4}
+            width={810}
+            height={30}
+            fill="none"
+            stroke="var(--color-neg)"
+            strokeWidth={1.4}
+            strokeDasharray="4 3"
+          />
         ) : null}
       </g>
     </svg>
