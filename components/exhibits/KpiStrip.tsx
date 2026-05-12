@@ -54,7 +54,7 @@ export function KpiStrip({ kpis }: KpiStripProps) {
             {k.unit ? <span className="text-[0.5em] tracking-normal font-normal text-mute ml-1">{k.unit}</span> : null}
             {k.trend ? <TrendArrow direction={k.trend} /> : null}
           </div>
-          <div className="ui-caps font-sans text-[11px] tracking-[1.5px] uppercase font-semibold text-ink mb-2 leading-[1.35] max-[540px]:text-[10.5px] max-[540px]:tracking-[1.3px]">
+          <div className="ui-caps font-sans text-[11px] tracking-[1.5px] uppercase font-semibold text-ink mb-2 leading-[1.35] min-h-[2.7em] max-[540px]:text-[10.5px] max-[540px]:tracking-[1.3px] max-[540px]:min-h-0">
             {k.label}
           </div>
           <div className="font-serif text-[14px] text-mute leading-[1.5]">{k.desc}</div>
