@@ -1,0 +1,144 @@
+name: QS 2027 Rankings Monitor
+
+# Watches for the release of the QS World University Rankings 2027 (overall
+# table) and emails usama.afzal@nyu.edu the moment release is detected.
+#
+# Runs on GitHub's infrastructure on a schedule, independent of any local
+# Claude Code session. Detection logic lives in
+# scripts/check-qs-2027-rankings.py (multi-source, dependency-free).
+#
+# Exactly-once email: when release is first detected the job opens a tracking
+# issue labelled `qs-2027-monitor`. While that issue exists, no further emails
+# are sent. Delete/close-and-relabel or remove the issue to re-arm.
+#
+# REQUIRED REPO SECRETS (Settings → Secrets and variables → Actions) for email:
+#   MAIL_SERVER    SMTP host, e.g. smtp.gmail.com
+#   MAIL_PORT      SMTP port, e.g. 465 (SSL) or 587 (STARTTLS)
+#   MAIL_USERNAME  SMTP login / From address, e.g. you@gmail.com
+#   MAIL_PASSWORD  SMTP password or app-password
+# If these are not set, the run still records detection via the tracking
+# issue, then logs that email was skipped — nothing is lost.
+
+on:
+  schedule:
+    # Every 30 minutes. QS typically publishes mid-June (2027 expected ~18 Jun
+    # 2026). GitHub may delay scheduled runs by a few minutes under load.
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+    inputs:
+      send_test_email:
+        description: "Send a test email now to verify SMTP plumbing (does not require a real release)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: qs-2027-rankings-monitor
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  RECIPIENT: usama.afzal@nyu.edu
+  TRACKING_LABEL: qs-2027-monitor
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run release detector
+        id: check
+        run: python3 scripts/check-qs-2027-rankings.py
+
+      - name: Look for existing tracking issue
+        id: tracking
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          count=$(gh issue list --label "$TRACKING_LABEL" --state all --json number --jq 'length')
+          echo "exists=$([ "$count" -gt 0 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          echo "Existing tracking issues: $count"
+
+      - name: Decide whether to notify
+        id: decide
+        run: |
+          released='${{ steps.check.outputs.released }}'
+          tracked='${{ steps.tracking.outputs.exists }}'
+          test='${{ github.event.inputs.send_test_email }}'
+          notify=false
+          if [ "$test" = "true" ]; then notify=true; fi
+          if [ "$released" = "true" ] && [ "$tracked" != "true" ]; then notify=true; fi
+          echo "notify=$notify" >> "$GITHUB_OUTPUT"
+          echo "released=$released tracked=$tracked test=$test -> notify=$notify"
+
+      - name: Detect SMTP configuration
+        id: smtp
+        env:
+          MAIL_SERVER: ${{ secrets.MAIL_SERVER }}
+        run: |
+          # `secrets` is not available in step `if:` conditions, so surface
+          # presence of the SMTP config as a plain output instead.
+          if [ -n "$MAIL_SERVER" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Ensure mail label exists
+        if: steps.decide.outputs.notify == 'true' && github.event.inputs.send_test_email != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh label create "$TRACKING_LABEL" --color FFA500 --description "QS 2027 rankings release monitor" --force
+
+      - name: Send notification email
+        if: steps.decide.outputs.notify == 'true' && steps.smtp.outputs.configured == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.MAIL_SERVER }}
+          server_port: ${{ secrets.MAIL_PORT }}
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          from: QS Rankings Monitor <${{ secrets.MAIL_USERNAME }}>
+          to: ${{ env.RECIPIENT }}
+          subject: >-
+            ${{ github.event.inputs.send_test_email == 'true'
+            && '[TEST] QS 2027 Rankings Monitor is working'
+            || '🎓 QS World University Rankings 2027 are OUT' }}
+          html_body: |
+            <h2>QS World University Rankings 2027</h2>
+            ${{ github.event.inputs.send_test_email == 'true'
+            && '<p>This is a <b>test</b> email confirming the monitor can reach your inbox. No real release has been detected.</p>'
+            || format('<p>The monitor has detected that the <b>QS World University Rankings 2027</b> appear to be released.</p><p><b>Evidence:</b> {0}</p><p><b>Detected edition year:</b> {1}</p>', steps.check.outputs.evidence, steps.check.outputs.edition_year) }}
+            <p><b>Source:</b> <a href="${{ steps.check.outputs.source_url }}">${{ steps.check.outputs.source_url }}</a></p>
+            <p>Overall table: <a href="https://www.topuniversities.com/world-university-rankings">topuniversities.com/world-university-rankings</a></p>
+            <hr>
+            <p style="color:#888;font-size:12px">Sent automatically by the qs-2027-rankings-monitor GitHub Actions workflow.
+            Workflow run: <a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}">#${{ github.run_id }}</a></p>
+
+      - name: Log if email was skipped (no SMTP secrets)
+        if: steps.decide.outputs.notify == 'true' && steps.smtp.outputs.configured == 'false'
+        run: |
+          echo "::warning::Release detected but MAIL_SERVER secret is not set — email NOT sent."
+          echo "Add MAIL_SERVER / MAIL_PORT / MAIL_USERNAME / MAIL_PASSWORD repo secrets to enable email."
+
+      - name: Open tracking issue (real release only)
+        if: steps.check.outputs.released == 'true' && steps.tracking.outputs.exists != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --title "QS World University Rankings 2027 — RELEASED" \
+            --label "$TRACKING_LABEL" \
+            --body "$(printf '%s\n' \
+              "The monitor detected the QS World University Rankings 2027 are live." \
+              "" \
+              "- **Evidence:** ${{ steps.check.outputs.evidence }}" \
+              "- **Edition year:** ${{ steps.check.outputs.edition_year }}" \
+              "- **Source:** ${{ steps.check.outputs.source_url }}" \
+              "- **Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+              "" \
+              "This issue prevents duplicate notifications. Delete it to re-arm the monitor.")"
