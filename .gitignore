@@ -28,3 +28,7 @@ qa/
 tests/screenshots/
 test-results/
 playwright-report/
+
+# Editorial round-trip scratch (regenerate with `pnpm review-doc`)
+editorial/_test-*.docx
+editorial/*.pdf
