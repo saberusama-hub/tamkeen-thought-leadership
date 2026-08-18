@@ -6,6 +6,7 @@ import { ArticleHero } from '@/components/ArticleHero';
 import { ArticleLayout } from '@/components/ArticleLayout';
 import { ArticleClosing } from '@/components/ArticleClosing';
 import { ProgressBar } from '@/components/ProgressBar';
+import { EditLayer } from '@/components/edit/EditLayer';
 import { getAllArticles, getArticleBySlug } from '@/lib/articles';
 
 interface PageProps {
@@ -74,6 +75,7 @@ export default async function ArticlePage({ params }: PageProps) {
         </ArticleLayout>
       </main>
       <Footer />
+      <EditLayer slug={slug} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJson) }}

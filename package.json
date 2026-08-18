@@ -20,7 +20,9 @@
     "verify-extract": "tsx scripts/verify-extract.ts",
     "build:review-doc": "node scripts/build-review-docx.js",
     "review-doc": "pnpm extract-text && pnpm verify-extract && pnpm build:review-doc",
-    "apply-edits": "tsx scripts/apply-article-edits.ts"
+    "apply-edits": "tsx scripts/apply-article-edits.ts",
+    "apply-json-edits": "tsx scripts/apply-json-edits.ts",
+    "test:edit-layer": "node scripts/test-edit-layer.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",

@@ -465,3 +465,231 @@ section {
     font-size: 52px;
   }
 }
+
+/* ───────────────────────────────────────────────────────────────────────────
+ * Edit mode.
+ *
+ * Everything here is scoped under html[data-edit-mode="on"], which only the
+ * EditLayer client component ever sets. A reader who never opens edit mode
+ * loads these rules but matches none of them.
+ *
+ * Visual logic: the page keeps its typography exactly as published so copy is
+ * judged as it will read. Editing affordances are drawn in the lime accent as
+ * hairlines and small-caps labels, the same vocabulary the article uses for
+ * exhibit numbers and folio marks, so the tooling looks like part of the
+ * paper rather than a widget bolted on top.
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+html[data-edit-mode='on'] body {
+  padding-bottom: 84px;
+}
+
+/* Every matched block: a resting hairline, so the extent of each editable
+   region is legible at a glance without shouting. */
+html[data-edit-mode='on'] [data-eid] {
+  outline: 1px dashed color-mix(in srgb, var(--color-green) 22%, transparent);
+  outline-offset: 3px;
+  border-radius: 2px;
+  cursor: text;
+  transition: outline-color 120ms ease, background-color 120ms ease;
+}
+
+html[data-edit-mode='on'] [data-eid]:hover {
+  outline-color: var(--color-lime);
+  background-color: color-mix(in srgb, var(--color-lime) 8%, transparent);
+}
+
+html[data-edit-mode='on'] [data-eid][contenteditable='true'] {
+  outline: 2px solid var(--color-lime);
+  outline-offset: 3px;
+  background-color: color-mix(in srgb, var(--color-lime) 10%, transparent);
+}
+
+/* The block id, revealed on hover as a small tab above its block. */
+html[data-edit-mode='on'] [data-eid] {
+  position: relative;
+}
+html[data-edit-mode='on'] [data-eid]::before {
+  content: attr(data-eid);
+  position: absolute;
+  top: -1.35em;
+  left: 0;
+  z-index: 5;
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-paper);
+  background: var(--color-green);
+  padding: 2px 6px;
+  border-radius: 2px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+  white-space: nowrap;
+}
+html[data-edit-mode='on'] [data-eid]:hover::before,
+html[data-edit-mode='on'] [data-eid][contenteditable='true']::before {
+  opacity: 1;
+}
+/* Blocks that appear in both articles are flagged, because one edit here
+   changes both pieces. */
+html[data-edit-mode='on'] [data-eid-shared]::before {
+  content: attr(data-eid) ' · SHARED';
+  background: #8c5a1f;
+}
+
+/* An edited block keeps a standing accent so changes stay visible while you
+   scroll the piece. */
+html[data-edit-mode='on'] [data-eid].eid-dirty {
+  outline-color: var(--color-lime);
+  box-shadow: -3px 0 0 0 var(--color-lime);
+  background-color: color-mix(in srgb, var(--color-lime) 12%, transparent);
+}
+
+/* ── The dock ─────────────────────────────────────────────────────────────── */
+.eid-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: var(--color-green);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-top: 3px solid var(--color-lime);
+}
+.eid-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-lime);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-lime) 30%, transparent);
+}
+.eid-bar-label { font-weight: 700; }
+.eid-sep { width: 1px; height: 14px; background: color-mix(in srgb, var(--color-paper) 30%, transparent); }
+.eid-meta { color: color-mix(in srgb, var(--color-paper) 72%, transparent); }
+.eid-count { color: color-mix(in srgb, var(--color-paper) 72%, transparent); }
+.eid-count-live { color: var(--color-lime); font-weight: 700; }
+
+.eid-actions { margin-left: auto; display: flex; gap: 8px; }
+.eid-actions button {
+  font: inherit;
+  letter-spacing: 1.2px;
+  padding: 7px 14px;
+  border: 1px solid color-mix(in srgb, var(--color-paper) 45%, transparent);
+  background: transparent;
+  color: var(--color-paper);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+.eid-actions button:hover:not(:disabled) { background: color-mix(in srgb, var(--color-paper) 14%, transparent); }
+.eid-actions button:disabled { opacity: 0.4; cursor: default; }
+.eid-actions .eid-primary {
+  background: var(--color-lime);
+  border-color: var(--color-lime);
+  color: var(--color-green-deep);
+  font-weight: 700;
+}
+.eid-actions .eid-primary:hover:not(:disabled) { background: #b8c74d; }
+.eid-actions .eid-close { border: none; font-size: 14px; padding: 4px 8px; }
+
+.eid-status {
+  position: fixed;
+  left: 20px;
+  bottom: 74px;
+  z-index: 91;
+  max-width: 60ch;
+  background: var(--color-green-deep);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 10px 14px;
+  border-left: 3px solid var(--color-lime);
+  border-radius: 2px;
+}
+
+/* ── Review panel ─────────────────────────────────────────────────────────── */
+.eid-review {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 62px;
+  width: min(460px, 92vw);
+  z-index: 89;
+  overflow-y: auto;
+  background: var(--color-paper);
+  border-left: 1px solid var(--color-green);
+  box-shadow: -18px 0 40px -24px rgba(0, 0, 0, 0.4);
+  padding: 24px 22px 32px;
+}
+.eid-review h2 {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-green);
+  margin: 0 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-green);
+}
+.eid-row { padding: 14px 0; border-bottom: 1px solid var(--color-rule-soft); }
+.eid-row-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.eid-row-head code {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  font-weight: 700;
+  color: var(--color-paper);
+  background: var(--color-green);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+.eid-row-head button {
+  margin-left: auto;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--color-mute);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.eid-row-head button:hover { color: var(--color-neg); }
+.eid-chip {
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #8c5a1f;
+}
+.eid-review p {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 6px;
+  padding-left: 10px;
+}
+.eid-before { color: var(--color-mute); text-decoration: line-through; border-left: 2px solid var(--color-neg-pale); }
+.eid-after { color: var(--color-ink); border-left: 2px solid var(--color-lime); }
+
+@media (max-width: 640px) {
+  .eid-bar { flex-wrap: wrap; gap: 8px; font-size: 10px; }
+  .eid-actions { width: 100%; margin-left: 0; }
+  .eid-meta, .eid-sep { display: none; }
+}

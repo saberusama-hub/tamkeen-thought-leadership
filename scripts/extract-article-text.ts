@@ -415,6 +415,39 @@ const manifest = {
 
 writeFileSync(path.join(OUT_DIR, 'manifest.json'), JSON.stringify(manifest, null, 2));
 
+// ── Client manifest ─────────────────────────────────────────────────────────
+// A slim, per-page projection of the same blocks, written to public/ so the
+// in-browser edit layer can fetch it on demand. Readers never download it:
+// it is requested only when edit mode is switched on.
+//
+// Blocks are ordered by their byte offset within that page's own file, which
+// is the same order they appear in the rendered DOM. The edit layer relies on
+// that to disambiguate the handful of blocks whose text is not unique.
+const pages: Record<string, unknown[]> = {};
+for (const f of perFile) {
+  pages[f.slug] = blocks
+    .map((b) => {
+      const loc = b.locations.find((l) => l.file === f.rel);
+      return loc ? { b, start: loc.start } : null;
+    })
+    .filter((x): x is { b: (typeof blocks)[number]; start: number } => x !== null)
+    .sort((x, y) => x.start - y.start)
+    .map(({ b }) => ({
+      id: b.id,
+      kind: b.kind,
+      path: b.path,
+      display: b.display,
+      shared: b.shared,
+      minor: b.minor,
+    }));
+}
+
+mkdirSync(path.join(ROOT, 'public'), { recursive: true });
+writeFileSync(
+  path.join(ROOT, 'public', 'editorial-manifest.json'),
+  JSON.stringify({ blockCount: blocks.length, pages }),
+);
+
 // ── Report ──────────────────────────────────────────────────────────────────
 const words = blocks.reduce((n, b) => n + b.text.trim().split(/\s+/).length, 0);
 console.log('================ TEXT EXTRACTION ================');
@@ -430,3 +463,4 @@ console.log(`  article B only         : ${blocks.filter((b) => b.id.startsWith('
 console.log(`  minor/structural       : ${blocks.filter((b) => b.minor).length}`);
 console.log(`  total words            : ~${words.toLocaleString()}`);
 console.log(`\n  manifest -> editorial/manifest.json`);
+console.log(`  client   -> public/editorial-manifest.json`);

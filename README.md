@@ -112,6 +112,60 @@ types/
 mdx-components.tsx              Next.js MDX provider (registers exhibit components)
 ```
 
+## Editing the copy
+
+Two ways in, both landing in the same place: an exact byte-range splice into the
+MDX source. Nothing is matched fuzzily, so JSX structure cannot be disturbed.
+
+### In the browser
+
+```bash
+pnpm dev
+# open http://localhost:3000/articles/<slug>?edit=1
+```
+
+Every text block on the page becomes editable in place. Click a block, type,
+click away. Blocks carry a hairline outline so their extent is visible; hovering
+reveals the block id; edited blocks keep a lime accent bar. `Review` shows the
+pending diff, `Save` writes it.
+
+- Off by default. A reader who does not pass `?edit=1` sees no control and never
+  downloads the block manifest.
+- `Ctrl`/`Cmd`+`Shift`+`E` toggles edit mode.
+- Edits survive a reload (held in `localStorage` per article) until saved or reverted.
+- Blocks that appear in **both** articles are flagged `SHARED`; editing one writes
+  to both, which is what stops the two pieces drifting apart.
+- On the deployed site the filesystem is read-only, so `Save` downloads
+  `edits-<slug>.json` instead. Apply it with:
+
+  ```bash
+  pnpm apply-json-edits              # dry run
+  pnpm apply-json-edits -- --write
+  ```
+
+The layer needs no changes to any component or to the MDX: it matches the blocks
+in `editorial/manifest.json` onto the rendered DOM by their text, then tags the
+elements it found. ~96% of blocks match; the remainder are small chart labels and
+one `aria-label`, which the Word route below still covers.
+
+### In Word
+
+```bash
+pnpm review-doc                    # extract -> verify -> build editorial/*.docx
+pnpm apply-edits                   # read the edited docx back (dry run)
+pnpm apply-edits -- --write
+```
+
+Turn on Track Changes, edit, send the file back.
+
+### Checks
+
+```bash
+pnpm verify-extract                # every range matches source; round trip is lossless
+pnpm test:edit-layer               # browser end-to-end test (needs: pnpm dev -p 3100)
+pnpm claims-audit                  # every statistic in the prose vs the source data
+```
+
 ## Design philosophy
 
 - **Typography is the design.** Source Serif 4 body, Inter for small caps and labels,
