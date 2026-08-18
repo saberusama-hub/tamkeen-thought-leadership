@@ -439,6 +439,11 @@ for (const f of perFile) {
       display: b.display,
       shared: b.shared,
       minor: b.minor,
+      // A block carrying markup beyond <strong>/<em> — the FullDivider spans
+      // hold a JSX style expression — cannot survive a contenteditable round
+      // trip, so the browser editor must not offer it. Flagged here rather
+      // than refused at publish time, so nothing looks editable that isn't.
+      editable: !/<(?!\/?(?:strong|em)\b)[^>]*>/.test(b.display),
     }));
 }
 

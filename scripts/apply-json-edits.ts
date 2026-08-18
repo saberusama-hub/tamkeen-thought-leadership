@@ -78,6 +78,12 @@ if (result.applied.length) {
   console.log();
 }
 
+if (result.stale.length) {
+  console.log(`\n  ${result.stale.length} STALE — the source has moved since this patch was made:`);
+  for (const s of result.stale) console.log(`    ${s.id} in ${s.file}`);
+  console.log('  Nothing was written. Re-run `pnpm review-doc` and redo these edits.');
+  process.exit(1);
+}
 if (result.unchanged.length) console.log(`  ${result.unchanged.length} block(s) unchanged, skipped.`);
 if (result.unknown.length) console.log(`  UNKNOWN ids (not in the manifest): ${result.unknown.join(', ')}`);
 if (result.rejected.length) {

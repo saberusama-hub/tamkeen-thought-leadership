@@ -114,55 +114,67 @@ mdx-components.tsx              Next.js MDX provider (registers exhibit componen
 
 ## Editing the copy
 
-Two ways in, both landing in the same place: an exact byte-range splice into the
-MDX source. Nothing is matched fuzzily, so JSX structure cannot be disturbed.
+Three ways in. All of them land in the same place: an exact byte-range splice
+into the MDX source, so nothing is matched fuzzily and JSX structure cannot be
+disturbed.
 
-### In the browser
+### On the live site (for non-technical editors)
+
+Send one link: **`/edit`**. Sign in with the shared password, pick an article,
+click any text and type over it, press **Publish**. The change is committed to
+`main` and the live site updates about a minute later. No terminal, no files to
+pass around.
+
+Requires three environment variables on the deployment. Without them `/edit`
+reports that the editor is not switched on, and publishing is refused:
+
+| Variable | What it is |
+|---|---|
+| `EDITOR_PASSWORD` | The shared password. Make it long. |
+| `EDITOR_SECRET` | Any long random string; signs the session cookie. |
+| `GITHUB_TOKEN` | Fine-grained PAT, **this repository only**, permission Contents: Read and write. |
+
+Optional: `EDITOR_REPO_OWNER`, `EDITOR_REPO_NAME`, `EDITOR_REPO_BRANCH`.
+
+Safety properties, each covered by a test rather than asserted:
+
+- Publishing requires the session cookie; without it the route returns 401.
+- Every block is checked against its recorded byte range before anything is
+  written. If the article moved in the meantime the publish is refused with a
+  409 and the source is untouched.
+- Text is re-escaped for the delimiter it sits in, and line breaks, empty text
+  and markup beyond `<strong>`/`<em>` are refused.
+- File paths come from the manifest, never from the request, so only the two
+  article files can ever be written.
+- A shared block lands in both articles in a **single** commit.
+- Every publish is one commit, so any change reverts cleanly.
+
+### Locally
 
 ```bash
 pnpm dev
-# open http://localhost:3000/articles/<slug>?edit=1
+# http://localhost:3000/articles/<slug>?edit=1
 ```
 
-Every text block on the page becomes editable in place. Click a block, type,
-click away. Blocks carry a hairline outline so their extent is visible; hovering
-reveals the block id; edited blocks keep a lime accent bar. `Review` shows the
-pending diff, `Save` writes it.
-
-- Off by default. A reader who does not pass `?edit=1` sees no control and never
-  downloads the block manifest.
-- `Ctrl`/`Cmd`+`Shift`+`E` toggles edit mode.
-- Edits survive a reload (held in `localStorage` per article) until saved or reverted.
-- Blocks that appear in **both** articles are flagged `SHARED`; editing one writes
-  to both, which is what stops the two pieces drifting apart.
-- On the deployed site the filesystem is read-only, so `Save` downloads
-  `edits-<slug>.json` instead. Apply it with:
-
-  ```bash
-  pnpm apply-json-edits              # dry run
-  pnpm apply-json-edits -- --write
-  ```
-
-The layer needs no changes to any component or to the MDX: it matches the blocks
-in `editorial/manifest.json` onto the rendered DOM by their text, then tags the
-elements it found. ~96% of blocks match; the remainder are small chart labels and
-one `aria-label`, which the Word route below still covers.
+Same interface; Publish writes straight to the working tree instead of
+committing. No password needed locally.
 
 ### In Word
 
 ```bash
 pnpm review-doc                    # extract -> verify -> build editorial/*.docx
-pnpm apply-edits                   # read the edited docx back (dry run)
-pnpm apply-edits -- --write
+pnpm apply-edits -- --write        # read the edited docx back
 ```
 
-Turn on Track Changes, edit, send the file back.
+Covers the handful of blocks the browser editor does not offer: chart segment
+labels, one `aria-label`, and two dividers carrying a JSX style expression.
 
 ### Checks
 
 ```bash
 pnpm verify-extract                # every range matches source; round trip is lossless
-pnpm test:edit-layer               # browser end-to-end test (needs: pnpm dev -p 3100)
+pnpm test:publish-plan             # the exact bytes a publish would write
+pnpm test:edit-layer               # browser end-to-end (needs a dev server, see the script header)
 pnpm claims-audit                  # every statistic in the prose vs the source data
 ```
 
