@@ -33,7 +33,7 @@ const ARTICLES = [
   {
     key: 'B',
     slug: 'rankings-decade-told-straight',
-    label: 'A decade in the rankings, told straight',
+    label: 'A decade in the rankings',
   },
 ] as const;
 
